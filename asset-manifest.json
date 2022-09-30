@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/spidy/static/css/main.29cd549e.css",
+    "main.js": "/spidy/static/js/main.8fe34840.js",
+    "static/js/787.319676fc.chunk.js": "/spidy/static/js/787.319676fc.chunk.js",
+    "static/media/tarantulamexicana.jpg": "/spidy/static/media/tarantulamexicana.81745fd28864e4434bfb.jpg",
+    "static/media/portada2.jpg": "/spidy/static/media/portada2.7a2fed5117c25fd03915.jpg",
+    "static/media/portada1.jpg": "/spidy/static/media/portada1.7af365a6813934e87fe6.jpg",
+    "static/media/arañasaltadora.jpg": "/spidy/static/media/arañasaltadora.9faa5211fbfa8e2ec367.jpg",
+    "static/media/portada3.jpg": "/spidy/static/media/portada3.bc4ccfff1362c43b1d9c.jpg",
+    "static/media/prueba2.jpg": "/spidy/static/media/prueba2.3d478021a809f22941c7.jpg",
+    "static/media/tarantularodillas.jpg": "/spidy/static/media/tarantularodillas.ecc76cb03a937b6ee855.jpg",
+    "static/media/arañavagabunda.jpg": "/spidy/static/media/arañavagabunda.1cf536eba86c10358452.jpg",
+    "static/media/imagenprueba.jpg": "/spidy/static/media/imagenprueba.a1ef231881af29e16807.jpg",
+    "static/media/viudanegra.jpg": "/spidy/static/media/viudanegra.93238bada353ea69029f.jpg",
+    "static/media/nephila.jpg": "/spidy/static/media/nephila.50258a0b83a4fcd009d2.jpg",
+    "static/media/reclusaparda.jpg": "/spidy/static/media/reclusaparda.f9b418cba6b0ddb31db0.jpg",
+    "static/media/arañajardin.jpg": "/spidy/static/media/arañajardin.b6f95ff3fc603a01f200.jpg",
+    "static/media/Deinopis.jpg": "/spidy/static/media/Deinopis.b68bcb0c686692622e32.jpg",
+    "static/media/cangrejogigante.jpg": "/spidy/static/media/cangrejogigante.743cd8312533263170ea.jpg",
+    "static/media/logo.svg": "/spidy/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/spidy/index.html",
+    "main.29cd549e.css.map": "/spidy/static/css/main.29cd549e.css.map",
+    "main.8fe34840.js.map": "/spidy/static/js/main.8fe34840.js.map",
+    "787.319676fc.chunk.js.map": "/spidy/static/js/787.319676fc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.29cd549e.css",
+    "static/js/main.8fe34840.js"
+  ]
+}
