@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/spidy/static/css/main.29cd549e.css",
-    "main.js": "/spidy/static/js/main.8fe34840.js",
+    "main.js": "/spidy/static/js/main.58cc5a6c.js",
     "static/js/787.319676fc.chunk.js": "/spidy/static/js/787.319676fc.chunk.js",
     "static/media/tarantulamexicana.jpg": "/spidy/static/media/tarantulamexicana.81745fd28864e4434bfb.jpg",
     "static/media/portada2.jpg": "/spidy/static/media/portada2.7a2fed5117c25fd03915.jpg",
@@ -21,11 +21,11 @@
     "static/media/logo.svg": "/spidy/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/spidy/index.html",
     "main.29cd549e.css.map": "/spidy/static/css/main.29cd549e.css.map",
-    "main.8fe34840.js.map": "/spidy/static/js/main.8fe34840.js.map",
+    "main.58cc5a6c.js.map": "/spidy/static/js/main.58cc5a6c.js.map",
     "787.319676fc.chunk.js.map": "/spidy/static/js/787.319676fc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.29cd549e.css",
-    "static/js/main.8fe34840.js"
+    "static/js/main.58cc5a6c.js"
   ]
 }
