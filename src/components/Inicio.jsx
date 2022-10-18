@@ -53,8 +53,8 @@ export const Inicio = () => {
 
     </Carousel><br></br><br></br>
     <div style={{ height: '30vh' }}>
-        <h2 class="text-center">¿Te preocupa la araña que encontraste hoy en tu casa?</h2>
-        <h2 class="text-center">¿Me puede hacer daño?</h2>
+        <h2 class="text-center"><font color="white">¿Te preocupa la araña que encontraste hoy en tu casa?</font></h2>
+        <h2 class="text-center"><font color="white">¿Me puede hacer daño?</font></h2>
         <br></br>
         
         <div class="text-center">
@@ -66,12 +66,13 @@ export const Inicio = () => {
       </div><br></br><div>
         <br></br>
         <div class>
-        <h5 class="text-center">Acerca de este proyecto</h5>
+        <h5 class="text-center"><font color="white">Acerca de este proyecto</font></h5>
         </div>
-        <p class="text-justify">Pues este proyecto nace de que el compa de Ingeniería de software dijo sorprendanme y pues
+        <p class="text-justify"><font color="white">Pues este proyecto nace de que el compa de Ingeniería de software dijo sorprendanme y pues
           pues aquí está, nacido de la creatividad de spiderman o algo asi, pero es trabajo honesto jeje.
           Espero que les guste y que les sirva de algo, si no pues no se que decirles, pero bueno, ahora toca aprende
           a usar Tensorflow y a hacer un modelo de machine learning para que reconozca las arañas, pero eso es para otro día.
+          </font>
         </p>
       </div>
       </>
