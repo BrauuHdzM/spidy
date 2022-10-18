@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { NavBar } from './components/NavBar';
 import { Inicio } from './components/Inicio';
@@ -15,13 +14,22 @@ import { InformacionArana } from './components/InformacionArana';
 import { Escanear } from './components/Escanear';
 
 function App() {
+  
+
   return (
-    
+   
     <Router>
       <div>
       <NavBar />
       </div>
+     
+     
+      
       <div className='container'>
+    
+      
+      
+     
       <hr />
       <Routes>
         <Route path="/InformacionArana" element= {<InformacionArana />}>
@@ -34,6 +42,7 @@ function App() {
         </Route>
        </Routes> 
       </div>
+    
     </Router>
   );
 }
