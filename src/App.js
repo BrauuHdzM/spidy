@@ -1,7 +1,9 @@
 import './App.css';
+import React, { useEffect, useState } from 'react'
 import { NavBar } from './components/NavBar';
 import { Inicio } from './components/Inicio';
 import { Nosotros } from './components/Nosotros';
+import GridLoader from "react-spinners/GridLoader";
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,17 +16,32 @@ import { InformacionArana } from './components/InformacionArana';
 import { Escanear } from './components/Escanear';
 
 function App() {
-  
+  const [loading,setLoading]=useState(false)
+  useEffect(()=>{
+
+   setLoading(false)
+   setTimeout(()=>{
+
+    setLoading(false)
+   },60000)
+
+  },[])
 
   return (
    
     <Router>
+       
       <div>
       <NavBar />
       </div>
      
      
-      
+      {
+  loading?
+
+<GridLoader color="#d63636" loading={loading} size={150} />
+
+  :
       <div className='container'>
     
       
@@ -40,9 +57,11 @@ function App() {
         </Route>
         <Route path="/" element= {<Inicio />}>
         </Route>
-       </Routes> 
-      </div>
+       </Routes>  
+      </div> 
+      }
     
+       
     </Router>
   );
 }

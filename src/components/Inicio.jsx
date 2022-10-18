@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 import imagenprueba from '../images/imagenprueba.jpg';
 import portada1 from '../images/portada1.jpg';
@@ -7,10 +7,31 @@ import portada3 from '../images/portada3.jpg';
 import prueba2 from '../images/prueba2.jpg';
 import Button from 'react-bootstrap/Button';
 import { BsTypeH2 } from 'react-icons/bs';
+import GridLoader from "react-spinners/GridLoader";
+
 
 export const Inicio = () => {
+  const [loading,setLoading]=useState(false)
+  useEffect(()=>{
+
+   setLoading(false)
+   setTimeout(()=>{
+
+    setLoading(false)
+   },8000)
+
+  },[])
   return (
+    
     <>
+    {
+  loading?
+<div>
+<GridLoader color="#d63636" loading={loading} size={150} />
+</div>
+  :
+      
+<div>
     <Carousel variant='light'>
       <Carousel.Item>
       <a href="/Escanear">
@@ -75,6 +96,9 @@ export const Inicio = () => {
           </font>
         </p>
       </div>
+      </div>
+      }
+
       </>
     
   )
