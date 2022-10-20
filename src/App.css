@@ -39,14 +39,14 @@
 
 
 #mapdiv path {
-    fill: #ff0000;
+    fill: #00000000;
     stroke: #ffffff;
     stroke-width:2px;
     transition: fill 0.3s;
+    
 }
 
 #mapdiv :hover {
-    fill:rgba(0, 0, 0, 0.151);
+    fill:rgba(168, 4, 4, 0.58);
 }
-
 
