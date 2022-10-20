@@ -7,31 +7,16 @@ import portada3 from '../images/portada3.jpg';
 import prueba2 from '../images/prueba2.jpg';
 import Button from 'react-bootstrap/Button';
 import { BsTypeH2 } from 'react-icons/bs';
-import GridLoader from "react-spinners/GridLoader";
+
 
 
 export const Inicio = () => {
-  const [loading,setLoading]=useState(false)
-  useEffect(()=>{
 
-   setLoading(false)
-   setTimeout(()=>{
-
-    setLoading(false)
-   },8000)
-
-  },[])
   return (
     
     <>
-    {
-  loading?
-<div>
-<GridLoader color="#d63636" loading={loading} size={150} />
-</div>
-  :
-      
-<div>
+   
+   
     <Carousel variant='light'>
       <Carousel.Item>
       <a href="/Escanear">
@@ -73,11 +58,12 @@ export const Inicio = () => {
       </Carousel.Item>
 
     </Carousel><br></br><br></br>
+   
     <div style={{ height: '30vh' }}>
         <h2 class="text-center"><font color="white">¿Te preocupa la araña que encontraste hoy en tu casa?</font></h2>
         <h2 class="text-center"><font color="white">¿Me puede hacer daño?</font></h2>
         <br></br>
-        
+
         <div class="text-center">
         <Button variant="primary" size="md" href="/Escanear">
           ¡Prueba la aplicación aquí!
@@ -96,9 +82,7 @@ export const Inicio = () => {
           </font>
         </p>
       </div>
-      </div>
-      }
-
+    
       </>
     
   )
