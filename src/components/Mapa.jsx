@@ -3,7 +3,7 @@ export const Mapa = () => {
     return (
       
       <>
- <div id="mapdiv" className="container">
+ <div id="mapdiv" className="d-flex justify-content-center">
    <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsmapsvg="http://mapsvg.com"
