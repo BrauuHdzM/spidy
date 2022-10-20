@@ -60,12 +60,13 @@ export const Inicio = () => {
     </Carousel><br></br><br></br>
    
     <div style={{ height: '30vh' }}>
+      
         <h2 class="text-center"><font color="white">¿Te preocupa la araña que encontraste hoy en tu casa?</font></h2>
         <h2 class="text-center"><font color="white">¿Me puede hacer daño?</font></h2>
         <br></br>
 
         <div class="text-center">
-        <Button variant="primary" size="md" href="/Escanear">
+        <Button id="escaner" size="md" href="/Escanear">
           ¡Prueba la aplicación aquí!
         </Button>
         </div>
