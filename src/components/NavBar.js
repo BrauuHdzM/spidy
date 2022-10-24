@@ -3,12 +3,12 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import SpidyBar from '../images/SpidyBar.svg';
 function NavBar() {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="/"><img src="https://raw.githubusercontent.com/HatshepsutS/spidy/9e76763de4a9ca043d94e6ed52d3021390d4bdfc/Recurso%206.svg"></img><font color="#222529">Spidyuuuuuu</font></Navbar.Brand>
+        <Navbar.Brand href="/"><img src={SpidyBar}></img><font color="#222529">Spiyu</font></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
