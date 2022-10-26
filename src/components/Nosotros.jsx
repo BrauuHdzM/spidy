@@ -3,10 +3,17 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { BsFillTelephoneFill } from "react-icons/bs";
+import {FaLinkedinIn } from "react-icons/fa";
 import { BsPinMapFill } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
+import gato1 from '../images/gato1.jpg';
+import gato2 from '../images/gato2.jpg';
+import gato3 from '../images/gato3.jpg';
+import mono from '../images/mono.jpg';
 import { Card } from 'react-bootstrap';
 import { Placeholder } from 'react-bootstrap';
+
 import { Link, animateScroll as scroll } from "react-scroll";
 
 export const Nosotros = () => {
@@ -14,53 +21,92 @@ export const Nosotros = () => {
   return (
     <>
     <div>
-      <h5>Información de contacto de los programadores </h5>
+      <h5><font color="white">Información de contacto de los programadores</font> </h5>
       <br></br><br></br>
     </div>
-    <div>
-    <Table responsive variant="default">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th class="text-end">Contacto</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Marco Antonio Bernal Trani</td>
-          <div class="text-end">
-          <Button href="" target="_blank" variant="outline-dark">GitHub</Button>{' '}&nbsp;
-          <Button href="" target="_blank" variant="outline-info">LinkedIn</Button>{' '}&nbsp;
+    <section>
+    <div class="container">
+
+    <div class="row mt-4">
+    <div class="col-md-4">    		
+            <div class="card profile-card-3">
+    		        <div class="background-block">
+    		            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
+    		        </div>
+    		        <div class="profile-thumb-block">
+    		            <img src={gato2} alt="profile-image" class="profile"/>
+    		        </div>
+    		        <div class="card-content">
+                    <h2>Marco Antonio Bernal Trani<small>Software Engineer</small></h2>
+                    <div class="icon-block"><a href="#"><i><FaLinkedinIn size="1em" /></i></a><a href="#"> <i ><AiOutlineMail size="1em" /> </i></a><a href="#"> <i ><BsGithub size="1em"/> </i></a></div>
+                    </div>
+                </div>
           </div>
-        </tr>
-        <tr>
-          <td>Roberto Mauricio Beltran Vargas</td>
-          <div class="text-end">
-          <Button href="" target="_blank" variant="outline-dark">GitHub</Button>{' '}&nbsp;
-          <Button href="" target="_blank" variant="outline-info">LinkedIn</Button>{' '}&nbsp;
+               
+             
+          <div class="col-md-4">     
+            <div class="card profile-card-3">
+    		        <div class="background-block">
+    		            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
+    		        </div>
+    		        <div class="profile-thumb-block">
+    		            <img src={gato1} alt="profile-image" class="profile"/>
+    		        </div>
+    		        <div class="card-content">
+                    <h2> Mauricio Beltran Vargas<small>Software Engineer</small></h2>
+                    <div class="icon-block"><a href="#"><i><FaLinkedinIn size="1em" /></i></a><a href="#"> <i ><AiOutlineMail size="1em" /> </i></a><a href="#"> <i ><BsGithub size="1em"/> </i></a></div>
+                    </div>
+                </div>
+                </div>
+
           </div>
-        </tr>
-        <tr>
-          <td>Daniela Enriquez Ballesteros</td>
-          <div class="text-end">
-          <Button href="" target="_blank" variant="outline-dark">GitHub</Button>{' '}&nbsp;
-          <Button href="" target="_blank" variant="outline-info">LinkedIn</Button>{' '}&nbsp;
-          </div>
-        </tr>
-        <tr>
-          <td>Braulio Hernandez Minutti</td>
-          <div class="text-end">
-          <Button href="https://github.com/BrauuHdzM" target="_blank" variant="outline-dark">GitHub</Button>{' '}&nbsp;
-          <Button href="https://www.linkedin.com/in/braulio-hern%C3%A1ndez-minutti-994574218" target="_blank" variant="outline-info">LinkedIn</Button>{' '}&nbsp;
-          </div>
-        </tr>
-      </tbody>
-    </Table>
-    <br></br><br></br>
-    </div>
+          <div class="row mt-4">     
+                <div class="col-md-4">     
+            <div class="card profile-card-3">
+    		        <div class="background-block">
+    		            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
+    		        </div>
+    		        <div class="profile-thumb-block">
+    		            <img src={mono} alt="profile-image" class="profile"/>
+    		        </div>
+    		        <div class="card-content">
+                    <h2>Braulio Hernandez Minutti<small>Carrusel</small></h2>
+                    <div class="icon-block"><a href="#"><i><FaLinkedinIn size="1em" /></i></a><a href="#"> <i ><AiOutlineMail size="1em" /> </i></a><a href="#"> <i ><BsGithub size="1em"/> </i></a></div>
+                    </div>
+                </div>
+                
+            </div>
+
+                
+             
+            <div class="col-md-4">    
+            <div class="card profile-card-3">
+    		        <div class="background-block">
+    		            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
+    		        </div>
+    		        <div class="profile-thumb-block">
+    		            <img src={gato3} alt="profile-image" class="profile"/>
+    		        </div>
+    		        <div class="card-content">
+                    <h2>Daniela Enriquez Ballesteros<small>Vagabunda</small></h2>
+                    <div class="icon-block"><a href="#"><i><FaLinkedinIn size="1em" /></i></a><a href="#"> <i ><AiOutlineMail size="1em" /> </i></a><a href="#"> <i ><BsGithub size="1em"/> </i></a></div>
+                    </div>
+                </div>
+           
+
+
+    		</div>
+      </div>
+      </div>
+</section>
+
+
+
+
+
 
     <div>
-      <h5>Contáctanos en el siguiente formulario</h5> <br></br>
+      <h5><font color="white">Contáctanos en el siguiente formulario</font></h5> <br></br>
     </div>
 
     <div className="d-flex justify-content-around">
