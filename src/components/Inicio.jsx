@@ -5,7 +5,7 @@ import portada2 from '../images/portada2.jpg';
 import portada3 from '../images/portada3.jpg';
 import Button from 'react-bootstrap/Button';
 
-import SpydyLogo from '../images/SpydyLogo.svg';
+import Prueba2HomeSp from '../images/Prueba2HomeSp.png';
 
 export const Inicio = () => {
 
@@ -16,14 +16,14 @@ export const Inicio = () => {
    <div class="row mt-4">
    <div class="col-md-4"> 
    </div>
-   <img src={SpydyLogo} class="img-responsive" width="307" height="240"  ></img>
+   <img src={Prueba2HomeSp} class="img-responsive"  id="imgHome" ></img>
    
    </div>
    </div>
    
  
    
-    <div style={{ height: '30vh' }}>
+    <div id="text-over-img ">
       
         <h2 class="text-center"><font color="white">¿Te preocupa la araña que encontraste hoy en tu casa?</font></h2>
         <h2 class="text-center"><font color="white">¿Me puede hacer daño?</font></h2>
