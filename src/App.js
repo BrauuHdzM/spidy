@@ -4,6 +4,7 @@ import { NavBar } from './components/NavBar';
 import { Inicio } from './components/Inicio';
 import { Nosotros } from './components/Nosotros';
 import { Mapa } from './components/Mapa';
+
 import GridLoader from "react-spinners/GridLoader";
 import {
   BrowserRouter as Router,
@@ -45,9 +46,6 @@ function App() {
   :
       <div className='container'>
     
-      
-      
-     
       <hr />
       <Routes>
         <Route path="/InformacionArana" element= {<InformacionArana />}>
@@ -57,10 +55,10 @@ function App() {
         <Route path="/Escanear" element= {<Escanear />}>
         </Route>
         <Route path="/Mapa" element= {<Mapa />}>
-        </Route>
-                
+        </Route>            
         <Route path="/" element= {<Inicio />}>
         </Route>
+             
        </Routes>  
       </div> 
       }
