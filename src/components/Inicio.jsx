@@ -1,8 +1,5 @@
 
-import Carousel from 'react-bootstrap/Carousel';
-import portada1 from '../images/portada1.jpg';
-import portada2 from '../images/portada2.jpg';
-import portada3 from '../images/portada3.jpg';
+
 import Button from 'react-bootstrap/Button';
 
 import Prueba2HomeSp from '../images/Prueba2HomeSp.png';
