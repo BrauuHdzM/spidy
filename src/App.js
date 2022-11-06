@@ -4,7 +4,7 @@ import { NavBar } from './components/NavBar';
 import { Inicio } from './components/Inicio';
 import { Nosotros } from './components/Nosotros';
 import { Mapa } from './components/Mapa';
-import { Login } from './components/Login';
+
 import GridLoader from "react-spinners/GridLoader";
 import {
   BrowserRouter as Router,
@@ -58,8 +58,7 @@ function App() {
         </Route>            
         <Route path="/" element= {<Inicio />}>
         </Route>
-        <Route path="/Login" element= {<Login />}>
-        </Route>        
+             
        </Routes>  
       </div> 
       }
