@@ -44,14 +44,14 @@ import { useState } from 'react';
   export const Escanear = () => {
   return (
     <>
-    <div>
-      <h1>Escaner proximamente</h1>
+    <div> 
+      <h1><font color="white">Escaner proximamente</font></h1>
     </div>
     
-    <div>
+    <div><font color="white">
       Imagen a escanear: 
       <input type="file" id="img" onChange={ loadFile() } />
-          <br></br>
+          <br></br></font>
       <input type="submit" onClick={loadModel} />
         
     </div>
