@@ -7,10 +7,10 @@ import {FaLinkedinIn } from "react-icons/fa";
 import { BsPinMapFill } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
-import gato1 from '../images/gato1.jpg';
-import gato2 from '../images/gato2.jpg';
-import gato3 from '../images/gato3.jpg';
-import mono from '../images/mono.jpg';
+import Nani from '../images/Nani.jpg';
+import braulio from '../images/braulio.jpg';
+import Mau from '../images/Mau.jpg';
+import Marco from '../images/Marco.jpg';
 import { Card } from 'react-bootstrap';
 import { Placeholder } from 'react-bootstrap';
 
@@ -21,87 +21,84 @@ export const Nosotros = () => {
   return (
     <>
     <div>
-      <h5><font color="white">Información de contacto de los programadores</font> </h5>
+      <h1><center><font color="white">Información de contacto de los programadores</font> </center></h1>
       <br></br><br></br>
     </div>
-    <section>
+   
     <div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="our-team">
+        <div class="picture">
+          <img class="img-fluid" src={Mau}/>
+        </div>
+        <div class="team-content">
+          <h3 class="name">Mauricio Beltrán</h3>
+          <h4 class="title">Web Developer</h4>
+        </div>
+        <ul class="social">
+          <li><a href="" aria-hidden="true"><i><FaLinkedinIn size="1em" /></i></a></li>
+          <li><a href="" aria-hidden="true"><i ><AiOutlineMail size="1em" /> </i></a></li>
+          <li><a href=""  aria-hidden="true"><i ><BsGithub size="1em"/> </i></a></li>
 
-    <div class="row mt-4">
-    <div class="col-md-4">    		
-            <div class="card profile-card-3">
-    		        <div class="background-block">
-    		            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
-    		        </div>
-    		        <div class="profile-thumb-block">
-    		            <img src={gato2} alt="profile-image" class="profile"/>
-    		        </div>
-    		        <div class="card-content">
-                    <h2>Marco Antonio Bernal Trani<small>Software Engineer</small></h2>
-                    <div class="icon-block"><a href="#"><i><FaLinkedinIn size="1em" /></i></a><a href="#"> <i ><AiOutlineMail size="1em" /> </i></a><a href="#"> <i ><BsGithub size="1em"/> </i></a></div>
-                    </div>
-                </div>
-          </div>
-               
-             
-          <div class="col-md-4">     
-            <div class="card profile-card-3">
-    		        <div class="background-block">
-    		            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
-    		        </div>
-    		        <div class="profile-thumb-block">
-    		            <img src={gato1} alt="profile-image" class="profile"/>
-    		        </div>
-    		        <div class="card-content">
-                    <h2> Mauricio Beltran Vargas<small>Software Engineer</small></h2>
-                    <div class="icon-block"><a href="#"><i><FaLinkedinIn size="1em" /></i></a><a href="#"> <i ><AiOutlineMail size="1em" /> </i></a><a href="#"> <i ><BsGithub size="1em"/> </i></a></div>
-                    </div>
-                </div>
-                </div>
-
-          </div>
-          <div class="row mt-4">     
-                <div class="col-md-4">     
-            <div class="card profile-card-3">
-    		        <div class="background-block">
-    		            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
-    		        </div>
-    		        <div class="profile-thumb-block">
-    		            <img src={mono} alt="profile-image" class="profile"/>
-    		        </div>
-    		        <div class="card-content">
-                    <h2>Braulio Hernandez Minutti<small>Carrusel</small></h2>
-                    <div class="icon-block"><a href="#"><i><FaLinkedinIn size="1em" /></i></a><a href="#"> <i ><AiOutlineMail size="1em" /> </i></a><a href="#"> <i ><BsGithub size="1em"/> </i></a></div>
-                    </div>
-                </div>
-                
-            </div>
-
-                
-             
-            <div class="col-md-4">    
-            <div class="card profile-card-3">
-    		        <div class="background-block">
-    		            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
-    		        </div>
-    		        <div class="profile-thumb-block">
-    		            <img src={gato3} alt="profile-image" class="profile"/>
-    		        </div>
-    		        <div class="card-content">
-                    <h2>Daniela Enriquez Ballesteros<small>Vagabunda</small></h2>
-                    <div class="icon-block"><a href="#"><i><FaLinkedinIn size="1em" /></i></a><a href="#"> <i ><AiOutlineMail size="1em" /> </i></a><a href="#"> <i ><BsGithub size="1em"/> </i></a></div>
-                    </div>
-                </div>
-           
-
-
-    		</div>
+        </ul>
       </div>
+    </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="our-team">
+        <div class="picture">
+          <img class="img-fluid" src={Nani}/>
+        </div>
+        <div class="team-content">
+          <h3 class="name">Daniela Enriquez</h3>
+          <h4 class="title">UX/UI Designer</h4>
+        </div>
+        <ul class="social">
+          <li><a href="" aria-hidden="true"><i><FaLinkedinIn size="1em" /></i></a></li>
+          <li><a href="" aria-hidden="true"><i ><AiOutlineMail size="1em" /> </i></a></li>
+          <li><a href=""  aria-hidden="true"><i ><BsGithub size="1em"/> </i></a></li>
+
+        </ul>
       </div>
-</section>
+    </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="our-team">
+        <div class="picture">
+          <img class="img-fluid" src={Marco}/>
+        </div>
+        <div class="team-content">
+          <h3 class="name">Marco Bernal</h3>
+          <h4 class="title">Web Developer</h4>
+        </div>
+        <ul class="social">
+          <li><a href="" aria-hidden="true"><i><FaLinkedinIn size="1em" /></i></a></li>
+          <li><a href="" aria-hidden="true"><i ><AiOutlineMail size="1em" /> </i></a></li>
+          <li><a href=""  aria-hidden="true"><i ><BsGithub size="1em"/> </i></a></li>
 
+        </ul>
+      </div>
+    </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="our-team">
+        <div class="picture">
+          <img class="img-fluid" src={braulio}/>
+        </div>
+        <div class="team-content">
+          <h3 class="name">Braulio Hernández</h3>
+          <h4 class="title">Web Developer</h4>
+        </div>
+        <ul class="social">
+          <li><a href="" aria-hidden="true"><i><FaLinkedinIn size="1em" /></i></a></li>
+          <li><a href="" aria-hidden="true"><i ><AiOutlineMail size="1em" /> </i></a></li>
+          <li><a href=""  aria-hidden="true"><i ><BsGithub size="1em"/> </i></a></li>
 
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
+    
 
 
 
