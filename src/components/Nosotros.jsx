@@ -111,22 +111,28 @@ export const Nosotros = () => {
 
     <div className="d-flex justify-content-around">
       <Card style={{ width: '55rem', backgroundColor: "#d3d3d3"}} border='light'>
-      <div class="mt-4 mb-4 ms-4 me-4">
+      <div class="mt-4 mb-4 ms-4 me-4 ">
       <Form>
-      
+     
       <Form.Group   className="mb-6" controlId="name">
           <Form.Label>Nombre: </Form.Label>
+          <div class="opacity-50">
           <Form.Control type="text" placeholder="Tu nombre" />
+          </div>
         </Form.Group>
         <br></br>
         <Form.Group className="mb-6" controlId="exampleForm.ControlInput1">
           <Form.Label>Tu correo electrónico:</Form.Label>
+          <div class="opacity-50">
           <Form.Control type="email" placeholder="name@algo.com" />
+          </div>
         </Form.Group>
         <br></br>
         <Form.Group className="mb-6" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Mensaje:</Form.Label>
+          <div class="opacity-50">
           <Form.Control as="textarea" rows={3} />
+          </div>
         </Form.Group>
         <br></br>
         <Form.Group className="mb-6" controlId="formBasicCheckbox">
@@ -146,15 +152,15 @@ export const Nosotros = () => {
       <div class="d-flex justify-content-around">
             <ul class="list-unstyled mb-6">
               <br></br>
-                <li class="text-center"><BsPinMapFill size="4em"/> 
+                <li class="text-center"><BsPinMapFill size="3.5em" color="#e00808"/> 
                     <p>Ciudad de México, México</p>
                 </li>
 
-                <li class="text-center"><BsFillTelephoneFill size="4em"/>
+                <li class="text-center"><BsFillTelephoneFill size="3.5em" color="#e00808"/>
                     <p>+52 55 12 34 56 78</p>
                 </li>
 
-                <li class="text-center"><AiOutlineMail size="4em"/>
+                <li class="text-center"><AiOutlineMail size="3.5em" color="#e00808"/>
                     <p>spydycontact@spidy.com</p>
                 </li>
             </ul>
