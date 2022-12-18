@@ -4,6 +4,7 @@ import { NavBar } from './components/NavBar';
 import { Inicio } from './components/Inicio';
 import { Nosotros } from './components/Nosotros';
 import { Mapa } from './components/Mapa';
+import { CameraCapture } from './components/CameraCapture';
 
 import GridLoader from "react-spinners/GridLoader";
 import {
@@ -53,6 +54,8 @@ function App() {
         <Route path="/Nosotros" element= {<Nosotros />}>
         </Route>
         <Route path="/Escanear" element= {<Escanear />}>
+        </Route>
+        <Route path="/CameraCapture" element= {<CameraCapture />}>
         </Route>
         <Route path="/Mapa" element= {<Mapa />}>
         </Route>            
