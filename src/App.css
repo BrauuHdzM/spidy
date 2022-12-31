@@ -454,7 +454,15 @@ h4,span,p,Form,Nav{
   pointer-events: none;
 }
 
-.btn-primary-outline {
+.btnmore-primary-outline {
   background-color: transparent;
   border-color: transparent
+}
+
+
+.logindiv {
+  background-image: url('./images/banner.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; 
 }
