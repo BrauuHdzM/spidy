@@ -58,7 +58,7 @@ h2,h3 {
 
 @font-face { font-family: Poppins-Light; 
   src: url("./Poppins-Light.ttf"); } 
-h4,span,p,Form{
+h4,span,p,Form,Nav{
   font-family: Poppins-Light;
   font-size:medium
  
@@ -403,7 +403,7 @@ h4,span,p,Form{
 
 
 .card-img-overlay {
-  background-color: rgba(0, 0, 0, 0.473);
+  background-color: rgba(5, 5, 5, 0.504);
 }
 
 .btnmore {

@@ -1,23 +1,17 @@
 import React , {useState}from 'react'
-import Table from 'react-bootstrap/Table';
+
 import imagenprueba from '../images/imagenprueba.jpg';
 import viudanegraimg from '../images/viudanegra.jpg';
-import arañasaltadoraimg from '../images/arañasaltadora.jpg';
-import arañadepastoimg from '../images/arañapasto.jpg';
-import reclusapardaimg from '../images/reclusaparda.jpg';
-import deinopisimg from '../images/Deinopis.jpg';
-import nephilaimg from '../images/nephila.jpg';
-import vagabundaimg from '../images/arañavagabunda.jpg';
-import cangrejogiganteimg from '../images/cangrejogigante.jpg';
-import tarantulamexicanaimg from '../images/tarantulamexicana.jpg';
-import tarantularodillas from '../images/tarantularodillas.jpg';
-import arañajardinimg from '../images/arañajardin.jpg';
-import Accordion from 'react-bootstrap/Accordion';
+import pataslargas from '../images/pataslargas.jpg';
+import eremobates from '../images/eremobates.jpg';
+import violinista from '../images/violinista.jpeg';
+import linceverde from '../images/linceverde.jpg';
+import tarantulapng from '../images/tarantulatransp.png';
+import amauris from '../images/amauris.jpg';
+import cebra from '../images/cebra.jpeg';
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -75,7 +69,7 @@ export const InformacionArana = () => {
           <Col>
        
           <Card className="bg-dark text-white">
-            <Card.Img variant="top" src={imagenprueba} />
+            <Card.Img variant="top" src={imagenprueba} width="250" height="250"/>
             <Card.ImgOverlay>
               <Card.Footer><br></br><br></br><center><h2>Tarántula</h2>
         
@@ -89,19 +83,34 @@ export const InformacionArana = () => {
       
         <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Tarántula</Modal.Title>
+          <Modal.Title><h1>Tarántula</h1></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <p className="text-center">Con grandes colmillos, ocho patas peludas y una apariencia general que es aterradora y linda, 
+        <div class="mt-2 mb-2 ms-2 me-2 ">
+        <Row >
+        <Col>
+        <img src={tarantulapng}  class="img-fluid" ></img>
+        </Col>
+        <Col>
+            <p className="text-end">Con grandes colmillos, ocho patas peludas y una apariencia general que es aterradora y linda, 
                                 las tarántulas son una de las especies de arañas más reconocibles, y con razón. 
+                                 </p>
+                                </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                    <p className="text-center">
                                 Son las arañas más grandes del mundo, con las especies más grandes de California alcanzando extensiones 
-                                de patas adultas de 4.5 pulgadas. Se pueden encontrar varias especies de tarántulas en todo el mundo 
+                                de patas adultas de 4.5 pulgadas.
+                                Se pueden encontrar varias especies de tarántulas en todo el mundo 
                                 en una amplia gama de hábitats, desde selvas tropicales hasta praderas y desde bosques templados 
                                 hasta desiertos.</p>
+                                </Col>
+                                </Row></div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="secondary" id="escaner" onClick={handleClose}>
+            Regresar
           </Button>
       
         </Modal.Footer>
@@ -114,7 +123,7 @@ export const InformacionArana = () => {
         <Col>
        
        <Card className="bg-dark text-white">
-         <Card.Img variant="top" src={imagenprueba} />
+         <Card.Img variant="top" src={eremobates} width="250" height="250" />
          <Card.ImgOverlay>
            <Card.Footer><br></br><br></br><center><h2>Eremobates</h2>
      
@@ -155,7 +164,7 @@ export const InformacionArana = () => {
      <Col>
        
        <Card className="bg-dark text-white">
-         <Card.Img variant="top" src={imagenprueba} />
+         <Card.Img variant="top" src={viudanegraimg} width="250" height="250" />
          <Card.ImgOverlay>
            <Card.Footer><br></br><br></br><center><h2>Viuda Negra</h2>
      
@@ -197,7 +206,7 @@ export const InformacionArana = () => {
      <Col>
        
        <Card className="bg-dark text-white">
-         <Card.Img variant="top" src={imagenprueba} />
+         <Card.Img variant="top" src={violinista} width="250" height="250"/>
          <Card.ImgOverlay>
            <Card.Footer><br></br><br></br><center><h2>Violinista</h2>
      
@@ -237,7 +246,7 @@ export const InformacionArana = () => {
    
      <Col>   
        <Card className="bg-dark text-white">
-         <Card.Img variant="top" src={imagenprueba} />
+         <Card.Img variant="top" src={pataslargas} width="250" height="250"/>
          <Card.ImgOverlay>
            <Card.Footer><br></br><br></br><center><h2>Patas largas</h2>
      
@@ -278,7 +287,7 @@ export const InformacionArana = () => {
      <Col>
        
        <Card className="bg-dark text-white">
-         <Card.Img variant="top" src={imagenprueba} />
+         <Card.Img variant="top" src={linceverde} width="250" height="250"/>
          <Card.ImgOverlay>
            <Card.Footer><br></br><br></br><center><h2>Lince Verde</h2>
      
@@ -317,7 +326,7 @@ export const InformacionArana = () => {
      <Col>
        
        <Card className="bg-dark text-white">
-         <Card.Img variant="top" src={imagenprueba} />
+         <Card.Img variant="top" src={cebra}  width="250" height="250"/>
          <Card.ImgOverlay>
            <Card.Footer><br></br><br></br><center><h2>Cebra</h2>
      
@@ -356,7 +365,7 @@ export const InformacionArana = () => {
      <Col>
        
        <Card className="bg-dark text-white">
-         <Card.Img variant="top" src={imagenprueba} />
+         <Card.Img variant="top" src={amauris}  width="250" height="250" />
          <Card.ImgOverlay>
            <Card.Footer><br></br><center><h2>Amaurobius Similis</h2>
      
