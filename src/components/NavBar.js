@@ -27,7 +27,7 @@ function NavBar() {
             
             <Nav.Link href="/InformacionArana">Información arácnida</Nav.Link>
             <Nav.Link href="/Mapa">Mapa</Nav.Link>
-            <Nav.Link href="/Escanear">Escaner</Nav.Link>
+            <Nav.Link href="/Detectar">Escaner</Nav.Link>
             <Nav.Link href="/Nosotros">Contacto</Nav.Link>
           
               </Nav>

@@ -27,7 +27,7 @@ export const Inicio = () => {
         <br></br>
 
         <div class="text-center">
-        <Button id="escaner" size="md" href="/Escanear">
+        <Button id="escaner" size="md" href="/Detectar">
           ¡Prueba la aplicación aquí!
         </Button>
         </div>
