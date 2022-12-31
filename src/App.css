@@ -45,11 +45,26 @@
 @font-face { font-family: Staatliches-Regular; 
   src: url("./Staatliches-Regular.ttf"); } 
 h1 {
-
-  
   font-family: Staatliches-Regular;
+  font-size: xx-large;
+}
+
+@font-face { font-family: Poppins-Regular; 
+  src: url("./Poppins-Regular.ttf"); } 
+h2,h3 {
+  font-family: Poppins-Regular;
   font-size: large;
 }
+
+@font-face { font-family: Poppins-Light; 
+  src: url("./Poppins-Light.ttf"); } 
+h4,span,p,Form{
+  font-family: Poppins-Light;
+  font-size:medium
+ 
+}
+
+
 
 #mapdiv path {
     fill: #00000000;
@@ -371,4 +386,75 @@ h1 {
 .our-team .social li a:hover {
   color: #e00808;
   background-color: #f7f5ec;
+}
+
+
+.row > div {
+  padding: 0 4px !important;
+}
+
+
+
+#imgINFO {
+  margin-top: 8px;
+  vertical-align: middle;
+
+}
+
+
+.card-img-overlay {
+  background-color: rgba(0, 0, 0, 0.473);
+}
+
+.btnmore {
+  padding: 10px 30px;
+  font-family: 'Montserrat';
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  position: relative;
+  line-height: 1.8;
+  transition: all 0.6s ease;
+  cursor: pointer;
+}
+.btnmore.primary {
+  border-color: #e13743;
+  color: #fff;
+}
+.btnmore.primary:hover {
+  background: linear-gradient(90deg, #e13743, #ff0042);
+  border-color: #e13743;
+  color: #fff;
+  padding-right: 50px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, .2);
+}
+.btnmore.primary:hover:after {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition-delay: 0.3s;
+}
+.btnmore:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translate3d(-5px, 0, 0);
+  width: 14px;
+  height: 11px;
+  margin-top: -6px;
+  display: block;
+  background: url(https://img.icons8.com/material-outlined/2x/ffffff/right.png) no-repeat 50% 50%;
+  background-size: 100% auto;
+  transition: all 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: transparent
 }

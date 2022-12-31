@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState}from 'react'
 import Table from 'react-bootstrap/Table';
 import imagenprueba from '../images/imagenprueba.jpg';
 import viudanegraimg from '../images/viudanegra.jpg';
@@ -18,29 +18,64 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export const InformacionArana = () => {
-  return (
-    <Row xs={1} md={4} className="g-4">
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    return (
+    
+    <>
+    <div>
+      <h1><center><font color="white">Arañas más identificadas por Spidy</font> </center></h1>
+      <br></br><br></br>
+    </div>
+   <Row xs={1} md={4} className="g-4">
           <Col>
-              <Accordion defaultActiveKey="0" flush>
-                  <Card className="text-center">
-                      <Card.Img variant="top" src={imagenprueba} width="250" height="200" />
-                      <Accordion.Header as={Card.Header} eventKey="0">
-                          <Card.Title>Tarántula</Card.Title>
-                      </Accordion.Header>
-                          <Accordion.Body>
-                                <p className="text-center">Con grandes colmillos, ocho patas peludas y una apariencia general que es aterradora y linda, 
+       
+          <Card className="bg-dark text-white">
+            <Card.Img variant="top" src={imagenprueba} />
+            <Card.ImgOverlay>
+              <Card.Footer><h2>Tarántula</h2>
+        
+        <button onClick={handleShow} class="btn bg-transparent">
+            
+        <a class="btnmore primary">
+        <span>Más información</span>
+        </a>
+            
+            </button></Card.Footer>
+      
+        <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <p className="text-center">Con grandes colmillos, ocho patas peludas y una apariencia general que es aterradora y linda, 
                                 las tarántulas son una de las especies de arañas más reconocibles, y con razón. 
                                 Son las arañas más grandes del mundo, con las especies más grandes de California alcanzando extensiones 
                                 de patas adultas de 4.5 pulgadas. Se pueden encontrar varias especies de tarántulas en todo el mundo 
                                 en una amplia gama de hábitats, desde selvas tropicales hasta praderas y desde bosques templados 
                                 hasta desiertos.</p>
-                          </Accordion.Body>
-                  </Card>
-              </Accordion>
-        </Col>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      </Card.ImgOverlay>
 
+    </Card>
+ 
+        </Col>
+        
         <Col>
         <Accordion defaultActiveKey="0" flush>
                   <Card className="text-center">
@@ -240,5 +275,10 @@ export const InformacionArana = () => {
         
     
     </Row>
-  )
+   
+ 
+
+    </>
+    
+    )
 }

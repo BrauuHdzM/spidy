@@ -21,7 +21,7 @@ export const Nosotros = () => {
   return (
     <>
     <div>
-      <h1><center><font color="white">Información de contacto de los programadores</font> </center></h1>
+      <h1><center><font color="white">Conoce a nuestros desarrolladores</font> </center></h1>
       <br></br><br></br>
     </div>
    
@@ -124,7 +124,7 @@ export const Nosotros = () => {
         <Form.Group className="mb-6" controlId="exampleForm.ControlInput1">
           <Form.Label>Tu correo electrónico:</Form.Label>
           <div class="opacity-50">
-          <Form.Control type="email" placeholder="name@algo.com" />
+          <Form.Control type="email" placeholder="name@algo.com"/>
           </div>
         </Form.Group>
         <br></br>
