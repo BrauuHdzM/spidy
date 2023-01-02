@@ -8,8 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import {Link} from 'react-router-dom';
-
+import { Link} from 'react-router-dom';
 
 function NavBar(props) {
  
@@ -18,13 +17,14 @@ function NavBar(props) {
   const [show1, setShow1] = useState(false);
   const inputRef = useRef(null);
 
-  const [updated, setUpdated] = useState(false);
+  
 
   const handleClick = () => {
     if(inputRef.current.value=='123456'){
-    setUpdated(true);
+    
     setShow(false)
     handleShow1(true)
+   
   } 
 else{
 
@@ -34,6 +34,7 @@ else{
 };
 
   const handleClose = () => {
+  
     setShow(false)
   };
 
@@ -41,11 +42,16 @@ else{
   const handleShow = () => setShow(true);
 
   const handleClose1 = () => {
-    setShow1(false)
+   
     props.logIn()
+    setShow1(false)
+   
+    
   };
 
-  
+
+
+
   const handleShow1 = () => setShow1(true);
 
 
@@ -95,8 +101,9 @@ else{
           </Modal.Body>
    
       </Modal>  
-      {updated ? 
+    
       <Modal show={show1} onHide={handleClose1} center styles={{ overlay: { background: "#e13743" } }} >
+      
       <div class="logindiv">
         <Modal.Header closeButton>
       
@@ -124,15 +131,13 @@ else{
         </div>
       <div class="text-center">
        <Button variant="danger" id="escaner" onClick={handleClose1}>
-            Iniciar sesión 
+          <Link to="/AdminPanel">.</Link>Iniciar sesión  
           </Button>
           
           </div>
       </div>
           </Form>
-          
-          
-          
+ 
           </Modal.Body>
         <Modal.Footer>
         <div class="text-center">
@@ -140,10 +145,14 @@ else{
         </div>
         </Modal.Footer>
       </Modal> 
-           
-           : <p></p> }
+
           </Nav>
         </Navbar.Collapse>
+
+       
+
+
+
       </Container>
     </Navbar>
   );
