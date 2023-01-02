@@ -1,11 +1,14 @@
 import { useRef, useState } from 'react';
 import linceverde from '../images/linceverde.jpg';
+import viudacafe from '../images/viudacafe.jpg';
 import mascom from '../images/mascom.png';
 import manchada from '../images/manchada.jpg';
 import tejedora from '../images/tejedora.jpeg';
 import bandeada from '../images/bandeada.jpg';
 import viudanegraimg from '../images/viudanegra.jpg';
 import violinista from '../images/violinista.jpeg';
+import saltarinagris from '../images/saltarinagris.jpeg';
+import plateada from '../images/plateada.jpeg';
 export const Mapa = (props) => {
   const [edonombre, setedonombre] = useState('¡Haz click en el mapa!');
 
@@ -43,12 +46,12 @@ export const Mapa = (props) => {
 
 
       case 'MEX2709':
-        let text4="1. Viuda negra norteña (VENENOSA)\n2. Saltarina anaranjada (INOFENSIVA)\n3. Manchada de jardín(INOFENSIVA)";
+        let text4="1. Viuda negra (VENENOSA)\n2. Saltarina anaranjada (INOFENSIVA)\n3. Manchada de jardín(INOFENSIVA)";
         let newText4 = text4.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText4);
       setedonombre(param);
       setimgmap(viudanegraimg);
-      setdescimg("Viuda negra norteña")
+      setdescimg("Araña Viuda negra o capuleto")
       break;
 
       case 'MEX2710':
@@ -87,6 +90,71 @@ export const Mapa = (props) => {
       setedonombre(param);
       setimgmap(bandeada);
       setdescimg("Araña de Jardín Bandeada")
+      break;
+
+      case 'MEX2714':
+        let text9="1. Lince Verde (INOFENSIVA)\n2. Manchada de jardín(INOFENSIVA)\n3. Saltarina gris de pared(INOFENSIVA)";
+        let newText9 = text9.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText9);
+      setedonombre(param);
+      setimgmap(linceverde);
+      setdescimg("Araña lince verde")
+      break;
+
+      case 'MEX2715':
+        let text10="1. Viuda café (VENENOSA)\n2. Jardín bandeada (INOFENSIVA)\n3. Viuda negra (VENENOSA)";
+        let newText10 = text10.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText10);
+      setedonombre(param);
+      setimgmap(viudacafe);
+      setdescimg("Araña Viuda café")
+      break;
+
+      case 'MEX2716':
+        let text11="1. Plateada de jardín (INOFENSIVA)\n2. Seda dorada (INOFENSIVA)\n3. Viuda negra (VENENOSA)";
+        let newText11 = text11.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText11);
+      setedonombre(param);
+      setimgmap(plateada);
+      setdescimg("Araña Plateada de jardín")
+      break;
+
+      case 'MEX2717':
+        let text12="1. Viuda Negra (VENENOSA)\n2. Lince Verde (INOFENSIVA)\n3. Violinista (VENENOSA)";
+        let newText12 = text12.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText12);
+      setedonombre(param);
+      setimgmap(viudanegraimg);
+      setdescimg("Araña Viuda negra o capuleto")
+      break;
+
+      case 'MEX2718':
+        let text13="1. Violinista (VENENOSA)\n2. Sicario (VENENOSA)\n3. Viuda negra (VENENOSA)";
+        let newText13 = text13.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText13);
+      setedonombre(param);
+      setimgmap(violinista);
+      setdescimg("Araña Violinista")
+      break;
+
+
+      case 'MEX2719':
+        let text14="1. Saltarina gris de pared (INOFENSIVA)\n2. Saltarina parda (INOFENSIVA)\n3. Arañas Patona (INOFENSIVA)";
+        let newText14 = text14.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText14);
+      setedonombre(param);
+      setimgmap(saltarinagris);
+      setdescimg("Araña Saltarina gris de pared")
+      break;
+
+
+      case 'MEX2720':
+        let text15="1. Violinista (VENENOSA)\n2. Saltarina verde-dorada (INOFENSIVA)\n3. Manchada de jardín(INOFENSIVA)";
+        let newText15 = text15.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText15);
+      setedonombre(param);
+      setimgmap(violinista);
+      setdescimg("Araña Violinista")
       break;
 
 
@@ -142,7 +210,7 @@ export const Mapa = (props) => {
       <div> <center><font color="white"><h1>MAPA INTERACTIVO</h1></font></center> </div>
       <div class="row">
       
-    <div class="col-md-2 ms-1 me-3">
+    <div class="col-md-2">
     <div id="mapadetails">
     <br></br>
     <div class="text-center" >
