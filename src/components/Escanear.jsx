@@ -4,9 +4,11 @@ import aver from '../images/tarantulamexicana.jpg';
 import { fetch, bundleResourceIO } from '@tensorflow/tfjs';
 import { useState } from 'react';
 import { ChangeEvent } from 'react';
+import axios from 'axios';
 
 export const Escanear = () => {
-  const [fileP, setFileP] =  useState(null);
+  const [fileP, setFileP] = useState(null);
+  const [image, setImage] = useState(null);
   var imgGlobal = null;
 
 
@@ -14,9 +16,10 @@ export const Escanear = () => {
     imgGlobal = document.getElementById('imagen');
     imgGlobal.src = URL.createObjectURL(e.target.files[0]);
     setFileP(imgGlobal)
+    setImage(e.target.files[0])
 
   };
-  
+
   function preprocessImg() {
     let tensor = tf.browser.fromPixels(fileP).resizeNearestNeighbor([224, 224]).toFloat();
     let offset = tf.scalar(127.5);
@@ -25,24 +28,34 @@ export const Escanear = () => {
 
 
 
-  async function loadModel(){
-      console.log("Aplicación inicia")
-      const tfReady = await tf.ready();
-      const model = await tf.loadGraphModel("/model.json");
-      console.log("Modelo cargado")
-      if (model != null && fileP != null) {
+  async function loadModel() {
+    console.log("Aplicación inicia")
+    const tfReady = await tf.ready();
+    const model = await tf.loadGraphModel("/model.json");
+    console.log("Modelo cargado")
+    if (model != null && fileP != null) {
       let tensor = preprocessImg();
       var prediccion = model.predict(tensor).dataSync();
       var mayorIndice = prediccion.indexOf(Math.max.apply(null, prediccion));
       console.log(mayorIndice);
-      //const prediction = model.predict(image).dataSync();
-      console.log("Resultado dado")
-      }
+      savePrediction(mayorIndice);
+    }
   }
+
+  const savePrediction = (mayorIndice) => {
+
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('prediction', mayorIndice);
+
+    axios.post('/savePrediction', formData).then(() => {
+      console.log('La imagen se ha guardado con exito');
+    });
+  };
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} multiple />
+      <input type="file" onChange={handleFileChange} />
       <img src="" alt="" id="imagen"></img>
       <button onClick={loadModel}>Analizar</button>
       <div id="resultado"></div>
