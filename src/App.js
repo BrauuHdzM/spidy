@@ -5,6 +5,7 @@ import { Inicio } from './components/Inicio';
 import { Nosotros } from './components/Nosotros';
 import { Mapa } from './components/Mapa';
 import { Detectar } from './components/Detectar';
+import { AdminBar} from './components/AdminBar';
 import { CameraCapture } from './components/CameraCapture';
 
 import GridLoader from "react-spinners/GridLoader";
@@ -31,12 +32,21 @@ function App() {
 
   },[])
 
+  const  [IsAdmin, setIsAdmin]= useState(false);
+
+  const logIn=()=>{
+
+    setIsAdmin(true);
+
+  }
+
+
   return (
    
     <Router>
        
       <div>
-      <NavBar />
+      { IsAdmin ? <AdminBar></AdminBar>:<NavBar logIn={logIn}/>}
       </div>
      
      
