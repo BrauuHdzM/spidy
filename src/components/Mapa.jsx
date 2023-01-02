@@ -1,14 +1,38 @@
 import { useRef, useState } from 'react';
 
-
+import mascom from '../images/mascom.png';
+import manchada from '../images/manchada.jpg';
 export const Mapa = (props) => {
-  const [edonombre, setedonombre] = useState('Bienvenido al mapa interactivo de Spidy. Haz click en el mapa');
-
-   
+  const [edonombre, setedonombre] = useState('¡Haz click en el mapa!');
+  const [araniap, setaraniap] = useState('');
+  const [lista, setlista] = useState('Aquí aparecera un listado de las arañas más comunes en el estado');
+  const [imgmap, setimgmap] = useState(mascom);
+  const [descimg, setdescimg] = useState('Foto de la araña más común en el estado');  
   const handleClick = (event, param, param2) => {
     console.log(event);
     console.log(param2);
-    setedonombre(param);
+   
+    switch(param2) {
+
+      case 'MEX2706':
+        let text="1. Araña manchada de jardín (INOFENSIVA)\n2. Araña tejedora espinosa\n3. Araña Gotas de rocío";
+        let newText = text.split('\n').map(i => {
+          return <p><b>{i}</b></p>
+      });
+      setlista(newText);
+      setedonombre(param);
+      setimgmap(manchada);
+      setdescimg("Araña manchada de jardín")
+      break;
+      default:
+        setedonombre('¡Haz click en el mapa!');
+       setlista("Aquí aparecera un listado de las arañas más comunes en el estado")
+       setimgmap(mascom);
+       setdescimg("Foto de la araña más común en el estado")
+       break;
+    }
+
+
   };
 
 
@@ -49,8 +73,26 @@ export const Mapa = (props) => {
   return (
     
       <>
-      <h1><center><font color="white">{edonombre}</font></center></h1>
-    
+      <div> <center><font color="white"><h1>MAPA INTERACTIVO</h1></font></center> </div>
+      <div class="row">
+      
+    <div class="col-md-2 ms-1 me-3">
+    <div id="mapadetails" >
+    <br></br>
+    <i><h1><center>
+        {edonombre}</center></h1></i>
+       
+        <figure class="figure">
+        <img src={imgmap} class="img-fluid" ></img>
+        </figure>
+        <figcaption class="figure-caption text-center"><font color="black"><p><i>{descimg}</i></p></font></figcaption>
+     <div class="ms-3 me-3">
+     <h2>Top 3 :</h2>
+      <p>{lista}</p><br></br>
+      </div>
+      </div>
+      </div>
+      <div class="col-9">
  <div id="mapdiv" className="d-flex justify-content-center">
  <svg
     baseProfile="tiny"
@@ -265,8 +307,10 @@ export const Mapa = (props) => {
     <circle cx={832.1} cy={533.4} id={0} />
     <circle cx={832.6} cy={533.3} id={1} />
     <circle cx={832.6} cy={533.5} id={2} />
-  </svg>
+  </svg></div>
 </div>
+</div>
+<br></br>
 </>
   )
 }
