@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
-
+import linceverde from '../images/linceverde.jpg';
 import mascom from '../images/mascom.png';
 import manchada from '../images/manchada.jpg';
+import tejedora from '../images/tejedora.jpeg';
 import bandeada from '../images/bandeada.jpg';
 import viudanegraimg from '../images/viudanegra.jpg';
 export const Mapa = (props) => {
@@ -39,13 +40,33 @@ export const Mapa = (props) => {
       setdescimg("Araña de Jardín Bandeada")
       break;
 
-      case 'MEX2708':
-        let text3="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Tarántula parda(VENENOSA)";
-        let newText3 = text3.split('\n').map(i => {return <p><b>{i}</b></p> });
-      setlista(newText3);
+
+      case 'MEX2709':
+        let text4="1. Viuda negra norteña (VENENOSA)\n2. Saltarina anaranjada (INOFENSIVA)\n3. Manchada de jardín(INOFENSIVA)";
+        let newText4 = text4.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText4);
       setedonombre(param);
-      setimgmap(bandeada);
-      setdescimg("Araña de Jardín Bandeada")
+      setimgmap(viudanegraimg);
+      setdescimg("Viuda negra norteña")
+      break;
+
+      case 'MEX2710':
+        let text5="1. Lince verde (INOFENSIVA)\n2. Viuda negra norteña (VENENOSA)\n3. Manchada de jardín (INOFENSIVA)";
+        let newText5 = text5.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText5);
+      setedonombre(param);
+      setimgmap(linceverde);
+      setdescimg("Araña lince verde")
+      break;
+
+
+      case 'MEX2711':
+        let text6="1. Tejedora Espinosa (INOFENSIVA)\n2. Plateada de jardín (INOFENSIVA)\n3. Tarántula mexicana de piernas rojas (VENENOSA)";
+        let newText6 = text6.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText6);
+      setedonombre(param);
+      setimgmap(tejedora);
+      setdescimg("Araña Tejedora Espinosa")
       break;
 
 
