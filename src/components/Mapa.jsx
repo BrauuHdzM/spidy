@@ -8,6 +8,7 @@ import tejedora from '../images/tejedora.jpeg';
 import bandeada from '../images/bandeada.jpg';
 import viudanegraimg from '../images/viudanegra.jpg';
 import violinista from '../images/violinista.jpeg';
+import patonacasera from '../images/patonacasera.jpeg';
 import saltarinagris from '../images/saltarinagris.jpeg';
 import plateada from '../images/plateada.jpeg';
 export const Mapa = (props) => {
@@ -202,6 +203,7 @@ export const Mapa = (props) => {
       setimgmap(saltarinagris);
       setdescimg("Araña Saltarina gris de pared")
       break;
+
       case 'MEX2726':
         let text21="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Viuda negra(VENENOSA)";
         let newText21 = text21.split('\n').map(i => {return <p><b>{i}</b></p> });
@@ -209,6 +211,87 @@ export const Mapa = (props) => {
       setedonombre(param);
       setimgmap(bandeada);
       setdescimg("Araña de Jardín Bandeada")
+      break;
+
+      case 'MEX2727':
+        let text22="1. Patona casera (INOFENSIVA)\n2. Falsa viuda negra (VENENOSA)\n3. Lobo (INOFENSIVA)";
+        let newText22 = text22.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText22);
+      setedonombre(param);
+      setimgmap(patonacasera);
+      setdescimg("Araña patona casera")
+      break;
+
+      case 'MEX2728':
+        let text23="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Araña de telaraña circular (INOFENSIVA)";
+        let newText23 = text23.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText23);
+      setedonombre(param);
+      setimgmap(bandeada);
+      setdescimg("Araña de Jardín Bandeada")
+      break;
+
+      case 'MEX2729':
+        let text24="1. Seda dorada (INOFENSIVA)\n2. Tarántula mexicana de rodillas rojas (VENENOSA)\n3. Tarántula dorada mexicana (VENENOSA)";
+        let newText24 = text24.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText24);
+      setedonombre(param);
+      setimgmap(sedadorada);
+      setdescimg("Araña de seda dorada")
+      break;
+
+      case 'MEX2730':
+        let text25="1. Manchada de jardín (INOFENSIVA)\n2. Jardín Bandeada (INOFENSIVA)\n3. Viuda negra (VENENOSA)";
+        let newText25 = text25.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText25);
+      setedonombre(param);
+      setimgmap(manchada);
+      setdescimg("Araña manchada de jardín")
+      break;
+
+      case 'MEX2731':
+        let text26="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Lince verde (INOFENSIVA)";
+        let newText26 = text26.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText26);
+      setedonombre(param);
+      setimgmap(bandeada);
+      setdescimg("Araña de Jardín Bandeada")
+      break;
+
+      case 'MEX2732':
+        let text27="1. Plateada de jardín (INOFENSIVA)\n2. Viuda negra (VENENOSA)\n3. Tarántula dorada mexicana (VENENOSA) ";
+        let newText27 = text27.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText27);
+      setedonombre(param);
+      setimgmap(plateada);
+      setdescimg("Araña Plateada de jardín")
+      break;
+
+      case 'MEX2733':
+        let text28="1. Manchada de jardín (INOFENSIVA)\n2. Viuda Café (VENENOSA)\n3. Saltarina gris de pared (INOFENSIVA)";
+        let newText28 = text28.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText28);
+      setedonombre(param);
+      setimgmap(manchada);
+      setdescimg("Araña manchada de jardín")
+      break;
+
+      case 'MEX2734':
+        let text29="1. Seda dorada (INOFENSIVA)\n2. Amarilla de jardín (INOFENSIVA)\n3. Tarántula veracruzana (VENENOSA)";
+        let newText29 = text29.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText29);
+      setedonombre(param);
+      setimgmap(sedadorada);
+      setdescimg("Araña de seda dorada")
+      break;
+
+      case 'MEX2735':
+        let text30="1. Tejedora Espinosa (INOFENSIVA)\n2. Vagabundo atigrada (VENENOSA)\n3. Cabeza de Flecha (INOFENSIVA)\n¿Sabías que Chiapas es el estado dónde habitan más especies de arañas en el país?. ¡Cuenta con alrededor de 500 especies!";
+        let newText30 = text30.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText30);
+      setedonombre(param);
+      setimgmap(tejedora);
+      setdescimg("Araña Tejedora Espinosa")
       break;
 
       default:
