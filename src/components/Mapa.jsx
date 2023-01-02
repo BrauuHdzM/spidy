@@ -3,6 +3,7 @@ import linceverde from '../images/linceverde.jpg';
 import viudacafe from '../images/viudacafe.jpg';
 import mascom from '../images/mascom.png';
 import manchada from '../images/manchada.jpg';
+import sedadorada from '../images/sedadorada.jpg';
 import tejedora from '../images/tejedora.jpeg';
 import bandeada from '../images/bandeada.jpg';
 import viudanegraimg from '../images/viudanegra.jpg';
@@ -157,6 +158,58 @@ export const Mapa = (props) => {
       setdescimg("Araña Violinista")
       break;
 
+      case 'MEX2721':
+        let text16="1. Tejedora Espinosa (INOFENSIVA)\n2. Cangrejo gigante (INOFENSIVA)\n3. Seda dorada (INOFENSIVA)";
+        let newText16 = text16.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText16);
+      setedonombre(param);
+      setimgmap(tejedora);
+      setdescimg("Araña Tejedora Espinosa")
+      break;
+
+      case 'MEX2722':
+        let text17="1. Seda dorada (INOFENSIVA)\n2. Tarántula mexicana de cadera roja (VENENOSA)\n3. Tejedora espinosa (INOFENSIVA)";
+        let newText17 = text17.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText17);
+      setedonombre(param);
+      setimgmap(sedadorada);
+      setdescimg("Araña de seda dorada")
+      break;
+
+      case 'MEX2723':
+        let text18="1. Seda dorada (INOFENSIVA)\n2. Tigre (INOFENSIVA)\n3. Lince verde (INOFENSIVA)";
+        let newText18 = text18.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText18);
+      setedonombre(param);
+      setimgmap(sedadorada);
+      setdescimg("Araña de seda dorada")
+      break;
+
+      case 'MEX2724':
+        let text19="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Viuda negra(VENENOSA)";
+        let newText19 = text19.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText19);
+      setedonombre(param);
+      setimgmap(bandeada);
+      setdescimg("Araña de Jardín Bandeada")
+      break;
+
+      case 'MEX2725':
+        let text20="1. Saltarina gris de pared (INOFENSIVA)\n2. Tejedora espinosa (INOFENSIVA)\n3. Cangrejo gigante (INOFENSIVA)";
+        let newText20 = text20.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText20);
+      setedonombre(param);
+      setimgmap(saltarinagris);
+      setdescimg("Araña Saltarina gris de pared")
+      break;
+      case 'MEX2726':
+        let text21="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Viuda negra(VENENOSA)";
+        let newText21 = text21.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText21);
+      setedonombre(param);
+      setimgmap(bandeada);
+      setdescimg("Araña de Jardín Bandeada")
+      break;
 
       default:
         setedonombre('¡Haz click en el mapa!');
