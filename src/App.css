@@ -469,7 +469,7 @@ h4,span,p,Form,Nav{
 .loginhide{
 
   background-color: #22252A;
-  border-color: #e1374200;
+  border-color: #22252A;
 
 }
 
@@ -478,3 +478,11 @@ h4,span,p,Form,Nav{
   color: #fff;
   padding-right: 50px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, .2);}
+
+
+  #mapaMex{
+
+    margin: 0 auto;
+    transform: scale(.5);
+
+  }

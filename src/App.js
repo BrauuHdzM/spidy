@@ -8,6 +8,7 @@ import { Detectar } from './components/Detectar';
 import { AdminBar} from './components/AdminBar';
 import { CameraCapture } from './components/CameraCapture';
 import { AdminPanel } from './components/AdminPanel';
+
 import GridLoader from "react-spinners/GridLoader";
 import {
   BrowserRouter as Router,
@@ -76,6 +77,7 @@ function App() {
         </Route>
         <Route path="/AdminPanel" element= {<AdminPanel />}>
         </Route>  
+     
        </Routes>  
       </div> 
       }
