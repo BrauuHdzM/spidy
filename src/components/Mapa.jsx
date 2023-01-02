@@ -2,28 +2,54 @@ import { useRef, useState } from 'react';
 
 import mascom from '../images/mascom.png';
 import manchada from '../images/manchada.jpg';
+import bandeada from '../images/bandeada.jpg';
+import viudanegraimg from '../images/viudanegra.jpg';
 export const Mapa = (props) => {
   const [edonombre, setedonombre] = useState('¡Haz click en el mapa!');
-  const [araniap, setaraniap] = useState('');
+
   const [lista, setlista] = useState('Aquí aparecera un listado de las arañas más comunes en el estado');
   const [imgmap, setimgmap] = useState(mascom);
   const [descimg, setdescimg] = useState('Foto de la araña más común en el estado');  
   const handleClick = (event, param, param2) => {
-    console.log(event);
-    console.log(param2);
-   
     switch(param2) {
-
       case 'MEX2706':
-        let text="1. Araña manchada de jardín (INOFENSIVA)\n2. Araña tejedora espinosa\n3. Araña Gotas de rocío";
-        let newText = text.split('\n').map(i => {
-          return <p><b>{i}</b></p>
-      });
+        let text="1. Manchada de jardín (INOFENSIVA)\n2. Tejedora espinosa (INOFENSIVA)\n3. Gotas de rocío (INOFENSIVA)";
+        let newText = text.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText);
       setedonombre(param);
       setimgmap(manchada);
       setdescimg("Araña manchada de jardín")
       break;
+
+      case 'MEX2707':
+        let text1="1. Viuda Negra (VENENOSA)\n2. Violinista (VENENOSA)\n3. Plateada de jardín (INOFENSIVA)";
+        let newText1 = text1.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText1);
+      setedonombre(param);
+      setimgmap(viudanegraimg);
+      setdescimg("Araña Viuda negra o capuleto")
+      break;
+
+      case 'MEX2708':
+        let text2="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Tarántula parda(VENENOSA)";
+        let newText2 = text2.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText2);
+      setedonombre(param);
+      setimgmap(bandeada);
+      setdescimg("Araña de Jardín Bandeada")
+      break;
+
+      case 'MEX2708':
+        let text3="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Tarántula parda(VENENOSA)";
+        let newText3 = text3.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText3);
+      setedonombre(param);
+      setimgmap(bandeada);
+      setdescimg("Araña de Jardín Bandeada")
+      break;
+
+
+
       default:
         setedonombre('¡Haz click en el mapa!');
        setlista("Aquí aparecera un listado de las arañas más comunes en el estado")
@@ -77,15 +103,18 @@ export const Mapa = (props) => {
       <div class="row">
       
     <div class="col-md-2 ms-1 me-3">
-    <div id="mapadetails" >
+    <div id="mapadetails">
     <br></br>
-    <i><h1><center>
-        {edonombre}</center></h1></i>
+    <div class="text-center" >
+    <i><h1>
+        {edonombre}</h1></i>
        
         <figure class="figure">
-        <img src={imgmap} class="img-fluid" ></img>
+         
+        <img src={imgmap} class="img-fluid" width="250" height="250" ></img>
         </figure>
         <figcaption class="figure-caption text-center"><font color="black"><p><i>{descimg}</i></p></font></figcaption>
+        </div>
      <div class="ms-3 me-3">
      <h2>Top 3 :</h2>
       <p>{lista}</p><br></br>
