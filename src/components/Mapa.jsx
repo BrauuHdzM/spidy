@@ -5,10 +5,11 @@ import manchada from '../images/manchada.jpg';
 import tejedora from '../images/tejedora.jpeg';
 import bandeada from '../images/bandeada.jpg';
 import viudanegraimg from '../images/viudanegra.jpg';
+import violinista from '../images/violinista.jpeg';
 export const Mapa = (props) => {
   const [edonombre, setedonombre] = useState('¡Haz click en el mapa!');
 
-  const [lista, setlista] = useState('Aquí aparecera un listado de las arañas más comunes en el estado');
+  const [lista, setlista] = useState('Aquí aparecera un listado de las 3 arañas más comunes en el estado');
   const [imgmap, setimgmap] = useState(mascom);
   const [descimg, setdescimg] = useState('Foto de la araña más común en el estado');  
   const handleClick = (event, param, param2) => {
@@ -69,11 +70,29 @@ export const Mapa = (props) => {
       setdescimg("Araña Tejedora Espinosa")
       break;
 
+      
+      case 'MEX2712':
+        let text7="1. Violinista (VENENOSA)\n2. Viuda negra (VENENOSA)\n3. Tarántula rubia norteamericana (VENENOSA)";
+        let newText7 = text7.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText7);
+      setedonombre(param);
+      setimgmap(violinista);
+      setdescimg("Araña Violinista")
+      break;
+
+      case 'MEX2713':
+        let text8="1. Jardín Bandeada (INOFENSIVA)\n2. Panza espinosa (INOFENSIVA)\n3. Viuda negra norteña(VENENOSA)";
+        let newText8 = text8.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText8);
+      setedonombre(param);
+      setimgmap(bandeada);
+      setdescimg("Araña de Jardín Bandeada")
+      break;
 
 
       default:
         setedonombre('¡Haz click en el mapa!');
-       setlista("Aquí aparecera un listado de las arañas más comunes en el estado")
+       setlista("Aquí aparecera un listado de las 3 arañas más comunes en el estado")
        setimgmap(mascom);
        setdescimg("Foto de la araña más común en el estado")
        break;
