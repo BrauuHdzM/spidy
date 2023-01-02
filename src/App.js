@@ -4,6 +4,9 @@ import { NavBar } from './components/NavBar';
 import { Inicio } from './components/Inicio';
 import { Nosotros } from './components/Nosotros';
 import { Mapa } from './components/Mapa';
+import { Detectar } from './components/Detectar';
+import { AdminBar} from './components/AdminBar';
+import { CameraCapture } from './components/CameraCapture';
 
 import GridLoader from "react-spinners/GridLoader";
 import {
@@ -29,12 +32,21 @@ function App() {
 
   },[])
 
+  const  [IsAdmin, setIsAdmin]= useState(false);
+
+  const logIn=()=>{
+
+    setIsAdmin(true);
+
+  }
+
+
   return (
    
     <Router>
        
       <div>
-      <NavBar />
+      { IsAdmin ? <AdminBar></AdminBar>:<NavBar logIn={logIn}/>}
       </div>
      
      
@@ -52,7 +64,11 @@ function App() {
         </Route>
         <Route path="/Nosotros" element= {<Nosotros />}>
         </Route>
+        <Route path="/Detectar" element= {<Detectar />}>
+        </Route>
         <Route path="/Escanear" element= {<Escanear />}>
+        </Route>
+        <Route path="/CameraCapture" element= {<CameraCapture />}>
         </Route>
         <Route path="/Mapa" element= {<Mapa />}>
         </Route>            

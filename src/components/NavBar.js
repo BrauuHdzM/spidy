@@ -8,15 +8,26 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+import {Link} from 'react-router-dom';
 
 
-function NavBar() {
+function NavBar(props) {
+ 
+ 
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false)
+    props.logIn()
+  };
   const handleShow = () => setShow(true);
 
-
+  const validar=()=>{
+    //props.logIn();
+ 
+   console.log("holadios")
+   //return <Link to="/AdminDashboard"  />
+  }
 
   return (
     <Navbar bg="dark" variant="dark">
@@ -64,9 +75,10 @@ function NavBar() {
         <Form.Control type="password" placeholder="Contraseña" />
       </Form.Group>
       <div class="text-center">
-          <Button variant="danger" id="escaner" onClick={handleClose}>
+       <Button variant="danger" id="escaner" onClick={handleClose}>
             Iniciar sesión 
           </Button>
+          
           </div>
       </div>
           </Form>
