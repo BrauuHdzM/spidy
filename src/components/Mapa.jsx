@@ -39,7 +39,7 @@ export const Mapa = (props) => {
       break;
 
       case 'MEX2708':
-        let text2="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Tarántula parda(INOFENSIV)";
+        let text2="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Tarántula parda(INOFENSIVA)";
         let newText2 = text2.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText2);
       setedonombre(param);
