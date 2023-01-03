@@ -1,14 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './styles/index.css';
-import App from './components/App';
-import 'bootstrap/dist/css/bootstrap.min.css';
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+const app = express();
 
+//Settings
+app.set('port', process.env.PORT || 3000);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+//Middlewares
+app.use(morgan('dev'));
+app.use(express.json());
 
+//Routes
+app.use('/predictions', require('./routes/predictions.routes'));
+
+//Static files
+app.use(express.static(path.join(__dirname, 'public')))
+
+//Start server
+app.listen(app.get('port'), () => {
+    console.log(`Server listening on port ${app.get('port')}`);
+})
