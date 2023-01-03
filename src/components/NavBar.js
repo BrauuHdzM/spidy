@@ -1,4 +1,4 @@
-import React, { useState } from 'react' ;
+import { useRef, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,26 +8,52 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import {Link} from 'react-router-dom';
-
+import { Link} from 'react-router-dom';
 
 function NavBar(props) {
  
- 
+  
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
+  const inputRef = useRef(null);
+
+  
+
+  const handleClick = () => {
+    if(inputRef.current.value=='123456'){
+    
+    setShow(false)
+    handleShow1(true)
+   
+  } 
+else{
+
+  setShow(false)
+}
+
+};
 
   const handleClose = () => {
+  
     setShow(false)
-    props.logIn()
   };
+
+
   const handleShow = () => setShow(true);
 
-  const validar=()=>{
-    //props.logIn();
- 
-   console.log("holadios")
-   //return <Link to="/AdminDashboard"  />
-  }
+  const handleClose1 = () => {
+   
+    props.logIn()
+    setShow1(false)
+   
+    
+  };
+
+
+
+
+  const handleShow1 = () => setShow1(true);
+
 
   return (
     <Navbar bg="dark" variant="dark">
@@ -44,11 +70,40 @@ function NavBar(props) {
           
               </Nav>
               <Nav>
-            <Button variant="outline-light" onClick={handleShow}>
-        SpidyAdmin
-      </Button>
+            <button class="loginhide color" onClick={handleShow}><font color="#22252A">,</font></button>
 
       <Modal show={show} onHide={handleClose} center styles={{ overlay: { background: "#e13743" } }} >
+        <Modal.Header closeButton>
+        <div class="mt-2 mb-2 ms-3 me-2 ">
+          <Modal.Title>  </Modal.Title>
+          </div>
+        </Modal.Header>
+        
+        <Modal.Body>
+        <Form>
+        <div class="mt-1 mb-2.5 ms-4 me-4 ">
+  
+      <Form.Group className="mb-3" >
+        <Form.Control type="password" placeholder="ID Key" ref={inputRef} id="message" />
+      </Form.Group>
+      <div class="text-center">
+       <Button variant="danger" id="escaner" onClick={handleClick}>
+            Ok
+          </Button>
+          
+          
+          </div>
+      </div>
+          </Form>
+          
+          
+          
+          </Modal.Body>
+   
+      </Modal>  
+    
+      <Modal show={show1} onHide={handleClose1} center styles={{ overlay: { background: "#e13743" } }} >
+      
       <div class="logindiv">
         <Modal.Header closeButton>
       
@@ -61,40 +116,43 @@ function NavBar(props) {
         <Modal.Body>
         <Form>
         <div class="mt-1 mb-2.5 ms-4 me-4 ">
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <div className="mb-3" >
               <Form.Label>Correo electrónico</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="name@spidy.com"
                 autoFocus
               />
-            </Form.Group>
+          </div>
          
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+          <div className="mb-3" >
         <Form.Label>Contraseña </Form.Label>
         <Form.Control type="password" placeholder="Contraseña" />
-      </Form.Group>
+        </div>
       <div class="text-center">
-       <Button variant="danger" id="escaner" onClick={handleClose}>
-            Iniciar sesión 
+       <Button variant="danger" id="escaner" onClick={handleClose1}>
+          <Link to="/AdminPanel">.</Link>Iniciar sesión  
           </Button>
           
           </div>
       </div>
           </Form>
-          
-          
-          
+ 
           </Modal.Body>
         <Modal.Footer>
         <div class="text-center">
         <i><p>Este es un apartado exclusivo para administradores de Spidy, dudas o comentarios spidyadmin@spidy.com</p></i>
         </div>
         </Modal.Footer>
-      </Modal>  
-         
+      </Modal> 
+
           </Nav>
         </Navbar.Collapse>
+
+       
+
+
+
       </Container>
     </Navbar>
   );
