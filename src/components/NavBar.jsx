@@ -63,10 +63,10 @@ else{
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             
-            <Nav.Link href="/InformacionArana">Información arácnida</Nav.Link>
-            <Nav.Link href="/Mapa">Mapa</Nav.Link>
-            <Nav.Link href="/Escanear">Escaner</Nav.Link>
-            <Nav.Link href="/Nosotros">Contacto</Nav.Link>
+            <Link className="nav-link" to="/InformacionArana">Información arácnida</Link>
+            <Link className="nav-link" to="/Mapa">Mapa</Link>
+            <Link className="nav-link" to="/Detectar">Escaner</Link>
+            <Link className="nav-link" to="/Nosotros">Contacto</Link>
           
               </Nav>
               <Nav>

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import linceverde from '../images/linceverde.jpg';
 import viudacafe from '../images/viudacafe.jpg';
 import mascom from '../images/mascom.png';
