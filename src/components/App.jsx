@@ -1,13 +1,15 @@
-import './App.css';
+import '../styles/App.css';
 import React, { useEffect, useState } from 'react'
-import { NavBar } from './components/NavBar';
-import { Inicio } from './components/Inicio';
-import { Nosotros } from './components/Nosotros';
-import { Mapa } from './components/Mapa';
-import { Detectar } from './components/Detectar';
-import { AdminBar} from './components/AdminBar';
-import { CameraCapture } from './components/CameraCapture';
-import { AdminPanel } from './components/AdminPanel';
+import { NavBar } from './NavBar';
+import { Inicio } from './Inicio';
+import { Nosotros } from './Nosotros';
+import { Mapa } from './Mapa';
+import { Detectar } from './Detectar';
+import { AdminBar} from './AdminBar';
+import { CameraCapture } from './CameraCapture';
+import { AdminPanel } from './AdminPanel';
+import { InformacionArana } from './InformacionArana';
+import { Escanear } from './Escanear';
 
 import GridLoader from "react-spinners/GridLoader";
 import {
@@ -18,8 +20,7 @@ import {
   Link,
   NavLink
 } from "react-router-dom";
-import { InformacionArana } from './components/InformacionArana';
-import { Escanear } from './components/Escanear';
+
 
 function App() {
   const [loading,setLoading]=useState(false)
