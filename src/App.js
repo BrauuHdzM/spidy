@@ -7,6 +7,7 @@ import { Mapa } from './components/Mapa';
 import { Detectar } from './components/Detectar';
 import { AdminBar} from './components/AdminBar';
 import { CameraCapture } from './components/CameraCapture';
+import { AdminPanel } from './components/AdminPanel';
 
 import GridLoader from "react-spinners/GridLoader";
 import {
@@ -46,7 +47,7 @@ function App() {
     <Router>
        
       <div>
-      { IsAdmin ? <AdminBar></AdminBar>:<NavBar logIn={logIn}/>}
+      { IsAdmin ? <AdminBar logIn={logIn} ></AdminBar>:<NavBar logIn={logIn}/>}
       </div>
      
      
@@ -74,7 +75,9 @@ function App() {
         </Route>            
         <Route path="/" element= {<Inicio />}>
         </Route>
-             
+        <Route path="/AdminPanel" element= {<AdminPanel />}>
+        </Route>  
+     
        </Routes>  
       </div> 
       }

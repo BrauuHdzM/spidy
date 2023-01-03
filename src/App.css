@@ -466,3 +466,27 @@ h4,span,p,Form,Nav{
   background-position: center;
   background-size: cover; 
 }
+.loginhide{
+
+  background-color: #22252A;
+  border-color: #22252A;
+
+}
+
+.loginhide.color:hover{ background: linear-gradient(90deg, #6d6d6d, #ffffff);
+  border-color: #3c3939;
+  color: #fff;
+  padding-right: 50px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, .2);}
+
+
+  #mapaMex{
+
+    margin: 0 auto;
+    transform: scale(.5);
+
+  }
+  #mapadetails{
+    background-color: #fcfcfc97;
+  
+  }
