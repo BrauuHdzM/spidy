@@ -5,6 +5,7 @@ import mascom from '../images/mascom.png';
 import manchada from '../images/manchada.jpg';
 import sedadorada from '../images/sedadorada.jpg';
 import tejedora from '../images/tejedora.jpeg';
+import traserooxidado from '../images/traserooxidado.jpeg';
 import bandeada from '../images/bandeada.jpg';
 import viudanegraimg from '../images/viudanegra.jpg';
 import violinista from '../images/violinista.jpeg';
@@ -38,7 +39,7 @@ export const Mapa = (props) => {
       break;
 
       case 'MEX2708':
-        let text2="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Tarántula parda(VENENOSA)";
+        let text2="1. Jardín Bandeada (INOFENSIVA)\n2. Manchada de jardín (INOFENSIVA)\n3. Tarántula parda(INOFENSIV)";
         let newText2 = text2.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText2);
       setedonombre(param);
@@ -67,7 +68,7 @@ export const Mapa = (props) => {
 
 
       case 'MEX2711':
-        let text6="1. Tejedora Espinosa (INOFENSIVA)\n2. Plateada de jardín (INOFENSIVA)\n3. Tarántula mexicana de piernas rojas (VENENOSA)";
+        let text6="1. Tejedora Espinosa (INOFENSIVA)\n2. Plateada de jardín (INOFENSIVA)\n3. Tarántula mexicana de piernas rojas (INOFENSIVA)";
         let newText6 = text6.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText6);
       setedonombre(param);
@@ -77,7 +78,7 @@ export const Mapa = (props) => {
 
       
       case 'MEX2712':
-        let text7="1. Violinista (VENENOSA)\n2. Viuda negra (VENENOSA)\n3. Tarántula rubia norteamericana (VENENOSA)";
+        let text7="1. Violinista (VENENOSA)\n2. Viuda negra (VENENOSA)\n3. Tarántula rubia norteamericana (INOFENSIVA)";
         let newText7 = text7.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText7);
       setedonombre(param);
@@ -169,7 +170,7 @@ export const Mapa = (props) => {
       break;
 
       case 'MEX2722':
-        let text17="1. Seda dorada (INOFENSIVA)\n2. Tarántula mexicana de cadera roja (VENENOSA)\n3. Tejedora espinosa (INOFENSIVA)";
+        let text17="1. Seda dorada (INOFENSIVA)\n2. Tarántula mexicana de cadera roja (INOFENSIVA)\n3. Tejedora espinosa (INOFENSIVA)";
         let newText17 = text17.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText17);
       setedonombre(param);
@@ -232,7 +233,7 @@ export const Mapa = (props) => {
       break;
 
       case 'MEX2729':
-        let text24="1. Seda dorada (INOFENSIVA)\n2. Tarántula mexicana de rodillas rojas (VENENOSA)\n3. Tarántula dorada mexicana (VENENOSA)";
+        let text24="1. Seda dorada (INOFENSIVA)\n2. Tarántula mexicana de rodillas rojas (INOFENSIVA)\n3. Tarántula dorada mexicana (INOFENSIVA)";
         let newText24 = text24.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText24);
       setedonombre(param);
@@ -259,7 +260,7 @@ export const Mapa = (props) => {
       break;
 
       case 'MEX2732':
-        let text27="1. Plateada de jardín (INOFENSIVA)\n2. Viuda negra (VENENOSA)\n3. Tarántula dorada mexicana (VENENOSA) ";
+        let text27="1. Plateada de jardín (INOFENSIVA)\n2. Viuda negra (VENENOSA)\n3. Tarántula dorada mexicana (INOFENSIVA) ";
         let newText27 = text27.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText27);
       setedonombre(param);
@@ -277,7 +278,7 @@ export const Mapa = (props) => {
       break;
 
       case 'MEX2734':
-        let text29="1. Seda dorada (INOFENSIVA)\n2. Amarilla de jardín (INOFENSIVA)\n3. Tarántula veracruzana (VENENOSA)";
+        let text29="1. Seda dorada (INOFENSIVA)\n2. Amarilla de jardín (INOFENSIVA)\n3. Tarántula veracruzana (INOFENSIVA)";
         let newText29 = text29.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText29);
       setedonombre(param);
@@ -286,12 +287,30 @@ export const Mapa = (props) => {
       break;
 
       case 'MEX2735':
-        let text30="1. Tejedora Espinosa (INOFENSIVA)\n2. Vagabundo atigrada (VENENOSA)\n3. Cabeza de Flecha (INOFENSIVA)\n¿Sabías que Chiapas es el estado dónde habitan más especies de arañas en el país?. ¡Cuenta con alrededor de 500 especies!";
+        let text30="1. Tejedora Espinosa (INOFENSIVA)\n2. Vagabundo atigrada (VENENOSA)\n3. Cabeza de Flecha (INOFENSIVA)\n¿Sabías que Chiapas es el estado dónde habitan más especies de arañas en el país?";
         let newText30 = text30.split('\n').map(i => {return <p><b>{i}</b></p> });
       setlista(newText30);
       setedonombre(param);
       setimgmap(tejedora);
       setdescimg("Araña Tejedora Espinosa")
+      break;
+
+      case 'MEX2736':
+        let text31="1. Tarántula Trasero Oxidado de Yucatán (INOFENSIVA)\n2. Seda dorada (INOFENSIVA)\n3. Tejedora espinosa (INOFENSIVA)";
+        let newText31 = text31.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText31);
+      setedonombre(param);
+      setimgmap(traserooxidado);
+      setdescimg("Tarántula Trasero Oxidado de Yucatán")
+      break;
+
+      case 'MEX2737':
+        let text32="1. Tarántula Trasero Oxidado de Yucatán (INOFENSIVA)\n2. Seda dorada (INOFENSIVA)\n3.2. Tarántula mexicana de cadera roja (INOFENSIVA)";
+        let newText32 = text32.split('\n').map(i => {return <p><b>{i}</b></p> });
+      setlista(newText32);
+      setedonombre(param);
+      setimgmap(traserooxidado);
+      setdescimg("Tarántula Trasero Oxidado de Yucatán")
       break;
 
       default:
