@@ -1,5 +1,5 @@
 
-
+import React from 'react';
 
 export const AdminPanel = () => {
 
@@ -19,7 +19,7 @@ export const AdminPanel = () => {
    
     <div id="text-over-img ">
       
-        <h1 class="text-center"><font color="white">SpidyAdmin</font></h1>
+        <h1 class="text-center"><font color="white">SpidyAdmiaaan</font></h1>
         
         <br></br>
 

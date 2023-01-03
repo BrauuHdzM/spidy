@@ -7,6 +7,7 @@ import SpidyAdmin from '../images/SpidyAdmin.png';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import '../styles/App.css';
 
 import { Link} from 'react-router-dom';
 
@@ -131,7 +132,7 @@ else{
         </div>
       <div class="text-center">
        <Button variant="danger" id="escaner" onClick={handleClose1}>
-          <Link to="/AdminPanel">.</Link>Iniciar sesión  
+          <Link to="/AdminPanel">Iniciar sesión </Link> 
           </Button>
           
           </div>
