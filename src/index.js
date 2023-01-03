@@ -1,19 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+const app = express();
 
+//Settings
+app.set('port', process.env.PORT || 3000);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+//Middlewares
+app.use(morgan('dev'));
+app.use(express.json());
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//Routes
+app.use('/predictions', require('./routes/predictions.routes'));
+
+//Static files
+app.use(express.static(path.join(__dirname, 'public')))
+
+//Start server
+app.listen(app.get('port'), () => {
+    console.log(`Server listening on port ${app.get('port')}`);
+})
