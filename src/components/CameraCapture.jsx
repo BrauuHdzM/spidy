@@ -8,6 +8,18 @@ export const CameraCapture = ()=>{
     const [fileP, setFileP] =  useState(null);
     const [result, setResult] = useState(null);
     const [image, setImage] = useState(null);
+    const [IAmodelo, setIAmodelo] = useState(null);
+
+    useEffect(() => {
+        const loadModelAsync = async ()=>{
+          const tfReady = await tf.ready();
+          const model = await tf.loadGraphModel("./model.json");
+          console.log("Modelo cargado")
+          setIAmodelo(model);
+        }
+        loadModelAsync()
+      
+    }, []);
   
     useEffect(() => {
         navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' },  }).then(stream => {
@@ -50,17 +62,14 @@ export const CameraCapture = ()=>{
     async function loadModel(){
       console.log(fileP.src)
         console.log("Aplicación inicia")
-        const tfReady = await tf.ready();
-        const model = await tf.loadGraphModel("/model.json");
-        console.log("Modelo cargado")
-        if(model == null){
+        if(IAmodelo == null){
           console.log("Modelo es null")
         }else if(fileP == null){
           console.log("Photo es null")
           alert("Photo es null")
         }else{
           let tensor = preprocessImg();
-          var prediccion = model.predict(tensor).dataSync();
+          var prediccion = IAmodelo.predict(tensor).dataSync();
           console.log(prediccion);
           var mayorIndice = prediccion.indexOf(Math.max.apply(null, prediccion));
           console.log(mayorIndice);
