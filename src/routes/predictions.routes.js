@@ -7,7 +7,7 @@ const multer = require('multer');
 const diskstorage = multer.diskStorage({
     destination: path.join(__dirname, '../imagesUploaded'),
     filename: (req, file, cb) => {
-        cb(null, Date.now() + '-monkeywit-' + file.originalname)
+        cb(null, Date.now() +".jpg")
     }
 })
 
@@ -18,8 +18,7 @@ const fileUpload = multer({
 
 router.post('/savePrediction', fileUpload, (req, res) => {
     console.log(req.body.prediction)
-    const type = req.file.mimetype
-    const name = req.file.originalname
+    console.log(req.file)
         //const data = fs.readFileSync(path.join(__dirname, '../images/' + req.file.filename))
 
 

@@ -23,6 +23,7 @@ app.use(morgan('dev'));
 //app.use(bodyParser.urlencoded());
 
 //Routes
+
 app.use('/predictions', require('./routes/predictions.routes'));
 
 app.use((req, res, next) => {
