@@ -31,7 +31,7 @@ export const Escanear = () => {
   async function loadModel() {
     console.log("Aplicación inicia")
     const tfReady = await tf.ready();
-    const model = await tf.loadGraphModel("/model.json");
+    const model = await tf.loadGraphModel("./model.json");
     console.log("Modelo cargado")
     if (model != null && fileP != null) {
       let tensor = preprocessImg();
@@ -48,7 +48,7 @@ export const Escanear = () => {
     formData.append('image', image);
     formData.append('prediction', mayorIndice);
 
-    axios.post('/savePrediction', formData).then(() => {
+    axios.post('/predictions/savePrediction', formData).then(() => {
       console.log('La imagen se ha guardado con exito');
     });
   };
