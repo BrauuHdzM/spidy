@@ -2,7 +2,9 @@
 import React,{useState } from 'react';
 import BarChart from "./BarChart";
 import { UserData } from "./Data";
+import {ReporteG } from "./ReporteGeneral";
 import Container from 'react-bootstrap/Container';
+import { PDFDownloadLink, Document, Page } from '@react-pdf/renderer';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PieChart from "./PieChart";
@@ -86,7 +88,12 @@ export const AdminPanel = () => {
 <Col>
 <div  className='admindiv'>
 <h1 class="text-center">Generación de reportes</h1>
-<p><a>Descargar reporte general </a></p>
+
+<div>
+    <PDFDownloadLink document={<ReporteG />} fileName="ReporteGeneral.pdf">
+    <p><a>Descargar reporte general </a></p>
+    </PDFDownloadLink>
+  </div>
 <p><a>Descargar reporte personalizado</a></p>
 </div>   
 </Col>
