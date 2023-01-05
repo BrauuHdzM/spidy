@@ -5,12 +5,14 @@ import { UserData } from "./Data";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import PieChart from "./PieChart";
+import { FaFileDownload } from "react-icons/fa";
 export const AdminPanel = () => {
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.especie),
     datasets: [
       {
-        label: "Cantidad de registro",
+        label: "Cantidad de registros",
         data: UserData.map((data) => data.cr),
         backgroundColor: [
           "rgba(75,192,192,1)",
@@ -36,41 +38,61 @@ export const AdminPanel = () => {
 <Container>
       <Row>
         <Col>
-        <div  id='admindiv'>
-         <font color="white"> <h1>Registros totales en el sistema</h1></font>
+       
+        <div  className='admindiv'>
+     
+       <h1 class="text-center">Registros totales en el sistema</h1>
         <BarChart chartData={userData} />
+      
       </div>
       </Col>
      
       </Row>
+      <br></br><br></br>
       <Row>
-      <font color="white">
-      <div> <h1>Estadísticas de satisfacción</h1></div>
+      
+
       <Col>
-      <h2>Satisfacción general del sistema</h2>
-      
-      
+      <div  className='admindiv'>
+      <h1 class="text-center">Satisfacción general del sistema</h1>
+      <div className='piechartdiv' >
+      <PieChart chartData={userData} />
+      </div>
+      </div>
       </Col>
 
       <Col>
-      <h2>Satisfacción por araña</h2>
-      
-      
+      <div  className='admindiv'>
+      <h1 class="text-center" >Satisfacción por araña</h1>
+      <div className='piechartdiv'>
+      <PieChart chartData={userData} />
+      </div>
+      </div>
       </Col>
-      </font>
+      
       </Row>
+      <br></br><br></br>
       <Row>
+     
 <Col>
-<h2>Descargas</h2>
-      
+<div  className='admindiv'>
+<h1>Descargas</h1>
+<i><FaFileDownload size="4em" /><p><a>Haga click aquí para descargar el dataset completo</a></p></i>
+
+</div>
 </Col>
 <Col>
-<h2>Generación de reportes</h2>
-      
+<div  className='admindiv'>
+<h1 class="text-center">Generación de reportes</h1>
+<p><a>Descargar reporte general </a></p>
+<p><a>Descargar reporte personalizado</a></p>
+</div>   
 </Col>
+
       </Row>
 
     </Container>
+    <br></br>  <br></br>
       </>
     
   )

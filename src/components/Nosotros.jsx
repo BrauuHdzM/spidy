@@ -168,7 +168,7 @@ export const Nosotros = () => {
       </Card>
     </div>
 
-
+<br></br>
     </>
   )
 }
