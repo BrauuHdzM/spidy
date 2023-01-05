@@ -5,12 +5,14 @@ import { UserData } from "./Data";
 import {ReporteG } from "./ReporteGeneral";
 import Container from 'react-bootstrap/Container';
 import pataslargas from '../images/pataslargas.jpg';
-import { PDFDownloadLink, Document, Page } from '@react-pdf/renderer';
+import { PDFDownloadLink, PDFViewer,Document, Page } from '@react-pdf/renderer';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PieChart from "./PieChart";
 import { FaFileDownload } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
+
 export const AdminPanel = () => {
 
   const barra=useRef(null);
@@ -21,8 +23,17 @@ export const AdminPanel = () => {
   const chart = barra.current;
   setimg (chart.toBase64Image('image/png', 1));
   console.log(img)
+  setShow(true);
   } 
   
+  const [show, setShow] = useState(false);
+
+
+  
+
+  const handleClose = () => {
+    setShow(false)
+  };
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.especie),
     datasets: [
@@ -96,11 +107,35 @@ export const AdminPanel = () => {
 <h1 class="text-center">Generación de reportes</h1>
 
 <div>
-  <Button onClick={handleClick}>
-    <PDFDownloadLink document={<ReporteG imgbarras={img}/>} fileName="ReporteGeneral.pdf">
-    <p >Descargar reporte general</p>
+
+<Modal show={show} onHide={handleClose}    
+      aria-labelledby="contained-modal-title-vcenter" size="lg"
+      centered >
+        <Modal.Header closeButton>
+    
+          <Modal.Title>  <h1> Reporte general de la aplicación</h1> </Modal.Title>
+        
+        </Modal.Header>
+      
+        <Modal.Body>
+        <PDFDownloadLink document={<ReporteG imgbarras={img}/>} fileName="ReporteGeneral.pdf">
+    <p className='text-center'>Descargar reporte general</p>
     </PDFDownloadLink>
-    </Button>
+    <p className='text-center'>
+       <PDFViewer height="500em" width="600em">
+      <ReporteG imgbarras={img}/>
+          </PDFViewer>
+          </p>
+          </Modal.Body>
+          </Modal>
+
+
+
+
+  <Button onClick={handleClick}> Ver reporte general de la aplicación </Button>
+  
+    
+   
   </div>
 <p><a>Descargar reporte personalizado</a></p>
 </div>   
