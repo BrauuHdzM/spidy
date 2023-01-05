@@ -7,6 +7,7 @@ import SpidyAdmin from '../images/SpidyAdmin.png';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import '../styles/App.css';
 
 import { Link} from 'react-router-dom';
 
@@ -129,12 +130,12 @@ else{
         <Form.Label>Contraseña </Form.Label>
         <Form.Control type="password" placeholder="Contraseña" />
         </div>
-      <div class="text-center">
-       <Button variant="danger" id="escaner" onClick={handleClose1}>
-          <Link to="/AdminPanel">.</Link>Iniciar sesión  
+        <Link to="/AdminPanel"> <div class="text-center">
+     <Button variant="danger" id="escaner" onClick={handleClose1}>
+         Iniciar sesión 
           </Button>
           
-          </div>
+          </div></Link> 
       </div>
           </Form>
  

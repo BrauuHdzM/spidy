@@ -42,15 +42,20 @@ function App() {
 
   }
 
+  const logout=()=>{
+
+    setIsAdmin(false);
+
+  }
+
 
   return (
    
     <Router>
        
-      <div>
-      { IsAdmin ? <AdminBar logIn={logIn} ></AdminBar>:<NavBar logIn={logIn}/>}
+       <div>
+      { IsAdmin ? <AdminBar logout={logout} ></AdminBar>:<NavBar logIn={logIn}/>}
       </div>
-     
      
       {
   loading?
