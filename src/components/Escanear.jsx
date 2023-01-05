@@ -2,14 +2,26 @@ import React from 'react'
 import * as tf from '@tensorflow/tfjs';
 import aver from '../images/tarantulamexicana.jpg';
 import { fetch, bundleResourceIO } from '@tensorflow/tfjs';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChangeEvent } from 'react';
 import axios from 'axios';
 
 export const Escanear = () => {
   const [fileP, setFileP] = useState(null);
   const [image, setImage] = useState(null);
+  const [IAmodelo, setIAmodelo] = useState(null);
   var imgGlobal = null;
+
+  useEffect(() => {
+      const loadModelAsync = async ()=>{
+        const tfReady = await tf.ready();
+        const model = await tf.loadGraphModel("./model.json");
+        console.log("Modelo cargado")
+        setIAmodelo(model);
+      }
+      loadModelAsync()
+    
+  }, []);
 
 
   const handleFileChange = (e) => {
@@ -30,12 +42,12 @@ export const Escanear = () => {
 
   async function loadModel() {
     console.log("Aplicación inicia")
-    const tfReady = await tf.ready();
-    const model = await tf.loadGraphModel("/model.json");
-    console.log("Modelo cargado")
-    if (model != null && fileP != null) {
+    //const tfReady = await tf.ready();
+    //const model = await tf.loadGraphModel("./model.json");
+    
+    if (IAmodelo != null && fileP != null) {
       let tensor = preprocessImg();
-      var prediccion = model.predict(tensor).dataSync();
+      var prediccion = IAmodelo.predict(tensor).dataSync();
       var mayorIndice = prediccion.indexOf(Math.max.apply(null, prediccion));
       console.log(mayorIndice);
       savePrediction(mayorIndice);
@@ -48,7 +60,7 @@ export const Escanear = () => {
     formData.append('image', image);
     formData.append('prediction', mayorIndice);
 
-    axios.post('/savePrediction', formData).then(() => {
+    axios.post('/predictions/savePrediction', formData).then(() => {
       console.log('La imagen se ha guardado con exito');
     });
   };
