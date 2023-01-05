@@ -4,11 +4,16 @@ import portada1 from '../images/portada1.jpg';
 import React from "react";
 
 
-export const ReporteG = () => (
+export const ReporteG = ({imgbarras}) => (
     <Document>
       <Page>
       <Image src={portada1} />
-    
+      <Image src={imgbarras} />
+      <Text> A
+        absoluteA
+        absoluteA
+        absolute
+      </Text>
       </Page>
 
 
