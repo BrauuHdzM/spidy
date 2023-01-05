@@ -130,12 +130,12 @@ else{
         <Form.Label>Contraseña </Form.Label>
         <Form.Control type="password" placeholder="Contraseña" />
         </div>
-      <div class="text-center">
-       <Button variant="danger" id="escaner" onClick={handleClose1}>
-          <Link to="/AdminPanel">Iniciar sesión </Link> 
+        <Link to="/AdminPanel"> <div class="text-center">
+     <Button variant="danger" id="escaner" onClick={handleClose1}>
+         Iniciar sesión 
           </Button>
           
-          </div>
+          </div></Link> 
       </div>
           </Form>
  
