@@ -40,11 +40,7 @@ export const AdminPanel = () => {
   const [show, setShow] = useState(false);
 
 
-  const [show1, setShow1] = useState(false);
-  const handleClose1 = () => {
-    setShow1(false)
-  };
-  const handleShow = () => { setShow1(true)};
+  
 
   const handleClose = () => {
     setShow(false)
@@ -154,25 +150,6 @@ export const AdminPanel = () => {
    
   </div>
 <p><a>Descargar reporte personalizado</a></p>
-
-
-<Button onClick={handleShow}> Ver reporte general de la aplicación </Button>
-<Modal show={show1} onHide={handleClose1}    
-      aria-labelledby="contained-modal-title-vcenter" size="lg"
-      centered >
-        <Modal.Header closeButton>
-    
-          <Modal.Title>  <h1 class='text-center'> Reportes personalizados de la aplicación</h1> </Modal.Title>
-        
-        </Modal.Header>
-      
-        <Modal.Body>
-        <p>aaaa</p>
-          </Modal.Body>
-          </Modal>
-
-
-
 </div>   
 </Col>
 
