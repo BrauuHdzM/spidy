@@ -41,10 +41,14 @@ router.get('/consulta', (req, res) => {
             res.send('image saved!')
         })*/
         //Ejemplo todo en un una cadena
-        conn.query(`INSERT INTO spiders (idSpider, species, medicallySignificant, description, imgPath) VALUES (2, 'Tarantula', 0, 'holaaa', 'path')`, (err, rows) => {
-            if (err) return res.status(500).send('server error')
-
-            res.send('image saved!')
+        conn.query(`INSERT INTO spiders(species, medicallySignificant, description, imgPath) VALUES('MAURICIO', 1, 'ES FEO', 'PATH'); 
+        SELECT LAST_INSERT_ID() AS ID;`, (err, rows, filds) => {
+            if (err){ console.error('Error al ejecutar la consulta:', err);
+            return;}
+            let id = Object.values(JSON.parse(JSON.stringify(rows)));
+            //const id = rows[1].constructor.ID;
+            console.log(id[1][0].ID);
+            res.send(id)
         })
 
         //Consulta 
