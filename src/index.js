@@ -3,7 +3,8 @@ const morgan = require('morgan');
 const path = require('path');
 const app = express();
 const fs = require('fs');
-const bodyParser = require('body-parser');
+const mysql = require('mysql');
+const myconn = require('express-myconnection')
 
 const routesToRedirect = [
     '/Nosotros',
@@ -12,18 +13,28 @@ const routesToRedirect = [
     '/Escanear',
     '/CameraCapture',
     '/Mapa',
-    'AdminPanel'
+    '/AdminPanel'
 ]
+
+//Database connection
+app.use(myconn(mysql, {
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'rootroot',
+    database: 'spidy'
+}));
+
+//Middleware
+app.use(morgan('dev'));
 
 //Settings
 app.set('port', process.env.PORT || 3000);
 
 //Middlewares
 app.use(morgan('dev'));
-//app.use(bodyParser.urlencoded());
 
 //Routes
-
 app.use('/predictions', require('./routes/predictions.routes'));
 
 app.use((req, res, next) => {
