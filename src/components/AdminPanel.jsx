@@ -113,7 +113,7 @@ export const AdminPanel = () => {
       centered >
         <Modal.Header closeButton>
     
-          <Modal.Title>  <h1> Reporte general de la aplicación</h1> </Modal.Title>
+          <Modal.Title>  <h1 class='text-center'> Reporte general de la aplicación</h1> </Modal.Title>
         
         </Modal.Header>
       
