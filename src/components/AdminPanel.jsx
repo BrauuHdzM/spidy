@@ -12,17 +12,28 @@ import PieChart from "./PieChart";
 import { FaFileDownload } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
-
+import { Pie } from "react-chartjs-2";
 export const AdminPanel = () => {
 
   const barra=useRef(null);
-
+  const pastel=useRef(null);
+  const [spdmost,setspdmost]=useState('Eremobates');
+  const [prc,setprc]=useState('88');
   const [img, setimg] =useState({pataslargas});
+  const [img2, setimg2] =useState({pataslargas});
+  
   const handleClick = () => {
     console.log("zapata");
+    console.log(spdmost);
   const chart = barra.current;
   setimg (chart.toBase64Image('image/png', 1));
+  const chart2 = pastel.current;
+  setimg2 (chart2.toBase64Image('image/png', 1));
+
+
   console.log(img)
+  console.log(img2)
+
   setShow(true);
   } 
   
@@ -76,7 +87,8 @@ export const AdminPanel = () => {
       <div  className='admindiv'>
       <h1 class="text-center">Satisfacción general del sistema</h1>
       <div className='piechartdiv' >
-      <PieChart chartData={userData} />
+      <p class="text-center"> 
+      <Pie data={userData} ref={pastel}  /></p>
       </div>
       </div>
       </Col>
@@ -85,7 +97,7 @@ export const AdminPanel = () => {
       <div  className='admindiv'>
       <h1 class="text-center" >Satisfacción por araña</h1>
       <div className='piechartdiv'>
-      <PieChart chartData={userData} />
+     <p class="text-center"> <PieChart chartData={userData} /></p>
       </div>
       </div>
       </Col>
@@ -113,17 +125,17 @@ export const AdminPanel = () => {
       centered >
         <Modal.Header closeButton>
     
-          <Modal.Title>  <h1> Reporte general de la aplicación</h1> </Modal.Title>
+          <Modal.Title>  <h1 class='text-center'> Reporte general de la aplicación</h1> </Modal.Title>
         
         </Modal.Header>
       
         <Modal.Body>
-        <PDFDownloadLink document={<ReporteG imgbarras={img}/>} fileName="ReporteGeneral.pdf">
+        <PDFDownloadLink document={<ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc}/>} fileName="ReporteGeneral.pdf">
     <p className='text-center'>Descargar reporte general</p>
     </PDFDownloadLink>
     <p className='text-center'>
        <PDFViewer height="500em" width="600em">
-      <ReporteG imgbarras={img}/>
+       <ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc}/>
           </PDFViewer>
           </p>
           </Modal.Body>
