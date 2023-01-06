@@ -6,18 +6,28 @@ import React from "react";
 const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-export const ReporteG = ({imgbarras}) => (
+export const ReporteG = ({imgbarras,spidermost,imgpastel,porcentaje}) => (
     <Document>
       <Page>
       <Image src={portada1} />
-      <View style={styles.body}>
+     <View style={styles.body}>
       <Text style={styles.title}>CANTIDAD DE REGISTROS TOTALES AL  {date} </Text>
   
       <Image src={imgbarras} />
-      <Text>zapato zaa</Text>
-      </View>
+      <Text style={styles. textran}>La gráfica anterior muestra que actualmente existen más registros de la araña {spidermost}</Text>
       
-      <Text style={styles.pageNumber}>Copyright © 2023 All Rights Reserved by Spidy</Text> 
+    </View>
+    <View style={styles.bodyb}>
+      <Text style={styles.title}>SATISFACCIÓN DE LOS USUARIOS DE SPIDY {date} </Text>
+      </View>
+      <View style={styles.body2}>
+      <Image src={imgpastel} styles={styles.image} />
+      </View>
+      <Text style={styles. textran}>La gráfica anterior muestra que el sistema cuenta con una aprobación del  {porcentaje}% </Text>
+      
+      
+
+      <Text style={styles.pageNumber}>Copyright © 2023 All Rights Reserved by Spidyyy</Text> 
       </Page>
 
 
@@ -34,16 +44,34 @@ export const ReporteG = ({imgbarras}) => (
   const styles = StyleSheet.create({
   
     body: {
-      paddingTop: 35,
-      paddingBottom: 65,
+      paddingTop: 10,
+      paddingHorizontal: 35,
+    },
+    body2: {
+      paddingTop: 3,
+      paddingHorizontal: 170,
+    },
+    bodyb: {
+      paddingTop: 1,
       paddingHorizontal: 35,
     },
     title: {
-      fontSize: 24,
+      fontSize: 20,
       textAlign: 'center',
       fontFamily: 'Oswald'
     },
-    
+    textran: {
+      fontSize: 12,
+      textAlign: 'center',
+      fontFamily: 'Oswald',
+      color: 'red',
+    },
+    image: {
+      marginVertical: 15,
+      marginHorizontal: 100,
+      width: 12,
+      height: 20
+    },
     pageNumber: {
       position: 'absolute',
       fontSize: 12,
