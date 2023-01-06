@@ -37,6 +37,7 @@ app.use(morgan('dev'));
 
 //Routes
 app.use('/predictions', require('./routes/predictions.routes'));
+//app.use('/admin', require('./routes/admin.routes'));
 
 app.use((req, res, next) => {
     if (routesToRedirect.includes(req.path)) {
