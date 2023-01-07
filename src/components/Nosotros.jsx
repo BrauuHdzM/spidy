@@ -13,11 +13,23 @@ import Mau from '../images/Mau.jpg';
 import Marco from '../images/Marco.jpg';
 import { Card } from 'react-bootstrap';
 import { Placeholder } from 'react-bootstrap';
-
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import { Link, animateScroll as scroll } from "react-scroll";
 
 export const Nosotros = () => {
+  const handleClick = () => {
+    Swal.fire({    
+      icon: 'success',
+      title: '¡Tú mensaje se ha enviado!',
+      text: 'Pronto nos pondremos en contacto',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
+
+  };
+ 
   return (
     <>
     <div>
@@ -137,7 +149,7 @@ export const Nosotros = () => {
         <br></br>
         <Form.Group className="mb-6" controlId="formBasicCheckbox">
     
-          <Button id="escaner" size="md" type="submit">
+          <Button id="escaner" size="md" type="submit" onClick={handleClick}>
           Enviar
         </Button>
         </Form.Group>
@@ -167,7 +179,7 @@ export const Nosotros = () => {
         </div>
       </Card>
     </div>
-
+<br></br>
 
     </>
   )

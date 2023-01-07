@@ -32,11 +32,7 @@ app.use(morgan('dev'));
 //Settings
 app.set('port', process.env.PORT || 3000);
 
-//Middlewares
-app.use(morgan('dev'));
-
-
-
+//Algo que agregu+e
 app.use(express.json());
 //Routes
 app.use('/predictions', require('./routes/predictions.routes'));
