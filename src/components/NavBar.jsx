@@ -10,10 +10,13 @@ import Modal from 'react-bootstrap/Modal';
 import '../styles/App.css';
 import axios from 'axios';
 import { Link} from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { useNavigate } from "react-router-dom";
 
 function NavBar(props) {
- 
-  
+  const MySwal = withReactContent(Swal) 
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const inputRef = useRef(null);
@@ -48,7 +51,36 @@ else{
       username: user,
       password: pass,
     }).then((response)=>{
-    console.log(response);
+      if(response.data.length === 0){
+        Swal.fire({
+         
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No pudimos autenticar sus datos',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+      else {
+      console.log("bienvenido admin");
+      
+      Swal.fire({
+         
+        icon: 'success',
+        title: 'Bienvenido SpidyAdmin' ,
+        text: 'Lo extrañabamos mucho',
+        confirmButtonText:"Continuar",
+        confirmButtonColor:"#ff0000"
+
+      }).then(response=>{
+        if(response.isConfirmed){
+          props.logIn();
+          setShow1(false);
+          navigate("/AdminPanel");
+        }
+      })
+
+      }
       });
     }
 
@@ -133,12 +165,12 @@ else{
         <Form.Label>Contraseña </Form.Label>
         <Form.Control type="password" placeholder="Contraseña" onChange={(e)=>setpwd(e.target.value)} />
         </div>
-        <Link to="/AdminPanel"> <div class="text-center">
+        <div class="text-center">
      <Button variant="danger" id="escaner" onClick={loginAdmin}>
          Iniciar sesión 
           </Button>
           
-          </div></Link> 
+          </div>
       </div>
           </Form>
  

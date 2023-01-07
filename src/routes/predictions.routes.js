@@ -118,11 +118,8 @@ router.post('/login', (req, res) => {
         conn.query("select * from administrators where username = ?  and password = ?",[usuario,password], function (error, results, fields) {
             if (error) throw error;
             if (results){
-                res.send(results);
-            }
-            else{
-                res.send("password equivocada");
-            }
+                res.send(results);}
+           
           });
 
     })
