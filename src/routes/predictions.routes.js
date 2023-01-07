@@ -107,4 +107,24 @@ router.get('/descargarImagenes', (req, res) => {
   });
 });
 
+
+router.post('/login', (req, res) => {
+    const body = req.body;
+   const usuario=body.username;
+   const password=body.password;
+ 
+   req.getConnection((err, conn) => {
+        if (err) return res.status(500).send('server error')
+        conn.query("select * from administrators where username = ?  and password = ?",[usuario,password], function (error, results, fields) {
+            if (error) throw error;
+            if (results){
+                res.send(results);
+            }
+            else{
+                res.send("password equivocada");
+            }
+          });
+
+    })
+})
 module.exports = router;

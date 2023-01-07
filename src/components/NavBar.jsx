@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import '../styles/App.css';
-
+import axios from 'axios';
 import { Link} from 'react-router-dom';
 
 function NavBar(props) {
@@ -17,7 +17,8 @@ function NavBar(props) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const inputRef = useRef(null);
-
+  const [user, setusuario] = useState('');
+  const [pass, setpwd] = useState('');
   
 
   const handleClick = () => {
@@ -34,21 +35,22 @@ else{
 
 };
 
-  const handleClose = () => {
+  const handleClose = () => {setShow(false)};
+  const handleClose1 = () => {setShow1(false);};
   
-    setShow(false)
-  };
-
 
   const handleShow = () => setShow(true);
-
-  const handleClose1 = () => {
-   
-    props.logIn()
-    setShow1(false)
-   
-    
-  };
+ 
+  const  loginAdmin = () => {
+    console.log('Usuario: '+user +'Contra: ' +pass); 
+    console.log('Ayuda dios');
+    axios.post("/predictions/login",{
+      username: user,
+      password: pass,
+    }).then((response)=>{
+    console.log(response);
+      });
+    }
 
 
 
@@ -123,15 +125,16 @@ else{
                 type="email"
                 placeholder="name@spidy.com"
                 autoFocus
+                onChange={(e)=>setusuario(e.target.value)}
               />
           </div>
          
           <div className="mb-3" >
         <Form.Label>Contraseña </Form.Label>
-        <Form.Control type="password" placeholder="Contraseña" />
+        <Form.Control type="password" placeholder="Contraseña" onChange={(e)=>setpwd(e.target.value)} />
         </div>
         <Link to="/AdminPanel"> <div class="text-center">
-     <Button variant="danger" id="escaner" onClick={handleClose1}>
+     <Button variant="danger" id="escaner" onClick={loginAdmin}>
          Iniciar sesión 
           </Button>
           
