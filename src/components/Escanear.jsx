@@ -63,8 +63,8 @@ export const Escanear = () => {
     formData.append('image', image);
     formData.append('prediction', mayorIndice);
 
-    axios.post('/predictions/savePrediction', formData).then(() => {
-      console.log('La imagen se ha guardado con exito');
+    axios.post('/predictions/savePrediction', formData).then((response) => {
+      console.log('La imagen se ha guardado con exito. Informacion: '+response.data.ID);
     });
   };
 
