@@ -45,8 +45,7 @@ else{
   const handleShow = () => setShow(true);
  
   const  loginAdmin = () => {
-    console.log('Usuario: '+user +'Contra: ' +pass); 
-    console.log('Ayuda dios');
+  
     axios.post("/predictions/login",{
       username: user,
       password: pass,
