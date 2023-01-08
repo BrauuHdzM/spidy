@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path')
 const multer = require('multer');
+const connection = require('express-myconnection');
 
 //Middleware para guardar la imagen en el servidor
 const diskstorage = multer.diskStorage({
@@ -35,11 +36,29 @@ router.post('/savePrediction', fileUpload, (req, res) => {
                 return;
             }
             let id = Object.values(JSON.parse(JSON.stringify(rows)));
-            console.log(id[1][0].ID);
             res.send(id[1][0]);
         })
     });
 
+});
+
+router.get('/infoSpider', (req, res) => {
+    console.log(req.query.idSpider);
+    req.getConnection((err, conn) => {
+
+        if (err) return res.status(500).send('server error');
+
+
+        conn.query(`SELECT * FROM spiders WHERE idSpider = ${req.query.idSpider};`, (err, rows) => {
+            if (err) {
+                console.error('Error al ejecutar la consulta:', err);
+                return;
+            }
+
+            res.send(rows[0]);
+            console.log(rows[0]);
+        });
+    });
 });
 
 
