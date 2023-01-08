@@ -515,11 +515,11 @@ Nav {
 }
 
 .left-btn {
-    border-radius: 50px 0px 0px 0px !important;
+    border-radius: 30px 0px 0px 0px !important;
 }
 
 .right-btn {
-    border-radius: 0px 50px 0px 0px !important;
+    border-radius: 0px 30px 0px 0px !important;
 }
 
 .btn-group {
