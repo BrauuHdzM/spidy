@@ -1,5 +1,5 @@
 
-import React,{useRef,useState } from 'react';
+import React,{useRef,useState,useEffect } from 'react';
 import { Bar } from "react-chartjs-2";
 import { UserData } from "./Data";
 import {ReporteG } from "./ReporteGeneral";
@@ -9,19 +9,32 @@ import { PDFDownloadLink, PDFViewer,Document, Page } from '@react-pdf/renderer';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PieChart from "./PieChart";
+import axios from 'axios';
 import { FaFileDownload } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { Pie } from "react-chartjs-2";
 export const AdminPanel = () => {
-
+  
   const barra=useRef(null);
   const pastel=useRef(null);
   const [spdmost,setspdmost]=useState('Eremobates');
   const [prc,setprc]=useState('88');
   const [img, setimg] =useState({pataslargas});
   const [img2, setimg2] =useState({pataslargas});
+  const [result, setResult] = useState([]);
   
+  useEffect(() => {
+    axios.post("/predictions/adminData")
+    .then((response)=>{
+      setResult(JSON.parse(JSON.stringify(response.data)));
+      
+    })
+
+    
+  }, [])
+
+
   const handleClick = () => {
     console.log("zapata");
     console.log(spdmost);
@@ -37,24 +50,54 @@ export const AdminPanel = () => {
   setShow(true);
   } 
   
+  
   const [show, setShow] = useState(false);
 
 
+  const  getData = () => {
+   setUserData({
+      labels: result.map((row) => row.species),
+      datasets: [
+        {
+          label: "Cantidad de registros",
+          data: result.map((row) =>row.CantidadEncuestas),
+          backgroundColor: ["#cd0c36", "#000000","#ee4242","#fd7b7b", "#565656","#989898","#ffffff","#670f22", ],
+          borderColor: "black",
+          borderWidth: 1,
+        },
+      ],
+    });
+
+  /*
+
+    axios.post("/predictions/adminData").then((response)=>{
+      const diosayuda=JSON.stringify(response.data); 
+      console.log(diosayuda);
+     
+
+
+
+      });
+      */
+    }
   
+
+
+
 
   const handleClose = () => {
     setShow(false)
   };
   const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.especie),
-    datasets: [
-      {
-        label: "Cantidad de registros",
-        data: UserData.map((data) => data.cr),
-        backgroundColor: ["#cd0c36", "#000000","#ee4242","#fd7b7b", "#565656","#989898","#ffffff","#670f22", ],
-        borderColor: "black",
-        borderWidth: 1,
-      },
+    labels: UserData.map((row) => row.species),
+      datasets: [
+        {
+          label: "Cantidad de registros",
+          data: UserData.map((row) =>row.CantidadEncuestas),
+          backgroundColor: ["#cd0c36", "#000000","#ee4242","#fd7b7b", "#565656","#989898","#ffffff","#670f22", ],
+          borderColor: "black",
+          borderWidth: 1,
+        },
     ],
   });
 
@@ -73,6 +116,7 @@ export const AdminPanel = () => {
         <div  className='admindiv'>
      
        <h1 class="text-center">Registros totales en el sistema</h1>
+       <Button onClick={getData}>Presione para inciar graficación</Button>
        <Bar data={userData} ref={barra} />;
       
       </div>
@@ -117,7 +161,7 @@ export const AdminPanel = () => {
 <Col>
 <div  className='admindiv'>
 <h1 class="text-center">Generación de reportes</h1>
-
+ 
 <div>
 
 <Modal show={show} onHide={handleClose}    

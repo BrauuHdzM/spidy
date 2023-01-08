@@ -3,51 +3,51 @@ export const UserData = [
     {
       id: 1,
       especie: 'Tarántula',
-      cr: 300,
+      cr: 0,
      
     },
     {
       id: 2,
       especie: 'Eremobates',
-      cr: 450,
+      cr: 0,
    
     },
     {
       id: 3,
       especie: 'Lince V',
-      cr: 159,
+      cr: 0,
      
     },
     {
       id: 4,
       especie: 'Violinista',
-      cr: 89,
+      cr: 0,
      
     },
     {
       id: 5,
       especie: 'Cebra',
-      cr: 341,
+      cr: 0,
 
     },
 
     {
         id: 6,
         especie: 'Viuda',
-        cr: 189,
+        cr: 0,
        
       },
       {
         id: 7,
         especie: 'Patona',
-        cr: 317,
+        cr: 0,
      
       },
     
       {
         id: 8,
         especie: 'Amauris',
-        cr: 290,
+        cr: 0,
        
       },
     
