@@ -10,7 +10,7 @@ router.post('/login', (req, res) => {
 
     req.getConnection((err, conn) => {
         if (err) return res.status(500).send('server error')
-        conn.query("select * from administrators where username = ?  and password = ?", [usuario, password], function(error, results, fields) {
+        conn.query("select * from administrators where username = ?  and password = ?", [usuario, password], function (error, results, fields) {
             if (error) throw error;
             if (results) {
                 res.send(results);
@@ -25,7 +25,7 @@ router.post('/adminData', (req, res) => {
 
     req.getConnection((err, conn) => {
         if (err) return res.status(500).send('server error')
-        conn.query("SELECT spiders.idSpider as id, spiders.species, COUNT(*) as 'CantidadEncuestas' FROM spiders INNER JOIN predictions ON spiders.idSpider = predictions.prediction INNER JOIN surveys ON predictions.idPrediction= surveys.idPrediction group by spiders.idSpider", function(error, results, fields) {
+        conn.query("SELECT spiders.idSpider as id, spiders.species, COUNT(*) as 'CantidadEncuestas' FROM spiders INNER JOIN predictions ON spiders.idSpider = predictions.prediction INNER JOIN surveys ON predictions.idPrediction= surveys.idPrediction group by spiders.idSpider", function (error, results, fields) {
             if (error) res.send(error);
             if (results) {
                 res.send(results);
@@ -41,7 +41,7 @@ router.get('/descargarImagenes', (req, res) => {
     const zip = new AdmZip();
 
     // Lee todos los archivos de la carpeta "imagenes"
-    fs.readdir('imagesUploaded', (error, archivos) => {
+    fs.readdir('./src/imagesUploaded', (error, archivos) => {
         if (error) {
             res.status(500).send('Error al leer la carpeta de imágenes');
             return;
@@ -49,7 +49,7 @@ router.get('/descargarImagenes', (req, res) => {
 
         // Agrega todos los archivos a la instancia de AdmZip
         archivos.forEach(archivo => {
-            const contenido = fs.readFileSync(`imagenes/${archivo}`);
+            const contenido = fs.readFileSync(`./src/imagesUploaded/${archivo}`);
             zip.addFile(archivo, contenido, '', 0o644 << 16);
         });
 
