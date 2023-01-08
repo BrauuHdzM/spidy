@@ -1,6 +1,9 @@
 import React from 'react'
 import * as tf from '@tensorflow/tfjs';
 import aver from '../images/tarantulamexicana.jpg';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image'
 import { fetch, bundleResourceIO } from '@tensorflow/tfjs';
 import { useState, useEffect } from 'react';
 import { ChangeEvent } from 'react';
@@ -66,11 +69,19 @@ export const Escanear = () => {
   };
 
   return (
-    <div>
-      <input type="file" onChange={handleFileChange} />
-      <img src="" alt="" id="imagen"></img>
-      <button onClick={loadModel}>Analizar</button>
-      <div id="resultado"></div>
-    </div>
+    <>
+      <Form.Group controlId="formFile" className="mb-3">
+        <Form.Label>Seleccione una imagen</Form.Label>
+        <Form.Control type="file" size="lg" onChange={handleFileChange}/>
+      </Form.Group>
+      <Image id="imagen" fluid />
+      <br/>
+      <button onClick={loadModel} className="btn bg-transparent">
+        <a className="btnmore primary">
+          <span>Analizar</span>
+        </a>
+      </button>
+
+    </>
   );
 }

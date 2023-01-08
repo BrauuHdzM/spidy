@@ -500,13 +500,35 @@ Nav {
     padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 30px;
- 
 }
+
 .piechartdiv {
     border-radius: 50px;
     padding-top: 50px;
     padding-right: 50px;
     padding-bottom: 50px;
     padding-left: 50px;
- 
+}
+
+.btn-group .btn {
+    width: 50%;
+}
+
+.left-btn {
+    border-radius: 50px 0px 0px 0px !important;
+}
+
+.right-btn {
+    border-radius: 0px 50px 0px 0px !important;
+}
+
+.btn-group {
+    width: 100%;
+}
+
+.boxImagePhoto {
+    min-height: 50vh;
+    border: 4px solid #51585e !important;
+    margin-bottom: 5vh;
+    padding: 5px;
 }
