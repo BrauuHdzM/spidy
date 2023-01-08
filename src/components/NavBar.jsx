@@ -46,7 +46,7 @@ else{
  
   const  loginAdmin = () => {
   
-    axios.post("/predictions/login",{
+    axios.post("/admin/login",{
       username: user,
       password: pass,
     }).then((response)=>{
