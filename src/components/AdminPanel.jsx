@@ -25,7 +25,7 @@ export const AdminPanel = () => {
   const [result, setResult] = useState([]);
   
   useEffect(() => {
-    axios.post("/predictions/adminData")
+    axios.post("/admin/adminData")
     .then((response)=>{
       setResult(JSON.parse(JSON.stringify(response.data)));
       
