@@ -37,7 +37,7 @@ router.post('/adminData', (req, res) => {
 router.post('/satisfaccionG', (req, res) => {
     req.getConnection((err, conn) => {
         if (err) return res.status(500).send('server error')
-        conn.query("SELECT AVG(surveyResult)*10 as Positiva , 100-AVG(surveyResult)*10  as Negativa FROM surveys", function (error, results, fields) {
+        conn.query("SELECT (AVG((surveyResult)*100)/3) as Positiva , 100-(AVG((surveyResult)*100)/3)  as Negativa FROM surveys", function (error, results, fields) {
             if (error) res.send(error);
             if (results) {
                 res.send(results);
