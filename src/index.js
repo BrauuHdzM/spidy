@@ -22,7 +22,11 @@ app.use(myconn(mysql, {
     host: 'localhost',
     port: 3306,
     user: 'root',
+<<<<<<< HEAD
     password: 'root',
+=======
+    password: '1234',
+>>>>>>> 588ec28e37da3bfe60d70e04dbe7d4d8dfaf9a28
     database: 'spidy',
     multipleStatements: true
 }));
