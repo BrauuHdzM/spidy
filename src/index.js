@@ -5,6 +5,7 @@ const app = express();
 const fs = require('fs');
 const mysql = require('mysql');
 const myconn = require('express-myconnection')
+const bodyParser = require('body-parser');
 
 const routesToRedirect = [
     '/Nosotros',
@@ -34,6 +35,7 @@ app.set('port', process.env.PORT || 3000);
 
 //Algo que agregu+e
 app.use(express.json());
+
 //Routes
 app.use('/predictions', require('./routes/predictions.routes'));
 app.use('/admin', require('./routes/admin.routes'));

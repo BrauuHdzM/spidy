@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Escanear } from './Escanear';
 import { CameraCapture } from './CameraCapture';
+import { Encuesta } from './Encuesta';
 
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
@@ -71,7 +72,6 @@ export const Detectar = () => {
             savePrediction(mayorIndice);
             getInfoSpider(mayorIndice)
             handleShow();
-            setImageDisplay("violinista");
         }
     }
 
@@ -82,11 +82,10 @@ export const Detectar = () => {
 
         const formData = new FormData();
         formData.append('image', image);
-        formData.append('prediction', mayorIndice);
+        formData.append('prediction', mayorIndice + 1);
 
         axios.post('/predictions/savePrediction', formData).then((response) => {
             setIdPrediction(response.data.ID);
-            return response.data.ID;
         });
 
     };
@@ -95,7 +94,6 @@ export const Detectar = () => {
         const imagenes = [amaupng, cebrapng, eremobatespng, lincepng, pataslargas, imagenprueba, violinistapng, viudanegrapng];
         const data = { idSpider: prediction + 1 };
         axios.get('/predictions/infoSpider', { params: data }).then((response) => {
-            console.log(response.data.species);
             setInfoSpider({
                 nombre: response.data.species,
                 impMedica: response.data.medicallySignificant,
@@ -122,6 +120,7 @@ export const Detectar = () => {
                             </Col>
                         </Row>
                     </div>
+                    <Encuesta idPrediction={idPrediction} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" id="escaner" onClick={handleClose}>
