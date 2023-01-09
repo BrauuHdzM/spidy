@@ -23,16 +23,13 @@ router.post('/savePrediction', fileUpload, (req, res) => {
     const prediction = req.body.prediction;
     const date = new Date(Date.now()).toISOString().slice(0, 19).replace('T', ' ');
     const storagePath = req.file.filename;
-    console.log(req.body.prediction)
-    console.log(req.file)
-    console.log(req.file.filename);
 
     req.getConnection((err, conn) => {
         if (err) return res.status(500).send('server error')
 
         conn.query('INSERT INTO predictions set ?;SELECT LAST_INSERT_ID() AS ID;', [{ prediction, date, storagePath }], (err, rows, filds) => {
             if (err) {
-                console.error('Error al ejecutar la consulta:', err);
+                console.error('Error al ejecutar la consulta en saveprediction:', err);
                 return;
             }
             let id = Object.values(JSON.parse(JSON.stringify(rows)));
@@ -43,26 +40,37 @@ router.post('/savePrediction', fileUpload, (req, res) => {
 });
 
 router.get('/infoSpider', (req, res) => {
-    console.log(req.query.idSpider);
     req.getConnection((err, conn) => {
-
         if (err) return res.status(500).send('server error');
-
 
         conn.query(`SELECT * FROM spiders WHERE idSpider = ${req.query.idSpider};`, (err, rows) => {
             if (err) {
-                console.error('Error al ejecutar la consulta:', err);
+                console.error('Error al ejecutar la consulta: en infoSpider', err);
                 return;
             }
-
             res.send(rows[0]);
-            console.log(rows[0]);
         });
+
     });
 });
 
 
+router.post('/encuesta', (req, res) => {
+    const idPrediction = req.body.idPrediction;
+    const surveyResult = req.body.surveyResult;
 
+    req.getConnection((err, conn) => {
+        if (err) return res.status(500).send('server error');
+
+        conn.query('INSERT INTO surveys set ?;', [{ idPrediction, surveyResult }], (err, rows) => {
+            if (err) {
+                console.error('Error al ejecutar la consulta en Encuesta:', err);
+                return;
+            }
+            res.send("Encuesta registrada");
+        })
+    });
+});
 
 
 
