@@ -9,12 +9,13 @@ import pataslargas from '../images/pataslargas.jpg';
 import { PDFDownloadLink, PDFViewer, Document, Page } from '@react-pdf/renderer';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import PieChart from "./PieChart";
 import axios from 'axios';
 import { FaFileDownload } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS } from "chart.js/auto";
+
 
 export const AdminPanel = (props) => {
 
@@ -28,7 +29,7 @@ export const AdminPanel = (props) => {
   const [img2, setimg2] = useState({ pataslargas });
   const [result, setResult] = useState([]);
   const [satisG, setsatisG] = useState([]);
-
+  const [satisA, setsatisA] = useState([]);
   useEffect(() => {
     axios.post("/admin/adminData")
       .then((response) => {
@@ -44,7 +45,10 @@ export const AdminPanel = (props) => {
         let auxreg = (JSON.parse(JSON.stringify(response.data)).map((row) => row.encuestas));
         setreg(auxreg);
       })
-
+      axios.post("/admin/satisfaccionA")
+      .then((response) => {
+        setsatisA(JSON.parse(JSON.stringify(response.data)));
+      })
 
   }, [])
 
@@ -98,6 +102,19 @@ export const AdminPanel = (props) => {
         },
       ],
     });
+    setuserDataPastel2({
+      labels: satisA.map((row) => row.species),
+      datasets: [
+        {
+          label: "Cantidad de registros",
+          data: satisA.map((row) => row.PromedioEncuestas),
+          backgroundColor: ["#cd0c36", "#000000", "#ee4242", "#fd7b7b", "#565656", "#989898", "#ffffff", "#670f22",],
+          borderColor: "black",
+          borderWidth: 1,
+        },
+      ],
+    });
+
     setuserDataPastel({
 
       labels: [
@@ -123,6 +140,18 @@ export const AdminPanel = (props) => {
   };
 
   const [userDataPastel, setuserDataPastel] = useState({
+    labels: UserData.map((row) => row.species),
+    datasets: [
+      {
+        label: "Cantidad de registros",
+        data: UserData.map((row) => row.CantidadEncuestas),
+        backgroundColor: ["#cd0c36", "#000000", "#ee4242", "#fd7b7b", "#565656", "#989898", "#ffffff", "#670f22",],
+        borderColor: "black",
+        borderWidth: 1,
+      },
+    ],
+  });
+  const [userDataPastel2, setuserDataPastel2] = useState({
     labels: UserData.map((row) => row.species),
     datasets: [
       {
@@ -163,7 +192,7 @@ export const AdminPanel = (props) => {
                 <div className='admindiv'>
 
                   <h1 class="text-center">Registros totales en el sistema</h1>
-                  <Button onClick={getData}>Presione para inciar graficación</Button>
+                  <button onClick={getData} class="btnmore primary" ><font color="black"><p>Presione para inciar graficación</p></font></button>
                   <Bar data={userData} ref={barra} />;
 
                 </div>
@@ -191,7 +220,8 @@ export const AdminPanel = (props) => {
                 <div className='admindiv'>
                   <h1 class="text-center" >Satisfacción por araña</h1>
                   <div className='piechartdiv'>
-                    <p class="text-center"> <PieChart chartData={userData} /></p>
+                    <p class="text-center"> <Pie data={userDataPastel2} /></p>
+                    <p>Donde 3 equivale a la puntuación máxima y 1 a la puntuación mínima</p>
                   </div>
                 </div>
               </Col>
@@ -238,11 +268,11 @@ export const AdminPanel = (props) => {
                         </p>
                       </Modal.Body>
                     </Modal>
-
-                    <Button onClick={handleClick}> Ver reporte general de la aplicación </Button>
-
+                  <p className='text-center'>
+                    <button onClick={handleClick} class="btnmore primary" ><font color="black"><p>Ver reporte general de la aplicación </p></font></button>
+                    </p>
                   </div>
-                  <p><a>Descargar reporte personalizado</a></p>
+                  
                 </div>
               </Col>
 
