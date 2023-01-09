@@ -20,17 +20,29 @@ export const AdminPanel = (props) => {
 
   const barra = useRef(null);
   const pastel = useRef(null);
-  const [spdmost, setspdmost] = useState('Eremobates');
-  const [prc, setprc] = useState('88');
+  const [spdmost, setspdmost] = useState('');
+  const [prc, setprc] = useState('');
+  const [reg, setreg] = useState('');
+  const [negative, setnegative] = useState('');
   const [img, setimg] = useState({ pataslargas });
   const [img2, setimg2] = useState({ pataslargas });
   const [result, setResult] = useState([]);
+  const [satisG, setsatisG] = useState([]);
 
   useEffect(() => {
     axios.post("/admin/adminData")
       .then((response) => {
         setResult(JSON.parse(JSON.stringify(response.data)));
 
+      })
+    axios.post("/admin/satisfaccionG")
+      .then((response) => {
+        setsatisG(JSON.parse(JSON.stringify(response.data)));
+      })
+    axios.post("/admin/totalEncuestas")
+      .then((response) => {
+        let auxreg = (JSON.parse(JSON.stringify(response.data)).map((row) => row.encuestas));
+        setreg(auxreg);
       })
 
 
@@ -44,15 +56,12 @@ export const AdminPanel = (props) => {
   const handleClick = () => {
     console.log("zapata");
     console.log(spdmost);
+    /*guardando el estado de las graficas para imprimirlas como imagenes*/
     const chart = barra.current;
+    /*convirtiendo la grafica a imagen png*/
     setimg(chart.toBase64Image('image/png', 1));
     const chart2 = pastel.current;
     setimg2(chart2.toBase64Image('image/png', 1));
-
-
-    console.log(img)
-    console.log(img2)
-
     setShow(true);
   }
 
@@ -61,6 +70,22 @@ export const AdminPanel = (props) => {
 
 
   const getData = () => {
+    /*no le se mucho a js pero si este mapeo se lo asignaba directamente a negative y
+    prc explotaba la grafica asi que lo deje asi, intente inicializarlos de muchas formas
+    como const pero pues así jalaron , una disculpa si se ve feo ): */
+    let auxN = satisG.map((row) => row.Negativa);
+    let auxP = satisG.map((row) => row.Positiva);
+
+    setnegative(auxN);
+    setprc(auxP);
+    console.log(reg);
+    /*Hayando a la araña con más registros en el sistema*/
+    console.log("Papapapapa")
+    let res = Math.max.apply(Math, result.map(function (o) { return o.CantidadEncuestas; }))
+    let obj = result.find(function (o) { return o.CantidadEncuestas == res; })
+    console.log(obj.species);
+    setspdmost(obj.species + " con " + obj.CantidadEncuestas + " registros");
+    /*Asignando los valores de la consulta de los registros por araña a la grafica de barras*/
     setUserData({
       labels: result.map((row) => row.species),
       datasets: [
@@ -73,24 +98,43 @@ export const AdminPanel = (props) => {
         },
       ],
     });
+    setuserDataPastel({
 
-    /*
-  
-      axios.post("/predictions/adminData").then((response)=>{
-        const diosayuda=JSON.stringify(response.data); 
-        console.log(diosayuda);
-       
-  
-  
-  
-        });
-        */
+      labels: [
+        'Opiniones Positivas',
+        'Opiniones Negativas'
+      ],
+      datasets: [{
+        label: 'Porcentaje de encuestados',
+        data: [auxP, auxN],
+        backgroundColor: [
+          '#cd0c36',
+          "#000000",
+        ],
+        borderColor: "black",
+        borderWidth: 1,
+      }]
+    });
   }
 
 
   const handleClose = () => {
     setShow(false)
   };
+
+  const [userDataPastel, setuserDataPastel] = useState({
+    labels: UserData.map((row) => row.species),
+    datasets: [
+      {
+        label: "Cantidad de registros",
+        data: UserData.map((row) => row.CantidadEncuestas),
+        backgroundColor: ["#cd0c36", "#000000", "#ee4242", "#fd7b7b", "#565656", "#989898", "#ffffff", "#670f22",],
+        borderColor: "black",
+        borderWidth: 1,
+      },
+    ],
+  });
+
   const [userData, setUserData] = useState({
     labels: UserData.map((row) => row.species),
     datasets: [
@@ -135,9 +179,12 @@ export const AdminPanel = (props) => {
                   <h1 class="text-center">Satisfacción general del sistema</h1>
                   <div className='piechartdiv' >
                     <p class="text-center">
-                      <Pie data={userData} ref={pastel} /></p>
+                      <Pie data={userDataPastel} ref={pastel} /></p>
+                    <p>El sistema cuenta con un {prc}% de aprobación de los usuarios</p>
                   </div>
+
                 </div>
+
               </Col>
 
               <Col>

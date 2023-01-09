@@ -24,13 +24,51 @@ router.post('/adminData', (req, res) => {
 
     req.getConnection((err, conn) => {
         if (err) return res.status(500).send('server error')
-        conn.query("SELECT spiders.idSpider as id, spiders.species, COUNT(*) as 'CantidadEncuestas' FROM spiders INNER JOIN predictions ON spiders.idSpider = predictions.prediction INNER JOIN surveys ON predictions.idPrediction= surveys.idPrediction group by spiders.idSpider", function (error, results, fields) {
+        conn.query("SELECT spiders.species, COUNT(*) as 'CantidadEncuestas' FROM spiders INNER JOIN predictions ON spiders.idSpider = predictions.prediction INNER JOIN surveys ON predictions.idPrediction= surveys.idPrediction group by spiders.idSpider", function (error, results, fields) {
             if (error) res.send(error);
             if (results) {
                 res.send(results);
             }
         });
 
+    })
+})
+
+router.post('/satisfaccionG', (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) return res.status(500).send('server error')
+        conn.query("SELECT AVG(surveyResult)*10 as Positiva , 100-AVG(surveyResult)*10  as Negativa FROM surveys", function (error, results, fields) {
+            if (error) res.send(error);
+            if (results) {
+                res.send(results);
+            }
+        });
+    })
+})
+
+
+router.post('/totalEncuestas', (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) return res.status(500).send('server error')
+        conn.query("SELECT COUNT(*) as encuestas FROM surveys", function (error, results, fields) {
+            if (error) res.send(error);
+            if (results) {
+                res.send(results);
+            }
+        });
+    })
+})
+
+router.post('/satisfaccionA', (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) return res.status(500).send('server error')
+        conn.query("SELECT spiders.species, AVG(surveyResult) as 'PromedioEncuestas' FROM spiders INNER JOIN predictions ON spiders.idSpider = predictions.prediction INNER JOIN surveys ON predictions.idPrediction= surveys.idPrediction group by spiders.idSpider order by spiders.species ASC;",
+         function (error, results, fields) {
+            if (error) res.send(error);
+            if (results) {
+                res.send(results);
+            }
+        });
     })
 })
 
