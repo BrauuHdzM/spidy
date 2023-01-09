@@ -1,5 +1,6 @@
 
 import React, { useRef, useState, useEffect } from 'react';
+import { Redirect } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
 import { UserData } from "./Data";
 import { ReporteG } from "./ReporteGeneral";
@@ -14,7 +15,8 @@ import { FaFileDownload } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { Pie } from "react-chartjs-2";
-export const AdminPanel = () => {
+
+export const AdminPanel = (props) => {
 
   const barra = useRef(null);
   const pastel = useRef(null);
@@ -33,6 +35,10 @@ export const AdminPanel = () => {
 
 
   }, [])
+
+  useEffect(() => {
+    console.log(props.IsAdmin);
+  }, [props.IsAdmin])
 
 
   const handleClick = () => {
@@ -99,102 +105,108 @@ export const AdminPanel = () => {
   });
 
 
-  return (
+  return (<>{props.IsAdmin}
+    {
+      (!props.IsAdmin) ?
+        <h1 className='noLogged'>Requiere iniciar sesión para acceder a esta página.{props.IsAdmin}</h1>
+        :
+        <>
 
-    <>
+          <Container>
+            <Row>
+              <Col>
 
-      <Container>
-        <Row>
-          <Col>
+                <div className='admindiv'>
 
-            <div className='admindiv'>
+                  <h1 class="text-center">Registros totales en el sistema</h1>
+                  <Button onClick={getData}>Presione para inciar graficación</Button>
+                  <Bar data={userData} ref={barra} />;
 
-              <h1 class="text-center">Registros totales en el sistema</h1>
-              <Button onClick={getData}>Presione para inciar graficación</Button>
-              <Bar data={userData} ref={barra} />;
+                </div>
+              </Col>
 
-            </div>
-          </Col>
-
-        </Row>
-        <br></br><br></br>
-        <Row>
-
-
-          <Col>
-            <div className='admindiv'>
-              <h1 class="text-center">Satisfacción general del sistema</h1>
-              <div className='piechartdiv' >
-                <p class="text-center">
-                  <Pie data={userData} ref={pastel} /></p>
-              </div>
-            </div>
-          </Col>
-
-          <Col>
-            <div className='admindiv'>
-              <h1 class="text-center" >Satisfacción por araña</h1>
-              <div className='piechartdiv'>
-                <p class="text-center"> <PieChart chartData={userData} /></p>
-              </div>
-            </div>
-          </Col>
-
-        </Row>
-        <br></br><br></br>
-        <Row>
-
-          <Col>
-            <div className='admindiv'>
-              <h1 class="text-center">Descargas</h1>
-
-              <Button className="btn btn-dark text-center" href='/admin/descargarImagenes'>
-                <p class="text-center"><i><FaFileDownload size="2em" /><a>Haga click aquí para descargar el dataset completo</a></i></p>
-              </Button>
+            </Row>
+            <br></br><br></br>
+            <Row>
 
 
+              <Col>
+                <div className='admindiv'>
+                  <h1 class="text-center">Satisfacción general del sistema</h1>
+                  <div className='piechartdiv' >
+                    <p class="text-center">
+                      <Pie data={userData} ref={pastel} /></p>
+                  </div>
+                </div>
+              </Col>
 
-            </div>
-          </Col>
-          <Col>
-            <div className='admindiv'>
-              <h1 class="text-center">Generación de reportes</h1>
+              <Col>
+                <div className='admindiv'>
+                  <h1 class="text-center" >Satisfacción por araña</h1>
+                  <div className='piechartdiv'>
+                    <p class="text-center"> <PieChart chartData={userData} /></p>
+                  </div>
+                </div>
+              </Col>
 
-              <div>
+            </Row>
+            <br></br><br></br>
+            <Row>
 
-                <Modal show={show} onHide={handleClose}
-                  aria-labelledby="contained-modal-title-vcenter" size="lg"
-                  centered >
-                  <Modal.Header closeButton>
+              <Col>
+                <div className='admindiv'>
+                  <h1 class="text-center">Descargas</h1>
 
-                    <Modal.Title>  <h1 class='text-center'> Reporte general de la aplicación</h1> </Modal.Title>
+                  <Button className="btn btn-dark text-center" href='/admin/descargarImagenes'>
+                    <p class="text-center"><i><FaFileDownload size="2em" /><a>Haga click aquí para descargar el dataset completo</a></i></p>
+                  </Button>
 
-                  </Modal.Header>
 
-                  <Modal.Body>
-                    <PDFDownloadLink document={<ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} />} fileName="ReporteGeneral.pdf">
-                      <p className='text-center'>Descargar reporte general</p>
-                    </PDFDownloadLink>
-                    <p className='text-center'>
-                      <PDFViewer height="500em" width="600em">
-                        <ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} />
-                      </PDFViewer>
-                    </p>
-                  </Modal.Body>
-                </Modal>
 
-                <Button onClick={handleClick}> Ver reporte general de la aplicación </Button>
+                </div>
+              </Col>
+              <Col>
+                <div className='admindiv'>
+                  <h1 class="text-center">Generación de reportes</h1>
 
-              </div>
-              <p><a>Descargar reporte personalizado</a></p>
-            </div>
-          </Col>
+                  <div>
 
-        </Row>
+                    <Modal show={show} onHide={handleClose}
+                      aria-labelledby="contained-modal-title-vcenter" size="lg"
+                      centered >
+                      <Modal.Header closeButton>
 
-      </Container>
-      <br></br>  <br></br>
-    </>
+                        <Modal.Title>  <h1 class='text-center'> Reporte general de la aplicación</h1> </Modal.Title>
 
+                      </Modal.Header>
+
+                      <Modal.Body>
+                        <PDFDownloadLink document={<ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} />} fileName="ReporteGeneral.pdf">
+                          <p className='text-center'>Descargar reporte general</p>
+                        </PDFDownloadLink>
+                        <p className='text-center'>
+                          <PDFViewer height="500em" width="600em">
+                            <ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} />
+                          </PDFViewer>
+                        </p>
+                      </Modal.Body>
+                    </Modal>
+
+                    <Button onClick={handleClick}> Ver reporte general de la aplicación </Button>
+
+                  </div>
+                  <p><a>Descargar reporte personalizado</a></p>
+                </div>
+              </Col>
+
+            </Row>
+
+          </Container>
+          <br></br>  <br></br>
+        </>
+    }
+
+
+  </>
   )
 }
