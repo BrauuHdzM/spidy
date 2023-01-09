@@ -1,5 +1,6 @@
 
 import React, { useRef, useState, useEffect } from 'react';
+import { Redirect } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
 import { UserData } from "./Data";
 import { ReporteG } from "./ReporteGeneral";
@@ -14,7 +15,8 @@ import { FaFileDownload } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { Pie } from "react-chartjs-2";
-export const AdminPanel = () => {
+
+export const AdminPanel = (props) => {
 
   const barra = useRef(null);
   const pastel = useRef(null);
@@ -31,20 +33,24 @@ export const AdminPanel = () => {
     axios.post("/admin/adminData")
       .then((response) => {
         setResult(JSON.parse(JSON.stringify(response.data)));
-       
+
       })
-      axios.post("/admin/satisfaccionG")
+    axios.post("/admin/satisfaccionG")
       .then((response) => {
         setsatisG(JSON.parse(JSON.stringify(response.data)));
       })
-      axios.post("/admin/totalEncuestas")
+    axios.post("/admin/totalEncuestas")
       .then((response) => {
-        let auxreg=(JSON.parse(JSON.stringify(response.data)).map((row) => row.encuestas));
+        let auxreg = (JSON.parse(JSON.stringify(response.data)).map((row) => row.encuestas));
         setreg(auxreg);
       })
 
 
   }, [])
+
+  useEffect(() => {
+    console.log(props.IsAdmin);
+  }, [props.IsAdmin])
 
 
   const handleClick = () => {
@@ -67,19 +73,19 @@ export const AdminPanel = () => {
     /*no le se mucho a js pero si este mapeo se lo asignaba directamente a negative y
     prc explotaba la grafica asi que lo deje asi, intente inicializarlos de muchas formas
     como const pero pues así jalaron , una disculpa si se ve feo ): */
-   let auxN=satisG.map((row) => row.Negativa);
-   let auxP=satisG.map((row) => row.Positiva);
-   
-   setnegative(auxN);
-   setprc(auxP);
+    let auxN = satisG.map((row) => row.Negativa);
+    let auxP = satisG.map((row) => row.Positiva);
+
+    setnegative(auxN);
+    setprc(auxP);
     console.log(reg);
     /*Hayando a la araña con más registros en el sistema*/
     console.log("Papapapapa")
-    let res = Math.max.apply(Math,result.map(function(o){return o.CantidadEncuestas;}))
-    let obj = result.find(function(o){ return o.CantidadEncuestas == res; })
-   console.log(obj.species);
-   setspdmost(obj.species +" con " +obj.CantidadEncuestas +" registros");
-  /*Asignando los valores de la consulta de los registros por araña a la grafica de barras*/
+    let res = Math.max.apply(Math, result.map(function (o) { return o.CantidadEncuestas; }))
+    let obj = result.find(function (o) { return o.CantidadEncuestas == res; })
+    console.log(obj.species);
+    setspdmost(obj.species + " con " + obj.CantidadEncuestas + " registros");
+    /*Asignando los valores de la consulta de los registros por araña a la grafica de barras*/
     setUserData({
       labels: result.map((row) => row.species),
       datasets: [
@@ -100,14 +106,16 @@ export const AdminPanel = () => {
       ],
       datasets: [{
         label: 'Porcentaje de encuestados',
-        data: [auxP,auxN],
+        data: [auxP, auxN],
         backgroundColor: [
           '#cd0c36',
           "#000000",
         ],
         borderColor: "black",
         borderWidth: 1,
-      }]});}
+      }]
+    });
+  }
 
 
   const handleClose = () => {
@@ -141,105 +149,111 @@ export const AdminPanel = () => {
   });
 
 
-  return (
+  return (<>{props.IsAdmin}
+    {
+      (!props.IsAdmin) ?
+        <h1 className='noLogged'>Requiere iniciar sesión para acceder a esta página.{props.IsAdmin}</h1>
+        :
+        <>
 
-    <>
+          <Container>
+            <Row>
+              <Col>
 
-      <Container>
-        <Row>
-          <Col>
+                <div className='admindiv'>
 
-            <div className='admindiv'>
+                  <h1 class="text-center">Registros totales en el sistema</h1>
+                  <Button onClick={getData}>Presione para inciar graficación</Button>
+                  <Bar data={userData} ref={barra} />;
 
-              <h1 class="text-center">Registros totales en el sistema {reg}</h1>
-              <Button onClick={getData}>Presione para inciar graficación</Button>
-              <Bar data={userData} ref={barra} />;
+                </div>
+              </Col>
 
-            </div>
-          </Col>
-
-        </Row>
-        <br></br><br></br>
-        <Row>
-
-
-          <Col>
-            <div className='admindiv'>
-              <h1 class="text-center">Satisfacción general del sistema</h1>
-              <div className='piechartdiv' >
-                <p class="text-center">
-                  <Pie data={userDataPastel} ref={pastel} /></p>
-                  <p>El sistema cuenta con un {prc}% de aprobación de los usuarios</p>
-              </div>
-              
-            </div>
-      
-          </Col>
-
-          <Col>
-            <div className='admindiv'>
-              <h1 class="text-center" >Satisfacción por araña</h1>
-              <div className='piechartdiv'>
-                <p class="text-center"> <PieChart chartData={userData} /></p>
-              </div>
-            </div>
-          </Col>
-
-        </Row>
-        <br></br><br></br>
-        <Row>
-
-          <Col>
-            <div className='admindiv'>
-              <h1 class="text-center">Descargas</h1>
-
-              <Button className="btn btn-dark text-center" href='/admin/descargarImagenes'>
-                <p class="text-center"><i><FaFileDownload size="2em" /><a>Haga click aquí para descargar el dataset completo</a></i></p>
-              </Button>
+            </Row>
+            <br></br><br></br>
+            <Row>
 
 
+              <Col>
+                <div className='admindiv'>
+                  <h1 class="text-center">Satisfacción general del sistema</h1>
+                  <div className='piechartdiv' >
+                    <p class="text-center">
+                      <Pie data={userDataPastel} ref={pastel} /></p>
+                    <p>El sistema cuenta con un {prc}% de aprobación de los usuarios</p>
+                  </div>
 
-            </div>
-          </Col>
-          <Col>
-            <div className='admindiv'>
-              <h1 class="text-center">Generación de reportes</h1>
+                </div>
 
-              <div>
+              </Col>
 
-                <Modal show={show} onHide={handleClose}
-                  aria-labelledby="contained-modal-title-vcenter" size="lg"
-                  centered >
-                  <Modal.Header closeButton>
+              <Col>
+                <div className='admindiv'>
+                  <h1 class="text-center" >Satisfacción por araña</h1>
+                  <div className='piechartdiv'>
+                    <p class="text-center"> <PieChart chartData={userData} /></p>
+                  </div>
+                </div>
+              </Col>
 
-                    <Modal.Title>  <h1 class='text-center'> Reporte general de la aplicación</h1> </Modal.Title>
+            </Row>
+            <br></br><br></br>
+            <Row>
 
-                  </Modal.Header>
+              <Col>
+                <div className='admindiv'>
+                  <h1 class="text-center">Descargas</h1>
 
-                  <Modal.Body>
-                    <PDFDownloadLink document={<ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} />} fileName="ReporteGeneral.pdf">
-                      <p className='text-center'>Descargar reporte general</p>
-                    </PDFDownloadLink>
-                    <p className='text-center'>
-                      <PDFViewer height="500em" width="600em">
-                        <ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} />
-                      </PDFViewer>
-                    </p>
-                  </Modal.Body>
-                </Modal>
+                  <Button className="btn btn-dark text-center" href='/admin/descargarImagenes'>
+                    <p class="text-center"><i><FaFileDownload size="2em" /><a>Haga click aquí para descargar el dataset completo</a></i></p>
+                  </Button>
 
-                <Button onClick={handleClick}> Ver reporte general de la aplicación </Button>
 
-              </div>
-              <p><a>Descargar reporte personalizado</a></p>
-            </div>
-          </Col>
 
-        </Row>
+                </div>
+              </Col>
+              <Col>
+                <div className='admindiv'>
+                  <h1 class="text-center">Generación de reportes</h1>
 
-      </Container>
-      <br></br>  <br></br>
-    </>
+                  <div>
 
+                    <Modal show={show} onHide={handleClose}
+                      aria-labelledby="contained-modal-title-vcenter" size="lg"
+                      centered >
+                      <Modal.Header closeButton>
+
+                        <Modal.Title>  <h1 class='text-center'> Reporte general de la aplicación</h1> </Modal.Title>
+
+                      </Modal.Header>
+
+                      <Modal.Body>
+                        <PDFDownloadLink document={<ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} />} fileName="ReporteGeneral.pdf">
+                          <p className='text-center'>Descargar reporte general</p>
+                        </PDFDownloadLink>
+                        <p className='text-center'>
+                          <PDFViewer height="500em" width="600em">
+                            <ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} />
+                          </PDFViewer>
+                        </p>
+                      </Modal.Body>
+                    </Modal>
+
+                    <Button onClick={handleClick}> Ver reporte general de la aplicación </Button>
+
+                  </div>
+                  <p><a>Descargar reporte personalizado</a></p>
+                </div>
+              </Col>
+
+            </Row>
+
+          </Container>
+          <br></br>  <br></br>
+        </>
+    }
+
+
+  </>
   )
 }

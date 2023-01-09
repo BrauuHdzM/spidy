@@ -5,7 +5,7 @@ import { Inicio } from './Inicio';
 import { Nosotros } from './Nosotros';
 import { Mapa } from './Mapa';
 import { Detectar } from './Detectar';
-import { AdminBar} from './AdminBar';
+import { AdminBar } from './AdminBar';
 import { CameraCapture } from './CameraCapture';
 import { AdminPanel } from './AdminPanel';
 import { InformacionArana } from './InformacionArana';
@@ -23,26 +23,26 @@ import {
 
 
 function App() {
-  const [loading,setLoading]=useState(false)
-  useEffect(()=>{
-
-   setLoading(false)
-   setTimeout(()=>{
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
 
     setLoading(false)
-   },60000)
+    setTimeout(() => {
 
-  },[])
+      setLoading(false)
+    }, 60000)
 
-  const  [IsAdmin, setIsAdmin]= useState(false);
+  }, [])
 
-  const logIn=()=>{
+  const [IsAdmin, setIsAdmin] = useState(false);
+
+  const logIn = () => {
 
     setIsAdmin(true);
 
-  }
 
-  const logout=()=>{
+  }
+  const logout = () => {
 
     setIsAdmin(false);
 
@@ -50,45 +50,44 @@ function App() {
 
 
   return (
-   
+
     <Router>
-       
-       <div>
-      { IsAdmin ? <AdminBar logout={logout} ></AdminBar>:<NavBar logIn={logIn}/>}
+      <div>
+        {IsAdmin ? <AdminBar logout={logout} ></AdminBar> : <NavBar logIn={logIn} />}
       </div>
-     
+
       {
-  loading?
+        loading ?
 
-<GridLoader color="#d63636" loading={loading} size={150} />
+          <GridLoader color="#d63636" loading={loading} size={150} />
 
-  :
-      <div className='container'>
-    
-      <hr />
-      <Routes>
-        <Route path="/InformacionArana" element= {<InformacionArana />}>
-        </Route>
-        <Route path="/Nosotros" element= {<Nosotros />}>
-        </Route>
-        <Route path="/Detectar" element= {<Detectar />}>
-        </Route>
-        <Route path="/Escanear" element= {<Escanear />}>
-        </Route>
-        <Route path="/CameraCapture" element= {<CameraCapture />}>
-        </Route>
-        <Route path="/Mapa" element= {<Mapa />}>
-        </Route>            
-        <Route path="/" element= {<Inicio />}>
-        </Route>
-        <Route path="/AdminPanel" element= {<AdminPanel />}>
-        </Route>  
-     
-       </Routes>  
-      </div> 
+          :
+          <div className='container'>
+
+            <hr />
+            <Routes>
+              <Route path="/InformacionArana" element={<InformacionArana />}>
+              </Route>
+              <Route path="/Nosotros" element={<Nosotros />}>
+              </Route>
+              <Route path="/Detectar" element={<Detectar />}>
+              </Route>
+              <Route path="/Escanear" element={<Escanear />}>
+              </Route>
+              <Route path="/CameraCapture" element={<CameraCapture />}>
+              </Route>
+              <Route path="/Mapa" element={<Mapa />}>
+              </Route>
+              <Route path="/" element={<Inicio />}>
+              </Route>
+              <Route path="/AdminPanel" element={<AdminPanel IsAdmin={IsAdmin} />}>
+              </Route>
+
+            </Routes>
+          </div>
       }
-    
-       
+
+
     </Router>
   );
 }
