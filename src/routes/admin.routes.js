@@ -15,7 +15,6 @@ router.post('/login', (req, res) => {
             if (results) {
                 res.send(results);
             }
-
         });
 
     })
@@ -30,7 +29,6 @@ router.post('/adminData', (req, res) => {
             if (results) {
                 res.send(results);
             }
-
         });
 
     })
