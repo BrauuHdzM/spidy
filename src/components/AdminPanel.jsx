@@ -45,6 +45,7 @@ export const AdminPanel = (props) => {
         setreg(auxreg);
       })
 
+      
 
   }, [])
 
