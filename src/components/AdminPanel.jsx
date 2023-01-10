@@ -33,6 +33,8 @@ export const AdminPanel = (props) => {
 
   const barra = useRef(null);
   const pastel = useRef(null);
+ 
+
   const [spdmost, setspdmost] = useState('');
   const [prc, setprc] = useState('');
   const [reg, setreg] = useState('');
@@ -84,22 +86,73 @@ export const AdminPanel = (props) => {
 
   
   /*Reporte Araña*/
-  const reportepers = () => {
-    axios.post("/admin/statsperspider", {
-      spidername:"Tarantula",
-    }).then((response) => {
-      console.log(response.data)
-    });
-  }
  
   const [show, setShow] = useState(false);
   const [showReporteA, setshowReporteA] = useState(false);
+ 
+  const [spidernombre, setspidernombre] = useState('');
   const [showGenerator, setShowGenerator] = useState(false);
-  const showgenerarReporte = () => {setShowGenerator(true);}
   
+  const showgenerarReporte = () => {setShowGenerator(true);}
+  const handleChange = e => {
+ 
+    switch(e.target.value) {
+      case '1':
+        setbanner(ViolinistaPic);
+        setspidernombre('Violinista');
+      break;
+      case '2':
+        setbanner(LinceVerdePic);
+        setspidernombre('LinceVerde');
+      break;
+      case '3':
+        setbanner(PatasLargasPic);
+        setspidernombre('PatasLargas');
+      break;
+      case '4':
+        setbanner(CebraPic);
+        setspidernombre('Cebra');
+      break;
+      case '5':
+        setbanner(ViudaPic);
+        setspidernombre('ViudaNegra');
+      break;
+      case '6':
+        setbanner(AmauroPic);
+        setspidernombre('Amaurobius Similis');
+      break;
+      case '7':
+        setbanner(EremobatesPic);
+        setspidernombre('Eremobates');
+      break;
+      case '8':
+        setbanner(TarantulaPic);
+        setspidernombre('Tarantula');
+      break;
+      default:
+        setbanner(TarantulaPic);  
+        setspidernombre('Tarantula');
+        break;
+    }
+
+
+
+  }
   const   handleCloseGenerator = () => {
     setShowGenerator(false);
-    setbanner(TarantulaPic);
+    
+   console.log(spidernombre);
+    axios.post("/admin/statsperspider", {
+      spidername:spidernombre,
+    }).then((response) => {
+      let aux =JSON.parse(JSON.stringify(response.data));
+      let aux2=aux.splice(1);
+      let aux3=JSON.parse(JSON.stringify(aux2));
+      console.log(aux3);
+
+    });
+
+
     setshowReporteA(true);
 
   }
@@ -319,7 +372,7 @@ export const AdminPanel = (props) => {
                       </Modal.Header>
 
                       <Modal.Body>
-                      <Form.Select aria-label="Default select example">
+                      <Form.Select aria-label="Default select example"  onChange={(e) => handleChange(e)}>
                             <option><p>Seleccione una araña</p></option>
                             <option value="1">Violinista</option>
                             <option value="2">Lince Verde</option>
