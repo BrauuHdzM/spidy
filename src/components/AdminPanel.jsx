@@ -14,7 +14,19 @@ import { FaFileDownload } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
+import { Chart as ChartJS } from "chart.js/auto"; //no borrar parece que no lo usa pero si lo quitas muere
+import Form from 'react-bootstrap/Form';
+import { ReporteSpider} from "./ReporteArania";
+import ViolinistaPic from '../images/rP/r2Vio.jpg';
+import AmauroPic from '../images/rP/r2Amaurobius.jpg';
+import EremobatesPic from '../images/rP/r2Eremobates.jpg';
+import LinceVerdePic from '../images/rP/r2LinceVerde.jpg';
+import PatasLargasPic from '../images/rP/r2PatasLargas.jpg';
+import CebraPic from '../images/rP/r2SCebra.jpg';
+import TarantulaPic from '../images/rP/r2Tar.jpg';
+import ViudaPic from '../images/rP/r2Viuda.jpg';
+
+
 
 
 export const AdminPanel = (props) => {
@@ -27,6 +39,7 @@ export const AdminPanel = (props) => {
   const [negative, setnegative] = useState('');
   const [img, setimg] = useState({ pataslargas });
   const [img2, setimg2] = useState({ pataslargas });
+  const [banner, setbanner] = useState({TarantulaPic});
   const [result, setResult] = useState([]);
   const [satisG, setsatisG] = useState([]);
   const [satisA, setsatisA] = useState([]);
@@ -74,9 +87,30 @@ export const AdminPanel = (props) => {
     setShow(true);
   }
 
-
+  
+  /*Reporte Araña*/
+  const reportepers = () => {
+    axios.post("/admin/statsperspider", {
+      spidername:"Tarantula",
+    }).then((response) => {
+      console.log(response.data)
+    });
+  }
+ 
   const [show, setShow] = useState(false);
+  const [showReporteA, setshowReporteA] = useState(false);
+  const [showGenerator, setShowGenerator] = useState(false);
+  const showgenerarReporte = () => {setShowGenerator(true);}
+  
+  const   handleCloseGenerator = () => {
+    setShowGenerator(false);
+    setbanner(TarantulaPic);
+    setshowReporteA(true);
 
+  }
+  const  handleCloseReporteA = () => {
+    setshowReporteA(false)
+  };
 
   const getData = () => {
     /*no le se mucho a js pero si este mapeo se lo asignaba directamente a negative y
@@ -275,14 +309,65 @@ export const AdminPanel = (props) => {
                     </Modal>
                   <p className='text-center'>
                     <button onClick={handleClick} class="btnmore primary" ><font color="black"><p>Ver reporte general de la aplicación </p></font></button>
+                    <button onClick={showgenerarReporte} class="btnmore primary" ><font color="black"><p>Generar el reporte de una araña</p></font></button>
                     </p>
                   </div>
                   
                 </div>
+                <Modal show={showGenerator} onHide={handleCloseGenerator}
+                      aria-labelledby="contained-modal-title-vcenter" size="lg"
+                      centered >
+                      <Modal.Header closeButton>
+
+                        <Modal.Title>  <h1 class='text-center'>Generador de reportes personalizados</h1> </Modal.Title>
+
+                      </Modal.Header>
+
+                      <Modal.Body>
+                      <Form.Select aria-label="Default select example">
+                            <option><p>Seleccione una araña</p></option>
+                            <option value="1">Violinista</option>
+                            <option value="2">Lince Verde</option>
+                            <option value="3">Patas Largas</option>
+                            <option value="4">Cebra</option>
+                            <option value="5">Viuda Negra</option>
+                            <option value="6">Amaurobius Similis</option>
+                            <option value="7">Eremobates</option>
+                            <option value="8">Tarántula</option>
+                       </Form.Select>
+                       <button onClick={handleCloseGenerator} class="btnmore primary" ><font color="black"><p>Generar reporte</p></font></button>
+                      </Modal.Body>
+                    </Modal>
+                    <Modal show={showReporteA} onHide={handleCloseReporteA}
+                      aria-labelledby="contained-modal-title-vcenter" size="lg"
+                      centered >
+                      <Modal.Header closeButton>
+
+                        <Modal.Title>  <h1 class='text-center'>Reporte de la araña X</h1> </Modal.Title>
+
+                      </Modal.Header>
+
+                      <Modal.Body>
+                        <PDFDownloadLink document={<ReporteSpider img={banner}/>} fileName="ReportePersonalizadoA.pdf">
+                          <p className='text-center'>Descargar reporte general</p>
+                        </PDFDownloadLink>
+                        <p className='text-center'>
+                          <PDFViewer height="500em" width="600em">
+                          <ReporteSpider img={banner}/>
+                          </PDFViewer>
+                        </p>
+                      </Modal.Body>
+                    </Modal>
+
+
+
+
+
+
+
+
               </Col>
-
             </Row>
-
           </Container>
           <br></br>  <br></br>
         </>

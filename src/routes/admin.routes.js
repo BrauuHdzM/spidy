@@ -20,6 +20,23 @@ router.post('/login', (req, res) => {
     })
 })
 
+router.post('/statsperspider', (req, res) => {
+    const body = req.body;
+    const spidername = body.spidername;
+   
+    req.getConnection((err, conn) => {
+        if (err) return res.status(500).send('server error')
+        conn.query("CALL spiderstats(?, @promedio, @registrostotales);  SELECT @promedio, @registrostotales", [spidername], function (error, results, fields) {
+            if (error) throw error;
+            if (results) {
+                res.send(results);
+            }
+        });
+
+    })
+})
+
+
 router.post('/adminData', (req, res) => {
 
     req.getConnection((err, conn) => {
