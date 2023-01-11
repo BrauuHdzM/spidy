@@ -11,6 +11,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import { FaFileDownload } from "react-icons/fa";
+import { FaSpider } from "react-icons/fa";
+import { BsFileZipFill } from "react-icons/bs";
+
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { Pie } from "react-chartjs-2";
@@ -174,7 +177,6 @@ export const AdminPanel = (props) => {
     setprc(auxP);
     console.log(reg);
     /*Hayando a la araña con más registros en el sistema*/
-    console.log("Papapapapa")
     let res = Math.max.apply(Math, result.map(function (o) { return o.CantidadEncuestas; }))
     let obj = result.find(function (o) { return o.CantidadEncuestas == res; })
     console.log(obj.species);
@@ -196,7 +198,7 @@ export const AdminPanel = (props) => {
       labels: satisA.map((row) => row.species),
       datasets: [
         {
-          label: "Cantidad de registros",
+          label: "Calificación promedio",
           data: satisA.map((row) => row.PromedioEncuestas),
           backgroundColor: ["#cd0c36", "#000000", "#ee4242", "#fd7b7b", "#565656", "#989898", "#ffffff", "#670f22",],
           borderColor: "black",
@@ -282,7 +284,9 @@ export const AdminPanel = (props) => {
                 <div className='admindiv'>
 
                   <h1 class="text-center">Registros totales en el sistema</h1>
-                  <button onClick={getData} class="btnmore primary" ><font color="black"><p>Presione para inciar graficación</p></font></button>
+                  
+                  <Button onClick={getData} id="escaner" >Presione para inciar graficación</Button>
+                  
                   <Bar data={userData} ref={barra} />;
 
                 </div>
@@ -320,21 +324,10 @@ export const AdminPanel = (props) => {
             <br></br><br></br>
             <Row>
 
+        
               <Col>
                 <div className='admindiv'>
-                  <h1 class="text-center">Descargas</h1>
-
-                  <Button className="btn btn-dark text-center" href='/admin/descargarImagenes'>
-                    <p class="text-center"><i><FaFileDownload size="2em" /><a>Haga click aquí para descargar el dataset completo</a></i></p>
-                  </Button>
-
-
-
-                </div>
-              </Col>
-              <Col>
-                <div className='admindiv'>
-                  <h1 class="text-center">Generación de reportes</h1>
+                  <h1 class="text-center">Generación de reportes y descargas</h1>
 
                   <div>
 
@@ -359,8 +352,22 @@ export const AdminPanel = (props) => {
                       </Modal.Body>
                     </Modal>
                   <p className='text-center'>
-                    <button onClick={handleClick} class="btnmore primary" ><font color="black"><p>Ver reporte general de la aplicación </p></font></button>
-                    <button onClick={showgenerarReporte} class="btnmore primary" ><font color="black"><p>Generar el reporte de una araña</p></font></button>
+                  <div class="row">
+                 <div class="col">
+                    <button onClick={handleClick} class="btn btn-sq  btn-danger"  ><i><FaFileDownload size="5em" /></i><br></br><h3>Reporte general</h3></button>
+                    </div>
+                    <div class="col" >
+                    <button onClick={showgenerarReporte} class="btn btn-sq  btn-danger " ><i><FaSpider size="5em" /></i><br></br><h3>Reporte por  araña</h3></button>
+                    </div>
+
+                    <div class="col" >
+                    
+                  <button className="btn btn-sq  btn-danger" href='/admin/descargarImagenes'>
+                    <i><BsFileZipFill size="4em" /><br></br><h3>Descargar dataset</h3></i>
+                  </button>
+                  
+                  </div>
+                    </div>
                     </p>
                   </div>
                   
@@ -386,7 +393,7 @@ export const AdminPanel = (props) => {
                             <option value="7">Eremobates</option>
                             <option value="8">Tarántula</option>
                        </Form.Select>
-                       <button onClick={handleCloseGenerator} class="btnmore primary" ><font color="black"><p>Generar reporte</p></font></button>
+                       <button onClick={handleCloseGenerator} class="btnmore primary" ><font color="black"><span><p>Generar reporte</p></span></font></button>
                       </Modal.Body>
                     </Modal>
                     <Modal show={showReporteA} onHide={handleCloseReporteA}

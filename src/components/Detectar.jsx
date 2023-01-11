@@ -128,8 +128,9 @@ export const Detectar = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-
-
+<font color="white">
+<h1 className='text-center'>ANALIZADOR DE ARAÑAS</h1>
+<h3 className='text-center'>Toma la fotografía de la araña que quieras identificar o bien, sube una desde tu dispositivo</h3> <br></br></font>
             <div className="btn-group">
                 <button
                     type="button"
@@ -145,7 +146,10 @@ export const Detectar = () => {
                 </button>
             </div>
             <div className="boxImagePhoto">
+              
                 {option ? <CameraCapture setFileP={setFileP} setImage={setImage} predict={predict} /> : <Escanear setFileP={setFileP} setImage={setImage} predict={predict} />}
+               
+            
             </div>
 
         </div>
