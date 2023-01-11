@@ -33,16 +33,24 @@ export const AdminPanel = (props) => {
 
   const barra = useRef(null);
   const pastel = useRef(null);
+  
+
   const [spdmost, setspdmost] = useState('');
   const [prc, setprc] = useState('');
   const [reg, setreg] = useState('');
   const [negative, setnegative] = useState('');
+
+  const [totalsp,settotalsp]= useState('');
+  const [averagespider,setaveragespider]= useState('');
+  
   const [img, setimg] = useState({ pataslargas });
   const [img2, setimg2] = useState({ pataslargas });
   const [banner, setbanner] = useState({TarantulaPic});
   const [result, setResult] = useState([]);
   const [satisG, setsatisG] = useState([]);
   const [satisA, setsatisA] = useState([]);
+
+
   useEffect(() => {
     axios.post("/admin/adminData")
       .then((response) => {
@@ -89,22 +97,70 @@ export const AdminPanel = (props) => {
 
   
   /*Reporte Araña*/
-  const reportepers = () => {
-    axios.post("/admin/statsperspider", {
-      spidername:"Tarantula",
-    }).then((response) => {
-      console.log(response.data)
-    });
-  }
  
   const [show, setShow] = useState(false);
   const [showReporteA, setshowReporteA] = useState(false);
+ 
+  const [spidernombre, setspidernombre] = useState('');
   const [showGenerator, setShowGenerator] = useState(false);
-  const showgenerarReporte = () => {setShowGenerator(true);}
   
-  const   handleCloseGenerator = () => {
+  const showgenerarReporte = () => {setShowGenerator(true);}
+   /*para poner el banner de acuerdo a la araña*/
+  const handleChange = e => {
+    switch(e.target.value) {
+      case '1':
+        setbanner(ViolinistaPic);
+        setspidernombre('Violinista');
+      break;
+      case '2':
+        setbanner(LinceVerdePic);
+        setspidernombre('LinceVerde');
+      break;
+      case '3':
+        setbanner(PatasLargasPic);
+        setspidernombre('PatasLargas');
+      break;
+      case '4':
+        setbanner(CebraPic);
+        setspidernombre('Cebra');
+      break;
+      case '5':
+        setbanner(ViudaPic);
+        setspidernombre('ViudaNegra');
+      break;
+      case '6':
+        setbanner(AmauroPic);
+        setspidernombre('Amaurobius Similis');
+      break;
+      case '7':
+        setbanner(EremobatesPic);
+        setspidernombre('Eremobates');
+      break;
+      case '8':
+        setbanner(TarantulaPic);
+        setspidernombre('Tarantula');
+      break;
+      default:
+        setbanner(TarantulaPic);  
+        setspidernombre('Tarantula');
+        break;
+    }
+  }
+  /*para consultar la info individual por araña*/
+  async function status() {
+    const response = await axios.post("/admin/statsperspider", {
+      spidername:spidernombre,
+    });
+    return (JSON.parse(JSON.stringify(response.data))).splice(1); /*como se ejecutan dos querys
+     solo se toma la respuesta del segundo*/
+  }
+
+  const   handleCloseGenerator  =  () =>{
     setShowGenerator(false);
-    setbanner(TarantulaPic);
+    
+    status().then(data => setaveragespider(JSON.stringify(data[0].map((row) => row.promedio))));
+    status().then(data => settotalsp(JSON.stringify(data[0].map((row) => row.registrostotales))));
+
     setshowReporteA(true);
 
   }
@@ -324,7 +380,7 @@ export const AdminPanel = (props) => {
                       </Modal.Header>
 
                       <Modal.Body>
-                      <Form.Select aria-label="Default select example">
+                      <Form.Select aria-label="Default select example"  onChange={(e) => handleChange(e)}>
                             <option><p>Seleccione una araña</p></option>
                             <option value="1">Violinista</option>
                             <option value="2">Lince Verde</option>
@@ -343,17 +399,17 @@ export const AdminPanel = (props) => {
                       centered >
                       <Modal.Header closeButton>
 
-                        <Modal.Title>  <h1 class='text-center'>Reporte de la araña X</h1> </Modal.Title>
+                        <Modal.Title>  <h1 class='text-center'>Reporte de la araña {spidernombre}</h1> </Modal.Title>
 
                       </Modal.Header>
 
                       <Modal.Body>
-                        <PDFDownloadLink document={<ReporteSpider img={banner}/>} fileName="ReportePersonalizadoA.pdf">
+                        <PDFDownloadLink document={<ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider}/>} fileName="ReportePersonalizadoA.pdf">
                           <p className='text-center'>Descargar reporte general</p>
                         </PDFDownloadLink>
                         <p className='text-center'>
                           <PDFViewer height="500em" width="600em">
-                          <ReporteSpider img={banner}/>
+                          <ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider}/>
                           </PDFViewer>
                         </p>
                       </Modal.Body>

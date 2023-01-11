@@ -9,14 +9,17 @@ import TarantulaPic from '../images/rP/r2Tar.jpg';
 const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-export const ReporteSpider = ({img}) => (
+export const ReporteSpider = ({img,registrostotales,califa}) => (
     <Document>
       <Page>
       <Image src={portada3} />
       <Image src={img} />
-
-      
-      <Text style={styles.pageNumber}>Copyright © 2023 All Rights Reserved by Spidyyy</Text> 
+      <View style={styles.body}>
+      <Text style={styles.title}>Fecha: {date}</Text>
+      <Text style={styles.title}> Total de registros en sistema : {registrostotales}</Text>
+      <Text style={styles.title}> Calificación : {califa}</Text>
+      </View>
+      <Text style={styles.pageNumber}>Copyright © 2023 All Rights Reserved by Spidy</Text> 
       </Page>
 
 
