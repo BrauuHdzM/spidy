@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-
+import { Button } from 'react-bootstrap';
 export const CameraCapture = (props) => {
   const [stream, setStream] = useState(null);
   const [photo, setPhoto] = useState(null);
@@ -32,13 +32,18 @@ export const CameraCapture = (props) => {
   };
 
   return (
-    <div>
+    <div><p className='text-center'>
+      <h1><font color="white">Tomar una fotografía</font></h1>
+      <h3><font color="white">¡Trata de buscar un lugar con buena luz!</font></h3>
       <video autoPlay />
-      <canvas width={224} height={224} />
-      <button onClick={takePhoto}>Take photo</button>
-      <button onClick={props.predict}>Detectar</button>
-      <img src="" alt="" id="imagen"></img>
-
+      <canvas width={200} height={200} />
+     
+      <Button onClick={takePhoto} id="escaner">Tomar fotografía</Button>
+      <Button onClick={props.predict} id="escaner">Analizar</Button>
+      
+      <h3><font color="white">Tú fotografía: </font></h3>
+      <img src="" alt="" id="imagen" width="400" height="400"></img>
+      </p>
     </div>
   );
 }

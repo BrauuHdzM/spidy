@@ -284,7 +284,9 @@ export const AdminPanel = (props) => {
                 <div className='admindiv'>
 
                   <h1 class="text-center">Registros totales en el sistema</h1>
-                  <button onClick={getData} class="btnmore primary" ><font color="black"><p>Presione para inciar graficación</p></font></button>
+                  
+                  <Button onClick={getData} id="escaner" >Presione para inciar graficación</Button>
+                  
                   <Bar data={userData} ref={barra} />;
 
                 </div>
@@ -322,21 +324,10 @@ export const AdminPanel = (props) => {
             <br></br><br></br>
             <Row>
 
+        
               <Col>
                 <div className='admindiv'>
-                  <h1 class="text-center">Descargas</h1>
-                  <p class="text-center">
-                  <Button className="btn btn-sq  btn-danger" href='/admin/descargarImagenes'>
-                    <i><BsFileZipFill size="5em" /><br></br><h3>Descargar dataset</h3></i>
-                  </Button>
-                  </p>
-
-
-                </div>
-              </Col>
-              <Col>
-                <div className='admindiv'>
-                  <h1 class="text-center">Generación de reportes</h1>
+                  <h1 class="text-center">Generación de reportes y descargas</h1>
 
                   <div>
 
@@ -368,6 +359,14 @@ export const AdminPanel = (props) => {
                     <div class="col" >
                     <button onClick={showgenerarReporte} class="btn btn-sq  btn-danger " ><i><FaSpider size="5em" /></i><br></br><h3>Reporte por  araña</h3></button>
                     </div>
+
+                    <div class="col" >
+                    
+                  <button className="btn btn-sq  btn-danger" href='/admin/descargarImagenes'>
+                    <i><BsFileZipFill size="4em" /><br></br><h3>Descargar dataset</h3></i>
+                  </button>
+                  
+                  </div>
                     </div>
                     </p>
                   </div>
@@ -394,7 +393,7 @@ export const AdminPanel = (props) => {
                             <option value="7">Eremobates</option>
                             <option value="8">Tarántula</option>
                        </Form.Select>
-                       <button onClick={handleCloseGenerator} class="btnmore primary" ><font color="black"><p>Generar reporte</p></font></button>
+                       <button onClick={handleCloseGenerator} class="btnmore primary" ><font color="black"><span><p>Generar reporte</p></span></font></button>
                       </Modal.Body>
                     </Modal>
                     <Modal show={showReporteA} onHide={handleCloseReporteA}

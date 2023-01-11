@@ -13,20 +13,23 @@ export const Escanear = (props) => {
 
   };
 
+
   return (
     <>
       <Form.Group controlId="formFile" className="mb-3">
-        <Form.Label>Seleccione una imagen</Form.Label>
+      <p className='text-center'>
+        <h1 className='text-center'><font color="white">Subir una imagen</font></h1>
+      <Image id="imagen" width="300" height="300" fluid /></p>
+
+        <Form.Label><p><font color="white">De preferencia busca que tu imagen sea lo más clara posible</font></p></Form.Label>
         <Form.Control type="file" size="lg" onChange={handleFileChange} />
       </Form.Group>
-      <Image id="imagen" fluid />
+      
       <br />
-      <button onClick={props.predict} className="btn bg-transparent">
-        <a className="btnmore primary">
-          <span>Analizar</span>
-        </a>
+    
+      <button onClick={props.predict} id="escaner">
+      <font color="white">   Analizar</font>
       </button>
-
     </>
   );
 }

@@ -533,7 +533,9 @@ Nav {
     border: 4px solid #51585e !important;
     margin-bottom: 5vh;
     padding: 5px;
+    background-color: #5656577d;
 }
+
 
 .noLogged {
     color: #fff;
