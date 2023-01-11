@@ -542,3 +542,19 @@ Nav {
     margin-top: 5px;
     letter-spacing: 2px
 }
+
+.btn-sq {
+    width: 250px !important;
+    height: 200px !important;
+  }
+
+  .btn-outlined.btn-danger {
+    background: none;
+    border: 4px solid #d9534f;
+    color: #d9534f;
+}
+.btn-outlined.btn-danger:hover,
+.btn-outlined.btn-danger:active {
+    color: #FFF;
+    background: #d2322d;
+}
