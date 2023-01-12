@@ -1,7 +1,8 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image'
-
+import { Button } from 'react-bootstrap';
+import {FaBrain} from "react-icons/fa";
 export const Escanear = (props) => {
   var imgGlobal = null;
 
@@ -26,10 +27,10 @@ export const Escanear = (props) => {
       </Form.Group>
       
       <br />
-    
-      <button onClick={props.predict} id="escaner">
-      <font color="white">   Analizar</font>
-      </button>
+  
+      <Button onClick={props.predict} id="escaner">
+      <i><FaBrain size="3em" /></i> Analizar foto
+      </Button>
     </>
   );
 }

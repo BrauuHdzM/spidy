@@ -560,3 +560,13 @@ Nav {
     color: #FFF;
     background: #d2322d;
 }
+
+.responsive-canvas{
+    width: 2%;
+    object-fit: contain;
+  }
+  .responsive-video{
+    border: solid 3px rgb(244, 244, 244);  
+    width: 78%;
+    object-fit: contain;
+  }

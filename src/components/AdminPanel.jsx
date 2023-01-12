@@ -36,6 +36,7 @@ export const AdminPanel = (props) => {
 
   const barra = useRef(null);
   const pastel = useRef(null);
+  const pastel2 = useRef(null);
   
 
   const [spdmost, setspdmost] = useState('');
@@ -48,6 +49,7 @@ export const AdminPanel = (props) => {
   
   const [img, setimg] = useState({ pataslargas });
   const [img2, setimg2] = useState({ pataslargas });
+  const [img3, setimg3] = useState({ pataslargas });
   const [banner, setbanner] = useState({TarantulaPic});
   const [result, setResult] = useState([]);
   const [satisG, setsatisG] = useState([]);
@@ -143,12 +145,20 @@ export const AdminPanel = (props) => {
         setspidernombre('Tarantula');
         break;
     }
+    const chart3 = pastel2.current;
+    console.log(img3);
+    setimg3(chart3.toBase64Image('image/png', 1));
+    console.log(img3);
+
+
   }
   /*para consultar la info individual por araña*/
   async function status() {
     const response = await axios.post("/admin/statsperspider", {
       spidername:spidernombre,
     });
+   
+   
     return (JSON.parse(JSON.stringify(response.data))).splice(1); /*como se ejecutan dos querys
      solo se toma la respuesta del segundo*/
   }
@@ -314,7 +324,7 @@ export const AdminPanel = (props) => {
                 <div className='admindiv'>
                   <h1 class="text-center" >Satisfacción por araña</h1>
                   <div className='piechartdiv'>
-                    <p class="text-center"> <Pie data={userDataPastel2} /></p>
+                    <p class="text-center"> <Pie data={userDataPastel2} ref={pastel2} /></p>
                     <p>Donde 3 equivale a la puntuación máxima y 1 a la puntuación mínima</p>
                   </div>
                 </div>
@@ -361,11 +371,11 @@ export const AdminPanel = (props) => {
                     </div>
 
                     <div class="col" >
-                    
+                    <a href='/admin/descargarImagenes'>
                   <button className="btn btn-sq  btn-danger" href='/admin/descargarImagenes'>
-                    <i><BsFileZipFill size="4em" /><br></br><h3>Descargar dataset</h3></i>
+                    <i><BsFileZipFill size="4em" /></i><br></br><h3>Descargar dataset</h3>
                   </button>
-                  
+                  </a>
                   </div>
                     </div>
                     </p>
@@ -406,12 +416,12 @@ export const AdminPanel = (props) => {
                       </Modal.Header>
 
                       <Modal.Body>
-                        <PDFDownloadLink document={<ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider}/>} fileName="ReportePersonalizadoA.pdf">
+                        <PDFDownloadLink document={<ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider} imggraph={img3} ranking={JSON.stringify(satisA)}/>} fileName="ReportePersonalizadoA.pdf">
                           <p className='text-center'>Descargar reporte general</p>
                         </PDFDownloadLink>
                         <p className='text-center'>
                           <PDFViewer height="500em" width="600em">
-                          <ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider}/>
+                          <ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider} imggraph={img3} ranking={JSON.stringify(satisA)}/>
                           </PDFViewer>
                         </p>
                       </Modal.Body>

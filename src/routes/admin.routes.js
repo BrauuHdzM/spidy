@@ -79,7 +79,7 @@ router.post('/totalEncuestas', (req, res) => {
 router.post('/satisfaccionA', (req, res) => {
     req.getConnection((err, conn) => {
         if (err) return res.status(500).send('server error')
-        conn.query("SELECT spiders.species, AVG(surveyResult) as 'PromedioEncuestas' FROM spiders INNER JOIN predictions ON spiders.idSpider = predictions.prediction INNER JOIN surveys ON predictions.idPrediction= surveys.idPrediction group by spiders.idSpider order by spiders.species ASC;",
+        conn.query("SELECT spiders.species, AVG(surveyResult) as 'PromedioEncuestas' FROM spiders INNER JOIN predictions ON spiders.idSpider = predictions.prediction INNER JOIN surveys ON predictions.idPrediction= surveys.idPrediction group by spiders.idSpider order by AVG(surveyResult) DESC;",
          function (error, results, fields) {
             if (error) res.send(error);
             if (results) {
