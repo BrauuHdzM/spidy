@@ -9,7 +9,7 @@ import TarantulaPic from '../images/rP/r2Tar.jpg';
 const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-export const ReporteSpider = ({img,registrostotales,califa}) => (
+export const ReporteSpider = ({img,registrostotales,califa,imggraph,ranking}) => (
     <Document>
       <Page>
       <Image src={portada3} />
@@ -19,6 +19,11 @@ export const ReporteSpider = ({img,registrostotales,califa}) => (
       <Text style={styles.title}> Total de registros en sistema : {registrostotales}</Text>
       <Text style={styles.title}> Calificación : {califa}</Text>
       </View>
+      
+      <View style={styles.body2}>
+      <Image src={imggraph} styles={styles.image} />
+      </View>
+      <Text>{ranking}</Text>
       <Text style={styles.pageNumber}>Copyright © 2023 All Rights Reserved by Spidy</Text> 
       </Page>
 
