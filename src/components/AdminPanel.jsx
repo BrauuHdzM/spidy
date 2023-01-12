@@ -71,15 +71,10 @@ export const AdminPanel = (props) => {
         let auxreg = (JSON.parse(JSON.stringify(response.data)).map((row) => row.encuestas));
         setreg(auxreg);
       })
-<<<<<<< HEAD
-
-      
-=======
       axios.post("/admin/satisfaccionA")
       .then((response) => {
         setsatisA(JSON.parse(JSON.stringify(response.data)));
       })
->>>>>>> 588ec28e37da3bfe60d70e04dbe7d4d8dfaf9a28
 
   }, [])
 
