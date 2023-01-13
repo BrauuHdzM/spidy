@@ -40,7 +40,8 @@
     "scripts": {
         "start": "node src/index.js",
         "dev": "nodemon src/index.js",
-        "webpack": "webpack --mode development"
+        "webpack": "webpack --mode development",
+        "build": "webpack --mode production"
     },
     "eslintConfig": {
         "extends": [
