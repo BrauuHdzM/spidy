@@ -14,24 +14,54 @@ export const ReporteSpider = ({img,registrostotales,califa,imggraph,ranking}) =>
       <Page>
       <Image src={portada3} />
       <Image src={img} />
-      <View style={styles.body}>
-      <Text style={styles.title}>Fecha: {date}</Text>
-      <Text style={styles.title}> Total de registros en sistema : {registrostotales}</Text>
-      <Text style={styles.title}> Calificación : {califa}</Text>
-      </View>
       
+      
+      <View style={styles.body}>
+      <View style={styles.table}> 
+        <View style={styles.tableRow1}> 
+          <View style={styles.tableCol}> 
+            <Text style={styles.tableCell}>Fecha</Text> 
+          </View> 
+          <View style={styles.tableCol}> 
+            <Text style={styles.tableCell}>Registros en sistema</Text> 
+          </View> 
+          <View style={styles.tableCol}> 
+            <Text style={styles.tableCell}>Calificación </Text> 
+          </View> 
+        </View>
+        <View style={styles.tableRow}> 
+          <View style={styles.tableCol}> 
+            <Text style={styles.tableCell}>{date}</Text> 
+          </View> 
+          <View style={styles.tableCol}> 
+            <Text style={styles.tableCell}>{registrostotales}</Text> 
+          </View> 
+          <View style={styles.tableCol}> 
+            <Text style={styles.tableCell}>{califa}</Text> 
+          </View> 
+        </View>
+        </View>
+        </View>
+      <Text style={styles.title}>COMPARATIVA RESPECTO A OTRAS ARAÑAS : </Text>
       <View style={styles.body2}>
       <Image src={imggraph} styles={styles.image} />
       </View>
-      <Text>{ranking}</Text>
+
+     
       <Text style={styles.pageNumber}>Copyright © 2023 All Rights Reserved by Spidy</Text> 
       </Page>
-
-
 
     </Document>
   );
 
+
+  /*
+      {Object.keys(ranking).map((key, i) => (
+        <p key={i}>
+          <span>Key Name: {key}</span>
+          <span>Value: {ranking[key]}</span>
+        </p>
+      ))}*/
  /* Font.register({ family: 'Staatliches-Regular', format: "truetype", src:font });*/
  
  Font.register({
@@ -43,6 +73,7 @@ export const ReporteSpider = ({img,registrostotales,califa,imggraph,ranking}) =>
     body: {
       paddingTop: 10,
       paddingHorizontal: 35,
+      paddingBottom: 3,
     },
     body2: {
       paddingTop: 3,
@@ -53,13 +84,13 @@ export const ReporteSpider = ({img,registrostotales,califa,imggraph,ranking}) =>
       paddingHorizontal: 35,
     },
     title: {
-      fontSize: 20,
+      fontSize: 15,
       textAlign: 'center',
       fontFamily: 'Oswald'
     },
     textran: {
       fontSize: 12,
-      textAlign: 'center',
+      textAlign: 'left',
       fontFamily: 'Oswald',
       color: 'red',
     },
@@ -78,4 +109,34 @@ export const ReporteSpider = ({img,registrostotales,califa,imggraph,ranking}) =>
       textAlign: 'center',
       color: 'grey',
     },
+    table: { 
+      display: "table", 
+      width: "auto", 
+      borderStyle: "solid", 
+      borderWidth: 0, 
+      borderRightWidth: 0, 
+      borderBottomWidth: 0 
+    }, 
+    tableRow: { 
+      margin: "auto", 
+      flexDirection: "row" 
+    }, 
+    tableRow1: { 
+      margin: "auto", 
+      flexDirection: "row" ,
+      backgroundColor: "lightgrey"
+    }, 
+    tableCol: { 
+      width: "25%", 
+      borderStyle: "solid", 
+      borderWidth: 1, 
+      borderLeftWidth: 0, 
+      borderTopWidth: 0 
+    }, 
+    tableCell: { 
+      margin: "auto", 
+      marginTop: 5, 
+      fontSize: 10 ,
+      
+    }
   });

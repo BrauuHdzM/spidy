@@ -293,7 +293,7 @@ export const AdminPanel = (props) => {
 
                 <div className='admindiv'>
 
-                  <h1 class="text-center">Registros totales en el sistema</h1>
+                  <h1 class="text-center">Registros totales en el sistema </h1>
                   
                   <Button onClick={getData} id="escaner" >Presione para inciar graficación</Button>
                   
@@ -313,7 +313,7 @@ export const AdminPanel = (props) => {
                   <div className='piechartdiv' >
                     <p class="text-center">
                       <Pie data={userDataPastel} ref={pastel} /></p>
-                    <p>El sistema cuenta con un {prc}% de aprobación de los usuarios</p>
+                    <p class="text-center">El sistema cuenta con un {prc}% de aprobación de los usuarios</p>
                   </div>
 
                 </div>
@@ -322,10 +322,10 @@ export const AdminPanel = (props) => {
 
               <Col>
                 <div className='admindiv'>
-                  <h1 class="text-center" >Satisfacción por araña</h1>
+                  <h1 class="text-center" >Puntuación por araña</h1>
                   <div className='piechartdiv'>
                     <p class="text-center"> <Pie data={userDataPastel2} ref={pastel2} /></p>
-                    <p>Donde 3 equivale a la puntuación máxima y 1 a la puntuación mínima</p>
+                    <p class="text-center">Donde 3 equivale a la puntuación máxima y 1 a la puntuación mínima</p>
                   </div>
                 </div>
               </Col>
@@ -393,15 +393,15 @@ export const AdminPanel = (props) => {
 
                       <Modal.Body>
                       <Form.Select aria-label="Default select example"  onChange={(e) => handleChange(e)}>
-                            <option><p>Seleccione una araña</p></option>
-                            <option value="1">Violinista</option>
-                            <option value="2">Lince Verde</option>
-                            <option value="3">Patas Largas</option>
-                            <option value="4">Cebra</option>
-                            <option value="5">Viuda Negra</option>
-                            <option value="6">Amaurobius Similis</option>
-                            <option value="7">Eremobates</option>
-                            <option value="8">Tarántula</option>
+                     <option> <p>Seleccione una araña</p></option>
+                            <option value="1"><p>Violinista</p></option>
+                            <option value="2"><p>Lince Verde</p></option>
+                            <option value="3"><p>Patas Largas</p></option>
+                            <option value="4"><p>Cebra</p></option>
+                            <option value="5"><p>Viuda Negra</p></option>
+                            <option value="6"><p>Amaurobius Similis</p></option>
+                            <option value="7"><p>Eremobates</p></option>
+                            <option value="8"><p>Tarántula</p></option>
                        </Form.Select>
                        <button onClick={handleCloseGenerator} class="btnmore primary" ><font color="black"><span><p>Generar reporte</p></span></font></button>
                       </Modal.Body>
@@ -421,7 +421,7 @@ export const AdminPanel = (props) => {
                         </PDFDownloadLink>
                         <p className='text-center'>
                           <PDFViewer height="500em" width="600em">
-                          <ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider} imggraph={img3} ranking={JSON.stringify(satisA)}/>
+                          <ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider} imggraph={img3} ranking={satisA}/>
                           </PDFViewer>
                         </p>
                       </Modal.Body>
