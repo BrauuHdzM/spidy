@@ -6,12 +6,12 @@ import React from "react";
 const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-export const ReporteG = ({imgbarras,spidermost,imgpastel,porcentaje}) => (
+export const ReporteG = ({imgbarras,spidermost,imgpastel,porcentaje,registros}) => (
     <Document>
       <Page>
       <Image src={portada1} />
      <View style={styles.body}>
-      <Text style={styles.title}>CANTIDAD DE REGISTROS TOTALES AL  {date} </Text>
+      <Text style={styles.title}>{registros} REGISTROS TOTALES AL  {date} </Text>
   
       <Image src={imgbarras} />
       <Text style={styles. textran}>La gráfica anterior muestra que actualmente existen más registros de la araña {spidermost}</Text>
