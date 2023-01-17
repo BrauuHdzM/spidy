@@ -570,3 +570,29 @@ Nav {
     width: 78%;
     object-fit: contain;
   }
+
+
+
+
+
+  .btnEncuesta {
+    border: 2px solid;
+    background-color: transparent;
+    padding: 10px 15px;
+    display: inline-block;
+    box-shadow: 3px 3px 0 black;
+    cursor: pointer;
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -ms-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+.btnEncuesta:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px black;
+}
+.btnEncuesta:active, .content button:focus {
+    box-shadow: none;
+    transform: translate(3px, 3px);
+    outline: none;
+}
