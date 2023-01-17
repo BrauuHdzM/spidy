@@ -9,7 +9,7 @@ import TarantulaPic from '../images/rP/r2Tar.jpg';
 const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-export const ReporteSpider = ({img,registrostotales,califa,imggraph,ranking}) => (
+export const ReporteSpider = ({img,registrostotales,califa,imggraph,ranking,nombreSp}) => (
     <Document>
       <Page>
       <Image src={portada3} />
@@ -46,7 +46,39 @@ export const ReporteSpider = ({img,registrostotales,califa,imggraph,ranking}) =>
       <View style={styles.body2}>
       <Image src={imggraph} styles={styles.image} />
       </View>
+      <View style={styles.table}> 
+        <View style={styles.tableRow1}> 
+          <View style={styles.tableCol}> 
+            <Text style={styles.tableCell}>Ranking</Text> 
+          </View> 
+          <View style={styles.tableCol}> 
+            <Text style={styles.tableCell}>Especie</Text> 
+          </View> 
+          <View style={styles.tableCol}> 
+            <Text style={styles.tableCell}>Calificación </Text> 
+          </View> 
+        </View>
+      <React.Fragment>
+      {ranking.map((remark, i) => (
+        
 
+        <View style={styles.tableRow}> 
+          <View style={styles.tableCol}> 
+
+        <Text style={styles.tableCell} key={i}>  {i+1} </Text>
+        </View>
+        <View style={styles.tableCol}> 
+        <Text style={styles.tableCell} key={i+2}>{remark.species}</Text>
+        </View>
+        <View style={styles.tableCol}> 
+        <Text style={styles.tableCell} key={i+3}>{remark.PromedioEncuestas}</Text>
+       </View>
+       </View>
+       
+       ))}
+
+    </React.Fragment>
+    </View>
      
       <Text style={styles.pageNumber}>Copyright © 2023 All Rights Reserved by Spidy</Text> 
       </Page>
@@ -73,7 +105,7 @@ export const ReporteSpider = ({img,registrostotales,califa,imggraph,ranking}) =>
     body: {
       paddingTop: 10,
       paddingHorizontal: 35,
-      paddingBottom: 3,
+      paddingBottom: 10,
     },
     body2: {
       paddingTop: 3,
@@ -136,7 +168,7 @@ export const ReporteSpider = ({img,registrostotales,califa,imggraph,ranking}) =>
     tableCell: { 
       margin: "auto", 
       marginTop: 5, 
-      fontSize: 10 ,
-      
+      fontSize: 9 ,
+    
     }
   });

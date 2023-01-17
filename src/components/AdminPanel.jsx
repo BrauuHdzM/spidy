@@ -13,7 +13,7 @@ import axios from 'axios';
 import { FaFileDownload } from "react-icons/fa";
 import { FaSpider } from "react-icons/fa";
 import { BsFileZipFill } from "react-icons/bs";
-
+import { Doughnut } from 'react-chartjs-2';
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { Pie } from "react-chartjs-2";
@@ -293,7 +293,7 @@ export const AdminPanel = (props) => {
 
                 <div className='admindiv'>
 
-                  <h1 class="text-center">Registros totales en el sistema </h1>
+                  <h1 class="text-center">Registros totales en el sistema {reg} </h1>
                   
                   <Button onClick={getData} id="escaner" >Presione para inciar graficación</Button>
                   
@@ -324,7 +324,7 @@ export const AdminPanel = (props) => {
                 <div className='admindiv'>
                   <h1 class="text-center" >Puntuación por araña</h1>
                   <div className='piechartdiv'>
-                    <p class="text-center"> <Pie data={userDataPastel2} ref={pastel2} /></p>
+                    <p class="text-center"> <Doughnut data={userDataPastel2} ref={pastel2} /></p>
                     <p class="text-center">Donde 3 equivale a la puntuación máxima y 1 a la puntuación mínima</p>
                   </div>
                 </div>
@@ -351,12 +351,12 @@ export const AdminPanel = (props) => {
                       </Modal.Header>
 
                       <Modal.Body>
-                        <PDFDownloadLink document={<ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} />} fileName="ReporteGeneral.pdf">
+                        <PDFDownloadLink document={<ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} registros={reg} />} fileName="ReporteGeneral.pdf">
                           <p className='text-center'>Descargar reporte general</p>
                         </PDFDownloadLink>
                         <p className='text-center'>
-                          <PDFViewer height="500em" width="600em">
-                            <ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} />
+                          <PDFViewer height="400em" width="500em">
+                            <ReporteG imgbarras={img} spidermost={spdmost} imgpastel={img2} porcentaje={prc} registros={reg}/>
                           </PDFViewer>
                         </p>
                       </Modal.Body>
@@ -402,8 +402,10 @@ export const AdminPanel = (props) => {
                             <option value="6"><p>Amaurobius Similis</p></option>
                             <option value="7"><p>Eremobates</p></option>
                             <option value="8"><p>Tarántula</p></option>
+
+                            <br></br> <br></br>
                        </Form.Select>
-                       <button onClick={handleCloseGenerator} class="btnmore primary" ><font color="black"><span><p>Generar reporte</p></span></font></button>
+                       <Button onClick={handleCloseGenerator} id="escaner">Generar reporte</Button>
                       </Modal.Body>
                     </Modal>
                     <Modal show={showReporteA} onHide={handleCloseReporteA}
@@ -416,12 +418,12 @@ export const AdminPanel = (props) => {
                       </Modal.Header>
 
                       <Modal.Body>
-                        <PDFDownloadLink document={<ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider} imggraph={img3} ranking={JSON.stringify(satisA)}/>} fileName="ReportePersonalizadoA.pdf">
+                        <PDFDownloadLink document={<ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider} imggraph={img3} ranking={satisA} nombreSp={spidernombre}/>} fileName="ReportePersonalizadoA.pdf">
                           <p className='text-center'>Descargar reporte general</p>
                         </PDFDownloadLink>
                         <p className='text-center'>
-                          <PDFViewer height="500em" width="600em">
-                          <ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider} imggraph={img3} ranking={satisA}/>
+                          <PDFViewer height="400em" width="500em">
+                          <ReporteSpider img={banner} registrostotales={totalsp} califa={averagespider} imggraph={img3} ranking={satisA} nombreSp={spidernombre}/>
                           </PDFViewer>
                         </p>
                       </Modal.Body>
